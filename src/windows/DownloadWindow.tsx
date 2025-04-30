@@ -4,6 +4,7 @@ import ButtonDownload from "../buttons/ButtonDownload.tsx";
 import * as React from "react";
 import Mod from "../types/Mod.tsx";
 import {useState} from "react";
+import { CheckIcon } from "flowbite-react/icons/check-icon";
 
 export default function RenderDownload(
     {activeStep, setActiveStep, checkedMods, native}:
@@ -55,18 +56,25 @@ export default function RenderDownload(
                         В этой папке будет создана папка <span className="font-bold">mods</span> (если её нет), в неё будут загружены моды
                     </label>
                 </div>
-                <div className="flex flex-row rounded gap-2">
-                    <input type="checkbox" className="appearance-none w-4 h-4 border border-gray-600 bg-gray-700 rounded checked:bg-green-600"
-                           onChange={event =>
-                        event.target.checked ? setInstallIps(true) : setInstallIps(false)
-                    }
-                    />
-                    <span className="text-sm font-medium align-middle text-white">
-                        Добавить в список серверов региональные адреса <a href="https://epserv.ru/" target="_blank" rel="noopener noreferrer" className="underline text-blue-700">ElectroPlay</a>
-                    </span>
+                <div className={`flex flex-row items-center rounded gap-2 ${ download ? `opacity-50` : `opacity-100` }`}>
+                  <input id="ipsSet" type="checkbox" className="peer hidden" disabled={download}
+                         onChange={event => event.target.checked ? setInstallIps(true) : setInstallIps(false)}
+                  />
+                  <label htmlFor="ipsSet" className="w-4 h-4 cursor-pointer border flex justify-center items-center border-gray-600 transition duration-150 bg-gray-700 rounded peer-checked:bg-blue-600 peer-checked:border-blue-600">
+                    <CheckIcon className={`absolute w-3 h-3 text-white transition duration-150 ${ installIps ? `opacity-100 ` : `opacity-0` }`} />
+                  </label>
+                  <span className="text-sm font-medium align-middle text-white">
+                        Добавить в список серверов региональные адреса <a href="https://epserv.ru/" target="_blank" rel="noopener noreferrer" className="underline text-blue-700"
+                        onClick={event => {
+                          if (download) event.preventDefault()
+                        }
+                    }>
+                      ElectroPlay
+                    </a>
+                  </span>
                 </div>
-                <div className="flex flex-row gap-12">
-                    <ButtonDownload
+              <div className="flex flex-row gap-12">
+              <ButtonDownload
                         checkedMods={checkedMods}
                         download={download}
                         setCompletedCount={setCompletedCount}
