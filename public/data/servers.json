@@ -35,6 +35,13 @@
     "ip": "hel.mc.epserv.ru"
   },
   {
+    "name": "EP NSK",
+    "hidden": false,
+    "acceptTextures": true,
+    "preventsChatReports": true,
+    "ip": "nsk.mc.epserv.ru"
+  },
+  {
     "name": "EP RAKNET",
     "hidden": false,
     "acceptTextures": true,
