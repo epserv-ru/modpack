@@ -1,0 +1,101 @@
+import Logo from "../elements/Logo.tsx";
+import Navigation from "../elements/Navigation.tsx";
+import ButtonDownload from "../buttons/ButtonDownload.tsx";
+import * as React from "react";
+import Mod from "../types/Mod.tsx";
+import {useState} from "react";
+
+export default function RenderDownload(
+    {activeStep, setActiveStep, checkedMods, native}:
+    { activeStep: number, checkedMods: Mod[], setActiveStep: React.Dispatch<React.SetStateAction<number>>, native: boolean }
+) {
+    const totalCount = checkedMods.length;
+    const [download, setDownload] = useState(false);
+    const [installIps, setInstallIps] = useState(false);
+    const [completedCount, setCompletedCount] = useState(0);
+    const [downloadedBytes, setDownloadedBytes] = useState(0);
+    const [totalBytes, setTotalBytes] = useState(0);
+    const [folderPath, setFolderPath] = useState("")
+    const percent = totalBytes ? Math.round((downloadedBytes / totalBytes) * 100) : 0;
+    return (
+        <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter] select-none">
+            <div className="flex w-[720px] flex-col gap-6 rounded-lg bg-gray-800 p-8 shadow">
+                <Logo />
+                <hr className="border-transparent bg-gray-700" />
+                <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={download} />
+                <span className="text-base font-normal text-gray-400">
+                    Выбрано {checkedMods.length} модов для Minecraft Java Edition 1.21.4
+                </span>
+                <div className={`flex-col gap-2 ${ native ? `flex` : `hidden` }`}>
+                    <label className="text-sm font-medium text-white">
+                        Выберите папку игры
+                    </label>
+                    <div className="flex flex-row w-[536px] h-[42px]">
+                        <button onClick={ () => {
+                            const pick = async () => {
+                                if (!window.electronAPI) {
+                                    alert('Этот браузер не поддерживает выбор папки');
+                                    return;
+                                }
+                                const dir = await window.electronAPI.chooseDirectory();
+                                if (dir) setFolderPath(dir);
+                            };
+                            pick()
+                        }}
+                                className="w-[144px] h-full cursor-pointer rounded-tl-lg rounded-bl-lg border pt-2.5 pb-2.5 gap-2 bg-gray-600 border-gray-600 text-sm font-medium text-white">
+                            Выбрать папку
+                        </button>
+                        <div className="w-[392px] h-full flex items-center rounded-tr-lg rounded-br-lg pt-3 pb-3 pl-4 pr-4 bg-gray-700 border border-gray-600">
+                            <span className="leading-tight text-sm font-normal text-white">
+                                {folderPath ? folderPath : "C:\\Users\\User\\AppData\\Roaming\\.minecraft"}
+                            </span>
+                        </div>
+                    </div>
+                    <label className="text-xs font-normal text-gray-400">
+                        В этой папке будет создана папка <span className="font-bold">mods</span> (если её нет), в неё будут загружены моды
+                    </label>
+                </div>
+                <div className="flex flex-row rounded gap-2">
+                    <input type="checkbox" className="appearance-none w-4 h-4 border border-gray-600 bg-gray-700 rounded checked:bg-green-600"
+                           onChange={event =>
+                        event.target.checked ? setInstallIps(true) : setInstallIps(false)
+                    }
+                    />
+                    <span className="text-sm font-medium align-middle text-white">
+                        Добавить в список серверов региональные адреса <a href="https://epserv.ru/" target="_blank" rel="noopener noreferrer" className="underline text-blue-700">ElectroPlay</a>
+                    </span>
+                </div>
+                <div className="flex flex-row gap-12">
+                    <ButtonDownload
+                        checkedMods={checkedMods}
+                        download={download}
+                        setCompletedCount={setCompletedCount}
+                        setDownloadedBytes={setDownloadedBytes}
+                        setTotalBytes={setTotalBytes}
+                        setDownload={setDownload}
+                        folderPath={folderPath}
+                        installIps={installIps}
+                        native={native}
+                    />
+                    <div className={`flex flex-col gap-1 justify-center ${ download ? `opacity-100` : `opacity-0` }`}>
+                        <div className="w-[332px] h-1.5 rounded-sm bg-gray-700">
+                            <div className="bg-purple-600 h-full rounded-sm transition-all duration-300" style={{ width: `${percent}%` }}/>
+                        </div>
+                        <div className="flex flex-row justify-between text-xs font-medium text-gray-400">
+                            <span>Загружено {completedCount}/{totalCount} модов...</span>
+                            <span>{percent}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
+}
+
+declare global {
+    interface Window {
+        electronAPI?: {
+            chooseDirectory: () => Promise<string | null>;
+        }
+    }
+}

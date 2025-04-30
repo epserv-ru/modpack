@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@plugin "tailwind-scrollbar";
+@source "../.flowbite-react/class-list.json";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@layer utilities {
+    /* скруглённый ползунок */
+    .scrollbar-thumb-rounded-lg::-webkit-scrollbar-thumb {
+        border-radius: 0.5rem;  /* или любое другое значение */
+    }
+    /* скруглённые концы дорожки (трека) */
+    .scrollbar-track-rounded-lg::-webkit-scrollbar-track {
+        border-radius: 0.5rem;
+    }
+    /* для Firefox */
+    .scrollbar-thumb-rounded-lg {
+        scrollbar-width: thin;
+        scrollbar-color:
+                var(--tw-scrollbar-thumb, #4B5563)
+                var(--tw-scrollbar-track, #D1D5DB);
+    }
+}
