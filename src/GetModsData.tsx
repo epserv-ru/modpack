@@ -34,7 +34,7 @@ export async function GetModsData(
 }
 
 const fetchData = async (minecraftVersion : string):Promise<Mod[]> => {
-    const result = await fetch("/data/mods.json");
+    const result = await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/mods.json");
     if (!result.ok) throw new Error("Ошибка загрузки модов с гитхаба");
     const epMods: EPMod[] = await result.json();
     const modPromises = epMods.map(mod =>  modConvert(mod, epMods, minecraftVersion));

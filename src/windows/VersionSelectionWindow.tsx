@@ -24,7 +24,7 @@ export default function VersionSelectionWindow(
     useEffect(() => {
         async function getMinecraftVersions() {
             try {
-                const result = await fetch("/data/minecraft_versions.json")
+                const result = await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/minecraft_versions.json")
                 const versions: MinecraftVersion[] = await result.json()
                 setMinecraftVersions(versions)
                 if (minecraftVersion == "") setMinecraftVersion(versions[0].version)

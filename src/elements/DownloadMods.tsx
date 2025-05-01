@@ -23,7 +23,7 @@ export async function DownloadMods(
        if (installIps) {
            let ips: ServerIp[];
            try {
-               const res = await fetch("/data/servers.json")
+               const res = await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/servers.json")
                ips = await res.json()
            } catch (err) {
                console.error(err)
