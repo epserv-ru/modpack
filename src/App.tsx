@@ -34,6 +34,7 @@ export default function App() {
             checkedMods={checkedMods[minecraftVersion]}
             activeStep={activeStep}
             setActiveStep={setActiveStep}
+            minecraftVersion={minecraftVersion}
             native={native} />
     }
 }
