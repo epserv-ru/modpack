@@ -54,11 +54,11 @@ export default function RenderDownload(
     function IpsSet() {
         return (
             <div className={`flex flex-row items-center rounded gap-2 ${ download ? `opacity-50` : `opacity-100` }`}>
-                <input id="ipsSet" type="checkbox" className="peer hidden" disabled={download}
+                <input id="ipsSet" type="checkbox" className="peer hidden" checked={installIps} disabled={download}
                        onChange={event => event.target.checked ? setInstallIps(true) : setInstallIps(false)}
                 />
-                <label htmlFor="ipsSet" className="w-4 h-4 cursor-pointer border flex justify-center items-center border-gray-600 transition duration-150 bg-gray-700 rounded peer-checked:bg-blue-600 peer-checked:border-blue-600">
-                  <CheckIcon className={`absolute w-3 h-3 text-white transition duration-150 ${ installIps ? `opacity-100 ` : `opacity-0` }`} />
+                <label htmlFor="ipsSet" className="w-4 h-4 cursor-pointer border flex justify-center items-center border-gray-600 transition-colors duration-150 bg-gray-700 rounded peer-checked:bg-blue-600 peer-checked:border-blue-600">
+                  <CheckIcon className={`absolute w-3 h-3 text-white transition-opacity duration-150 ${ installIps ? `opacity-100 ` : `opacity-0` }`} />
                 </label>
                 <span className="text-sm font-medium align-middle text-white">
                     Добавить в список серверов региональные адреса <a href="https://epserv.ru/" target="_blank" rel="noopener noreferrer" className="underline text-blue-700"
