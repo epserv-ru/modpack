@@ -3,6 +3,7 @@ import Mod from "../types/Mod.tsx";
 import * as React from "react";
 import {Tooltip} from "../elements/Tooltip.tsx";
 import ModsRecord from "../types/records/ModsRecord.tsx";
+import Markdown from "react-markdown";
 
 export default function ModButton(
     { mod, minecraftVersion, checkedMods, setCheckedMods } :
@@ -72,9 +73,9 @@ export default function ModButton(
                             <ArrowUpRightFromSquare className="cursor-pointer text-gray-400" />
                         </a>
                     </div>
-                    <h1 className="text-base leading-none font-normal text-gray-400">
-                        {mod.description}
-                    </h1>
+                    <div className="text-base leading-none font-normal text-gray-400">
+                      <Markdown>{mod.description}</Markdown>
+                    </div>
                 </div>
             </label>
         </div>

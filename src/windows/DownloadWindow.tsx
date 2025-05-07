@@ -35,7 +35,7 @@ export default function RenderDownload(
                     Выберите папку игры
                 </label>
                 <div className="flex flex-row w-[536px] h-[42px]">
-                    <button onClick={ () => pick()} className="w-[144px] h-full cursor-pointer rounded-tl-lg rounded-bl-lg border pt-2.5 pb-2.5 gap-2 bg-gray-600 border-gray-600 text-sm font-medium text-white">
+                    <button disabled={download} onClick={ () => pick()} className="w-[144px] h-full cursor-pointer rounded-tl-lg rounded-bl-lg border pt-2.5 pb-2.5 gap-2 bg-gray-600 border-gray-600 text-sm font-medium text-white">
                         Выбрать папку
                     </button>
                     <div className="w-[392px] h-full flex items-center rounded-tr-lg rounded-br-lg pt-3 pb-3 pl-4 pr-4 bg-gray-700 border border-gray-600">
@@ -53,7 +53,7 @@ export default function RenderDownload(
 
     function IpsSet() {
         return (
-            <div className={`flex flex-row items-center rounded gap-2 ${ download ? `opacity-50` : `opacity-100` }`}>
+            <div className={`flex flex-row items-center rounded gap-2 ${ native ? `flex` : `hidden` } ${ download ? `opacity-50` : `opacity-100` }`}>
                 <input id="ipsSet" type="checkbox" className="peer hidden" checked={installIps} disabled={download}
                        onChange={event => event.target.checked ? setInstallIps(true) : setInstallIps(false)}
                 />
