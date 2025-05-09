@@ -7,6 +7,7 @@ export default interface Mod {
     site: string;
     required: boolean;
     library: boolean;
+    broken: boolean;
     available: boolean;
     reliable_link: string;
     dependencies: Mod[]

@@ -72,6 +72,7 @@ async function modConvert(mod: EPMod, epMods: EPMod[], minecraftVersion: string)
         site: mod.site[minecraftVersion],
         required: mod.required,
         library: mod.library,
+        broken: mod.broken,
         available: !!link,
         reliable_link: link,
         dependencies: deps

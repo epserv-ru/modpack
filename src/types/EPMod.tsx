@@ -10,6 +10,7 @@ export default interface EPMod {
     site: StringOnVersion;
     required: boolean;
     library: boolean;
+    broken: boolean;
     reliable_links: StringOnVersion;
     dependencies: string[]
 }

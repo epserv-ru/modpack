@@ -17,8 +17,8 @@ export default function ModButton(
     return (
         <div className="flex flex-row justify-between items-center">
             <div className="flex w-16 h-8 items-center justify-center">
-                <Tooltip content={<NotAvailableTooltipContent mod={mod} minecraftVersion={minecraftVersion}/>} placement="top" className="bg-gray-800 shadow-md">
-                    <ExclamationCircle className={`gap-0 ${mod.available ? `text-transparent hidden` : `text-red-500`}`}/>
+                <Tooltip content={<TooltipContent mod={mod} minecraftVersion={minecraftVersion}/>} placement="top" className="bg-gray-800 shadow-md">
+                    <ExclamationCircle className={`${mod.available ? `${mod.broken ? 'text-yellow-300' : 'text-transparent hidden'}` : `text-red-500`}`}/>
                 </Tooltip>
             </div>
             <input type="checkbox" id={`${mod.id}`} className="peer hidden" checked={(mod.required && mod.available) || checkedMods.some(m => m.id === mod.id)} disabled={mod.required || !mod.available}
@@ -82,17 +82,17 @@ export default function ModButton(
     );
 }
 
-function NotAvailableTooltipContent(
+function TooltipContent(
     { mod, minecraftVersion } :
     { mod : Mod, minecraftVersion : string }
 ) {
     return (
-        <div className="flex flex-col p-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
-            <span className="leading-none text-sm font-medium text-start text-white">
-                Этот мод установить нельзя
+        <div className={`flex flex-col ${mod.broken ? `w-58` : ``} p-2.5 pb-2.5 pr-3 pl-3 gap-1.5`}>
+            <span className="leading-none text-sm font-medium text-white text-center">
+                {mod.broken ? "Этот мод имеет баги" : "Этот мод установить нельзя"}
             </span>
-            <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
-                {mod.name} еще не вышел на версию {minecraftVersion}
+            <span className="leading-tight text-xs font-normal text-gray-400 whitespace-normal">
+              {mod.broken ? `${mod.name} работает, но создает некоторые баги — устанавливайте на свой страх и риск` : `${mod.name} еще не вышел на версию ${minecraftVersion}`}
             </span>
         </div>
     )
