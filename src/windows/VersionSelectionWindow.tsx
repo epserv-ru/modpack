@@ -17,7 +17,7 @@ export default function VersionSelectionWindow(
         minecraftVersion : string,
         setMinecraftVersion : React.Dispatch<React.SetStateAction<string>>
     }
-) {
+    ) {
     const [dropMenu, setDropMenu] = useState(false);
     const [minecraftVersions, setMinecraftVersions] = useState<MinecraftVersion[]>([]);
     const [loaded, setLoaded] = useState(false)
@@ -43,13 +43,13 @@ export default function VersionSelectionWindow(
             <div className="relative flex flex-col gap-2 w-[174px]">
                 <div className="gap-2">
                   <label className="text-sm font-normal text-white">
-                    Версия Minecraft
+                      Версия Minecraft
                   </label>
                 </div>
                 <label htmlFor="dropdown-toggle" className="flex w-[174px] h-[43px] cursor-pointer items-center justify-between rounded-lg border border-gray-600 bg-gray-700 p-1 text-sm font-normal text-white">
                     <input type="checkbox" id="dropdown-toggle" className="hidden" checked={dropMenu} onChange={() => setDropMenu(!dropMenu)}/>
                     <span className="p-2 align-middle font-[Inter] text-sm leading-tight font-normal text-white">
-                      {minecraftVersion}
+                        {minecraftVersion}
                     </span>
                     <ChevronDown className="text-gray-400"/>
                 </label>
@@ -70,21 +70,21 @@ export default function VersionSelectionWindow(
         );
     }
 
-  function SkeletonChooseVersionMenu() {
-    return (
-      <div className="relative flex flex-col gap-2 w-[174px]">
-        <div className="gap-2">
-          <label className="text-sm font-normal text-white">
-            Версия Minecraft
-          </label>
-        </div>
-        <div className="flex w-[174px] h-[43px] cursor-pointer items-center justify-between rounded-lg border border-gray-600 bg-gray-700 p-1 text-sm font-normal text-white">
-          <div className="w-12 p-2 h-3 ml-2 bg-gray-500 rounded-md" />
-          <ChevronDown className="text-gray-400"/>
-        </div>
-      </div>
-    );
-  }
+    function SkeletonChooseVersionMenu() {
+        return (
+            <div className="relative flex flex-col gap-2 w-[174px]">
+                <div className="gap-2">
+                    <label className="text-sm font-normal text-white">
+                        Версия Minecraft
+                    </label>
+                </div>
+                <div className="flex w-[174px] h-[43px] cursor-pointer items-center justify-between rounded-lg border border-gray-600 bg-gray-700 p-1 text-sm font-normal text-white">
+                    <div className="w-12 p-2 h-3 ml-2 bg-gray-500 rounded-md" />
+                    <ChevronDown className="text-gray-400"/>
+                </div>
+            </div>
+        );
+    }
 
     function StatusBadge({ version } : { version: MinecraftVersion }) {
         return version.experimental ? (
@@ -99,15 +99,15 @@ export default function VersionSelectionWindow(
 
     function TooltipContent({ version } : { version: MinecraftVersion }) {
         if (version.experimental) {
-           return(
-               <div className="flex flex-col w-[289px] p-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
+            return(
+                <div className="flex flex-col w-[289px] p-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
                     <span className="leading-none text-sm font-medium text-start text-white">
                         Экспериментальная версия
                     </span>
-                   <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
+                    <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
                         Для версии {version.version} ещё не выпущены все обязательные моды, поэтому она может работать нестабильно — используйте на свой страх и риск
                     </span>
-               </div>
+                </div>
            )
         } else {
             return(
@@ -124,36 +124,36 @@ export default function VersionSelectionWindow(
     }
 
     if (loaded) {
-      return (
-        <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-inter select-none">
-          <div className="flex w-[720px] flex-col gap-6 rounded-lg bg-gray-800 p-8 shadow">
-            <Logo />
-            <hr className="border-transparent bg-gray-700" />
-            <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={false}/>
-              <span style={{ fontSize: 17 }} className="text-base font-normal text-gray-400">
-                    Выберите версию Minecraft Java Edition, для которой нужно установить моды.
-                    Отдаем приоритет рекомендуемой версии — на ней модпак стабильнее и имеет больший выбор модов.
-                </span>
-            <ChooseVersionMenu />
-            <ButtonNext activeStep={activeStep} setActiveStep={setActiveStep} loaded={loaded}/>
-          </div>
-        </main>
-      )
+        return (
+            <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-inter select-none">
+                <div className="flex w-[720px] flex-col gap-6 rounded-lg bg-gray-800 p-8 shadow">
+                    <Logo />
+                    <hr className="border-transparent bg-gray-700" />
+                    <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={false}/>
+                        <span style={{ fontSize: 17 }} className="text-base font-normal text-gray-400">
+                            Выберите версию Minecraft Java Edition, для которой нужно установить моды.
+                            Отдаем приоритет рекомендуемой версии — на ней модпак стабильнее и имеет больший выбор модов.
+                        </span>
+                    <ChooseVersionMenu />
+                    <ButtonNext activeStep={activeStep} setActiveStep={setActiveStep} loaded={loaded}/>
+                </div>
+            </main>
+        )
     } else {
-      return (
-        <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-inter select-none">
-          <div className="flex w-[720px] flex-col gap-6 rounded-lg bg-gray-800 p-8 shadow">
-            <Logo />
-            <hr className="border-transparent bg-gray-700" />
-            <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={false}/>
-            <span style={{ fontSize: 17 }} className="text-base font-normal text-gray-400">
-                    Выберите версию Minecraft Java Edition, для которой нужно установить моды. Рекомендуем выбирать последнюю — для неё модпак регулярно обновляется
-                </span>
-            <SkeletonChooseVersionMenu />
-            <SkeletonButtonNext loaded={loaded}/>
-          </div>
-        </main>
-      )
+        return (
+            <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-inter select-none">
+                <div className="flex w-[720px] flex-col gap-6 rounded-lg bg-gray-800 p-8 shadow">
+                    <Logo />
+                    <hr className="border-transparent bg-gray-700" />
+                    <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={false}/>
+                        <span style={{ fontSize: 17 }} className="text-base font-normal text-gray-400">
+                            Выберите версию Minecraft Java Edition, для которой нужно установить моды. Рекомендуем выбирать последнюю — для неё модпак регулярно обновляется
+                        </span>
+                    <SkeletonChooseVersionMenu />
+                    <SkeletonButtonNext loaded={loaded}/>
+                </div>
+            </main>
+        )
     }
 }
 
