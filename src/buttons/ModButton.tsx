@@ -18,7 +18,7 @@ export default function ModButton(
         <div className="flex flex-row justify-between items-center">
             <div className="flex w-16 h-8 items-center justify-center">
                 <Tooltip content={<NotAvailableTooltipContent mod={mod} minecraftVersion={minecraftVersion}/>} placement="top" className="bg-gray-800 shadow-md">
-                    <ExclamationCircle className={`gap-0 ${mod.available ? `text-transparent` : `text-red-500`}`}/>
+                    <ExclamationCircle className={`gap-0 ${mod.available ? `text-transparent hidden` : `text-red-500`}`}/>
                 </Tooltip>
             </div>
             <input type="checkbox" id={`${mod.id}`} className="peer hidden" checked={(mod.required && mod.available) || checkedMods.some(m => m.id === mod.id)} disabled={mod.required || !mod.available}
