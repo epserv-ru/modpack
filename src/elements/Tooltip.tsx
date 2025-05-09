@@ -36,10 +36,10 @@ export function Tooltip(
     };
 
     const arrowBorderColor = {
-        top: "#1F2937 transparent transparent transparent",
-        right: "transparent #1F2937 transparent transparent",
-        bottom: "transparent transparent #1F2937 transparent",
-        left: "transparent transparent transparent #1F2937",
+        top: "#2B3544 transparent transparent transparent",
+        right: "transparent #2B3544 transparent transparent",
+        bottom: "transparent transparent #2B3544 transparent",
+        left: "transparent transparent transparent #2B3544",
     };
 
     return (

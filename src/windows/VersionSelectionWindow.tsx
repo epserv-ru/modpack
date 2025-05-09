@@ -88,10 +88,10 @@ export default function VersionSelectionWindow(
 
     function StatusBadge({ version } : { version: MinecraftVersion }) {
         return version.experimental ? (
-            <Tooltip content={<TooltipContent version={version} />} placement="left" className="bg-gray-800 shadow-md">
+            <Tooltip content={<TooltipContent version={version} />} placement="left" className="shadow-md bg-[color:#2B3544]">
                 <Bug className="h-[15px] w-[15px] cursor-pointer text-yellow-300" />
             </Tooltip>) : (
-            <Tooltip content={<TooltipContent version={version} />} placement="left" className="bg-gray-800 shadow-md">
+            <Tooltip content={<TooltipContent version={version} />} placement="left" className="shadow-md bg-[color:#2B3544]">
                 <ShieldCheck className="h-[15px] w-[15px] text-green-400" />
             </Tooltip>
         );
@@ -105,7 +105,7 @@ export default function VersionSelectionWindow(
                         Экспериментальная версия
                     </span>
                    <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
-                        Сборка на версию {version.version} находится в разработке и может быть нестабильной — используйте на свой страх и риск
+                        Для версии {version.version} ещё не выпущены все обязательные моды, поэтому она может работать нестабильно — используйте на свой страх и риск
                     </span>
                </div>
            )
@@ -116,7 +116,7 @@ export default function VersionSelectionWindow(
                         Рекомендуемая версия
                     </span>
                     <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
-                        Сборка на версию {version.version} завершена и поддерживается — рекомендуем использовать именно её
+                        Для версии {version.version} доступны все обязательные моды, она активно поддерживается — рекомендуем использовать именно её
                     </span>
                 </div>
             )
@@ -130,8 +130,9 @@ export default function VersionSelectionWindow(
             <Logo />
             <hr className="border-transparent bg-gray-700" />
             <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={false}/>
-            <span style={{ fontSize: 17 }} className="text-base font-normal text-gray-400">
-                    Выберите версию Minecraft Java Edition, для которой нужно установить моды. Рекомендуем выбирать последнюю — для неё модпак регулярно обновляется
+              <span style={{ fontSize: 17 }} className="text-base font-normal text-gray-400">
+                    Выберите версию Minecraft Java Edition, для которой нужно установить моды.
+                    Отдаем приоритет рекомендуемой версии — на ней модпак стабильнее и имеет больший выбор модов.
                 </span>
             <ChooseVersionMenu />
             <ButtonNext activeStep={activeStep} setActiveStep={setActiveStep} loaded={loaded}/>
