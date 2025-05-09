@@ -60,7 +60,7 @@ export default function ModButton(
             <label htmlFor={`${mod.id}`} className={`flex h-[128px] w-[1152px] cursor-pointer ${!mod.available ? `opacity-50` : ``} flex-row gap-8 rounded-lg border border-gray-700 bg-gray-800 p-4 shadow transition-colors duration-100 ease-out peer-checked:border-green-700 peer-checked:bg-green-900 ${mod.required ? `peer-checked:border-green-700 peer-checked:bg-green-900` : ``}`}
             ><img src={mod.icon_url} className="h-24 w-24 rounded-lg" alt="Лого мода"/>
                 <div className="flex flex-col gap-3">
-                    <div className="flex flex-row items-center justify-between">
+                    <div className="flex w-247.5 flex-row items-center justify-between">
                         <div className="flex flex-row items-center gap-2">
                             <h1 className="text-xl leading-tight font-semibold text-white">
                                 {mod.name}
