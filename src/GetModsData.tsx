@@ -42,38 +42,38 @@ const fetchData = async (minecraftVersion : string):Promise<Mod[]> => {
 }
 
 async function modConvert(mod: EPMod, epMods: EPMod[], minecraftVersion: string): Promise<Mod> {
-  const link = mod.reliable_links[minecraftVersion];
-  let len = 0;
+    const link = mod.reliable_links[minecraftVersion];
+    let len = 0;
 
-  if (link) {
-    try {
-      const head = await fetch(link, { method: "HEAD" });
-      len = head.ok ? parseInt(head.headers.get("Content-Length") || "0", 10) : 0;
-    } catch (err) {
-      console.warn(err);
+    if (link) {
+        try {
+            const head = await fetch(link, { method: "HEAD" });
+            len = head.ok ? parseInt(head.headers.get("Content-Length") || "0", 10) : 0;
+        } catch (err) {
+            console.warn(err);
+        }
     }
-  }
 
-  let deps: Mod[] | null = null;
-  if (mod.dependencies?.length) {
-    const promises = mod.dependencies.map(id => {
-      const dep = epMods.find(m => m.id === id)!;
-      return modConvert(dep, epMods, minecraftVersion);
-    });
-    deps = await Promise.all(promises);
-  }
+    let deps: Mod[] | null = null;
+    if (mod.dependencies?.length) {
+        const promises = mod.dependencies.map(id => {
+            const dep = epMods.find(m => m.id === id)!;
+            return modConvert(dep, epMods, minecraftVersion);
+        });
+        deps = await Promise.all(promises);
+    }
 
-  return {
-    id: mod.id,
-    name: mod.name,
-    description: mod.description,
-    size: Number((len / 1048576).toFixed(1)),
-    icon_url: mod.icon_url,
-    site: mod.site[minecraftVersion],
-    required: mod.required,
-    library: mod.library,
-    available: !!link,
-    reliable_link: link,
-    dependencies: deps
-  } as Mod;
+    return {
+        id: mod.id,
+        name: mod.name,
+        description: mod.description,
+        size: Number(len / 1048576),
+        icon_url: mod.icon_url,
+        site: mod.site[minecraftVersion],
+        required: mod.required,
+        library: mod.library,
+        available: !!link,
+        reliable_link: link,
+        dependencies: deps
+    } as Mod;
 }

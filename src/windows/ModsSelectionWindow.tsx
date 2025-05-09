@@ -138,7 +138,7 @@ function Footer(
                   <Check className="text-green-400" />
                   <h1 className="text-base font-normal text-gray-200">
                       {checkedMods.length} mods выбрано:{" "}
-                      {checkedMods.reduce((sum, mod) => sum + mod.size, 0).toFixed(1)}{" "}
+                      {checkedMods.reduce((sum, mod) => sum + mod.size, 0).toFixed(2)}{" "}
                       МБ
                   </h1>
               </div>

@@ -66,7 +66,7 @@ export default function ModButton(
                                 {mod.name}
                             </h1>
                             <h1 className="text-base leading-none font-normal text-gray-400">
-                                {mod.size} МБ
+                                {mod.size.toFixed(2)} МБ
                             </h1>
                         </div>
                         <a href={mod.site} target="_blank" rel="noopener noreferrer">
