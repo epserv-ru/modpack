@@ -11,6 +11,7 @@ export async function DownloadMods(
     setDownload: React.Dispatch<React.SetStateAction<boolean>>,
     folderPath: string,
     installIps: boolean,
+    minecraftVersion: string,
     native: boolean
 ) {
     setDownload(true)
@@ -68,7 +69,7 @@ export async function DownloadMods(
             }
 
             const blob = new Blob(chunks);
-            const fileName = mod.name.toLowerCase().replace(/\s+/g, "-") + ".jar";
+            const fileName = mod.name.toLowerCase().replace(/\s+/g, "-") + "-" + minecraftVersion + ".jar";
             if (native) {
                 const arrayBuffer = await blob.arrayBuffer();
                 const fullPath = `${folderPath}/mods/${fileName}`
@@ -90,7 +91,7 @@ export async function DownloadMods(
         const content = await zip.generateAsync({ type: "blob" });
         const a = document.createElement("a");
         a.href = URL.createObjectURL(content);
-        a.download = "ep-modpack.zip";
+        a.download = "ep-modpack-" + minecraftVersion + ".zip";
         document.body.appendChild(a);
         a.click();
         a.remove();

@@ -101,7 +101,7 @@ export default function RenderDownload(
                     <ButtonDownload
                       checkedMods={checkedMods} download={download} setCompletedCount={setCompletedCount}
                       setDownloadedBytes={setDownloadedBytes} setTotalBytes={setTotalBytes} setDownload={setDownload}
-                      folderPath={folderPath} installIps={installIps} native={native}
+                      folderPath={folderPath} minecraftVersion={minecraftVersion}  installIps={installIps} native={native}
                     />
                     <DownloadBar />
                 </div>

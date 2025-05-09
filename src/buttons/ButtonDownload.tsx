@@ -4,7 +4,7 @@ import Mod from "../types/Mod.tsx";
 import {DownloadMods} from "../elements/DownloadMods.tsx";
 
 export default function ButtonDownload(
-    {checkedMods, download, setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload, folderPath, installIps, native} :
+    {checkedMods, download, setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload, folderPath, installIps, minecraftVersion, native} :
     {
         checkedMods : Mod[],
         download: boolean,
@@ -14,13 +14,14 @@ export default function ButtonDownload(
         setDownload: React.Dispatch<React.SetStateAction<boolean>>,
         folderPath: string,
         installIps: boolean,
+        minecraftVersion: string,
         native: boolean
     }
 ) {
     return (
         <button disabled={download}
             onClick={() => {
-                DownloadMods(checkedMods, setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload, folderPath, installIps, native)
+                DownloadMods(checkedMods, setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload, folderPath, installIps, minecraftVersion, native)
             }}
             className={`flex h-[41px] w-[276px] cursor-pointer items-center justify-center gap-2 ${download ? `opacity-50 transition-all duration-200` : `opacity-100 transition-all duration-200`} rounded-lg bg-green-500 pt-2.5 pr-5 pb-2.5 pl-5`}
         >
