@@ -5,6 +5,7 @@ import * as React from "react";
 import Mod from "../types/Mod.tsx";
 import {useState} from "react";
 import { CheckIcon } from "flowbite-react/icons/check-icon";
+import { TextFormatter } from "../elements/TextFormatter.tsx";
 
 export default function RenderDownload(
     {activeStep, setActiveStep, checkedMods, minecraftVersion, native}:
@@ -93,7 +94,10 @@ export default function RenderDownload(
                 <hr className="border-transparent bg-gray-700" />
                 <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={download} />
                 <span className="text-base font-normal text-gray-400">
-                    Выбрано {checkedMods.length} модов для Minecraft Java Edition {minecraftVersion}
+                    {TextFormatter(checkedMods.length, {one: "Выбран ", few: "Выбрано ", many: "Выбрано "})}
+                    {checkedMods.length}{" "}
+                    {TextFormatter(checkedMods.length, {one: "мод ", few: "мода ", many: "модов "})}
+                    для Minecraft Java Edition {minecraftVersion}
                 </span>
                 <LoadFolder />
                 <IpsSet />

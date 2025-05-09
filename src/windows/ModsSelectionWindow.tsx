@@ -11,6 +11,7 @@ import SkeletonButtonNext from "../buttons/SkeletonButtonNext.tsx";
 import SkeletonModButton from "../buttons/SkeletonModButton.tsx";
 import ModsRecord from "../types/records/ModsRecord.tsx";
 import LoadedVersionRecord from "../types/records/LoadedVersionRecord.tsx";
+import { TextFormatter } from "../elements/TextFormatter.tsx";
 
 export default function ModsSelectionWindow(
     { checkedMods, activeStep, minecraftVersion, setCheckedMods, setActiveStep } :
@@ -27,7 +28,6 @@ export default function ModsSelectionWindow(
     useEffect(() => {
         GetModsData(minecraftVersion, checkedMods, setMods, setLoaded, setCheckedMods)
     }, []);
-
     if (loaded[minecraftVersion]) {
         return(
             <main className="flex min-h-screen flex-col items-center overflow-y-hidden bg-gray-900 font-[Inter] select-none">
@@ -87,7 +87,8 @@ function Body(
                             })
                             .map((mod) => (
                                 <ModButton key={mod.id} mod={mod} minecraftVersion={minecraftVersion} checkedMods={checkedMods} setCheckedMods={setCheckedMods} />
-                            ))}
+                            ))
+                    }
                 </div>
             </div>
         </div>
@@ -137,7 +138,9 @@ function Footer(
               <div className="flex flex-row gap-2">
                   <Check className="text-green-400" />
                   <h1 className="text-base font-normal text-gray-200">
-                      {checkedMods.length} mods выбрано:{" "}
+                    {checkedMods.length}{" "}
+                    {TextFormatter(checkedMods.length, {one: "мод ", few: "мода ", many: "модов "})}
+                    {TextFormatter(checkedMods.length, {one: "выбран", few: "выбрано", many: "выбрано"})}:{" "}
                       {checkedMods.reduce((sum, mod) => sum + mod.size, 0).toFixed(2)}{" "}
                       МБ
                   </h1>
