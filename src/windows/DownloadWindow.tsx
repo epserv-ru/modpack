@@ -75,7 +75,7 @@ export default function RenderDownload(
 
     function DownloadBar() {
         return (
-            <div className={`flex flex-col gap-1 justify-center ${ download ? `opacity-100` : `opacity-0` }`}>
+            <div className={`flex flex-col gap-1 justify-center ${ download ? `` : `hidden` }`}>
                 <div className="w-[332px] h-1.5 rounded-sm bg-gray-700">
                     <div className="bg-purple-600 h-full rounded-sm transition-all duration-300" style={{ width: `${percent}%` }}/>
                 </div>
@@ -101,7 +101,7 @@ export default function RenderDownload(
                 </span>
                 <LoadFolder />
                 <IpsSet />
-                <div className="flex flex-row gap-12">
+                <div className="flex flex-row gap-12 justify-between">
                     <ButtonDownload
                       checkedMods={checkedMods} download={download} setCompletedCount={setCompletedCount}
                       setDownloadedBytes={setDownloadedBytes} setTotalBytes={setTotalBytes} setDownload={setDownload}
