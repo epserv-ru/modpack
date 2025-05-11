@@ -102,16 +102,16 @@ function SkeletonBody() {
         <div className="mt-[76px] flex w-screen scrollbar scrollbar-thumb-gray-500 scrollbar-track-rounded-lg scrollbar-track-gray-800 justify-center gap-8 overflow-y-scroll bg-transparent" style={{ height: "calc(100vh - 76px - 65px)" }}>
             <div className="flex w-[1280px] flex-col gap-8 rounded-lg pt-8 pr-16 pb-8">
                 <div className="flex flex-col gap-6 pl-16">
-              <span className="text-2xl leading-tight font-bold text-white">
-                Пора сформировать сборку
-              </span>
+                    <span className="text-2xl leading-tight font-bold text-white">
+                        Пора сформировать сборку
+                    </span>
                     <span className="text-base font-normal text-gray-400">
-                Для вашего удобства мы уже выбрали несколько модов, которыми
-                пользуются многие игроки на ElectroPlay.
-                <br />
-                Вы можете изменить выбор на свой вкус — просто нажмите на любой
-                мод, чтобы добавить или убрать его
-              </span>
+                        Для вашего удобства мы уже выбрали несколько модов, которыми пользуются многие игроки на ElectroPlay.
+                        <br />
+                        Вы можете изменить выбор на свой вкус — просто нажмите на любой мод, чтобы добавить или убрать его.
+                        <br />
+                        Зависимости к модам выберутся автоматически.
+                    </span>
                 </div>
 
                 <div className="flex flex-col gap-4 pb-8">
