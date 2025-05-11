@@ -3,13 +3,20 @@ import Navigation from "../elements/Navigation.tsx";
 import ButtonDownload from "../buttons/ButtonDownload.tsx";
 import * as React from "react";
 import Mod from "../types/Mod.tsx";
-import {useState} from "react";
+import { useEffect, useState } from "react";
 import { CheckIcon } from "flowbite-react/icons/check-icon";
 import { TextFormatter } from "../elements/TextFormatter.tsx";
 
 export default function RenderDownload(
-    {activeStep, setActiveStep, checkedMods, minecraftVersion, native}:
-    { activeStep: number, checkedMods: Mod[], setActiveStep: React.Dispatch<React.SetStateAction<number>>, minecraftVersion: string, native: boolean }
+    {activeStep, setActiveStep, checkedMods, minecraftVersion, folderPath, setFolderPath, native}:
+    {
+      activeStep: number,
+      checkedMods: Mod[],
+      setActiveStep: React.Dispatch<React.SetStateAction<number>>,
+      minecraftVersion: string,
+      folderPath: string,
+      setFolderPath: React.Dispatch<React.SetStateAction<string>>,
+      native: boolean }
 ) {
     const totalCount = checkedMods.length;
     const [download, setDownload] = useState(false);
@@ -17,8 +24,11 @@ export default function RenderDownload(
     const [completedCount, setCompletedCount] = useState(0);
     const [downloadedBytes, setDownloadedBytes] = useState(0);
     const [totalBytes, setTotalBytes] = useState(0);
-    const [folderPath, setFolderPath] = useState("")
     const percent = totalBytes ? Math.round((downloadedBytes / totalBytes) * 100) : 0;
+
+    useEffect(() => {
+        if (native && !folderPath) window.electronAPI?.getDefaultDir().then(dir => setFolderPath(dir));
+    }, []);
 
     const pick = async () => {
         if (!window.electronAPI) {
@@ -41,7 +51,7 @@ export default function RenderDownload(
                     </button>
                     <div className="w-[392px] h-full flex items-center rounded-tr-lg rounded-br-lg pt-3 pb-3 pl-4 pr-4 bg-gray-700 border border-gray-600">
                         <span className="leading-tight text-sm font-normal text-white">
-                          {folderPath ? folderPath : "C:\\Users\\User\\AppData\\Roaming\\.minecraft"}
+                          {folderPath}
                         </span>
                     </div>
                 </div>

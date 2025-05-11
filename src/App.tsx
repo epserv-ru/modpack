@@ -10,6 +10,7 @@ export default function App() {
     const [activeStep, setActiveStep] = useState(0);
     const [checkedMods, setCheckedMods] = useState<ModsRecord>({});
     const [native, setNative] = useState(false);
+    const [folderPath, setFolderPath] = useState("")
 
     useEffect(() => {
         const ua = navigator.userAgent || "";
@@ -35,6 +36,8 @@ export default function App() {
             activeStep={activeStep}
             setActiveStep={setActiveStep}
             minecraftVersion={minecraftVersion}
+            folderPath={folderPath}
+            setFolderPath={setFolderPath}
             native={native} />
     }
 }
