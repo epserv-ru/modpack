@@ -688,6 +688,26 @@
     }
   },
   {
+    "id": "Bnv5m4SE",
+    "name": "Voxy",
+    "description": "Voxy — мод, который добавляет LOD метод рендера удаленных чанков, увеличивая дальность видимости малыми затратами ресурсов. Работает на системах с поддержкой OpenGL 4.6 и выше.",
+    "icon_url": "https://cdn.modrinth.com/data/fxxUqruK/2a4159b1ff6ecba43bf895d6abee6f724a0e03c0_96.webp",
+    "site": {
+      "1.21.6": "https://modrinth.com/mod/voxy/version/0.2.1-alpha",
+      "1.21.5": "https://modrinth.com/mod/voxy",
+      "1.21.4": "https://modrinth.com/mod/voxy"
+    },
+    "hidden": false,
+    "required": false,
+    "library": false,
+    "broken": false,
+    "reliable_links": {
+      "1.21.6" : "https://cdn.modrinth.com/data/fxxUqruK/versions/Bnv5m4SE/voxy-0.2.1-alpha.jar",
+      "1.21.5" : "",
+      "1.21.4" : ""
+    }
+  },
+  {
     "id": "nvQzSEkH",
     "name": "Jade",
     "description": "Jade — мод, являющийся современной альтернативой Hwyla/Waila. Он отображает подробную информацию о блоках и предметах при наведении курсора, улучшая взаимодействие с игровым миром.",
