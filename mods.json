@@ -682,7 +682,7 @@
     "library": false,
     "broken": false,
     "reliable_links": {
-      "1.21.5" : "https://cdn.modrinth.com/data/1IjD5062/versions/m0cvWhzT/continuity-3.0.1-beta.1%2B1.21.6.jar",
+      "1.21.6" : "https://cdn.modrinth.com/data/1IjD5062/versions/m0cvWhzT/continuity-3.0.1-beta.1%2B1.21.6.jar",
       "1.21.5" : "https://cdn.modrinth.com/data/1IjD5062/versions/kravz06U/continuity-3.0.1-test.4%2B1.21.5.jar",
       "1.21.4" : "https://cdn.modrinth.com/data/1IjD5062/versions/esC1Vejm/continuity-3.0.0%2B1.21.4.jar"
     }
@@ -893,7 +893,7 @@
     "id": "ohNO6lps",
     "name": "Forge Config API Port",
     "description": "Forge Config API Port — мод-библиотека, представляющая порт оригинального Forge Config API на другие модлоадеры. Она обеспечивает разработчиков удобным и знакомым интерфейсом для создания и управления конфигурационными файлами модов.",
-    "icon_url": "https://cdn.modrinth.com/data/ohNO6lps/cbb47b34bb8c15b5331c0ab8a524c796cb4e4699_96.webp",
+    "icon_url": "https://cdn.modrinth.com/data/ohNO6lps/cb3b942cc18a66a0f35f802e004713f134e46cc2_96.webp",
     "site": {
       "1.21.6": "https://modrinth.com/mod/forge-config-api-port/version/v21.6.4-1.21.6-Fabric",
       "1.21.5": "https://modrinth.com/mod/forge-config-api-port/version/v21.5.1-1.21.5-Fabric",
