@@ -1,16 +1,14 @@
-import StringOnVersion from "./records/StringOnVersion.tsx";
-
 export default interface EPMod {
     id: string;
     name: string;
     description: string;
-    sizes: StringOnVersion;
+    sizes: string;
     icon_url: string;
     link_api: string;
-    site: StringOnVersion;
+    site_link: string;
     required: boolean;
     library: boolean;
     broken: boolean;
-    reliable_links: StringOnVersion;
+    download_link: string;
     dependencies: string[]
 }

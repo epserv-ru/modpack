@@ -34,7 +34,7 @@ export async function GetModsData(
 }
 
 const fetchData = async (minecraftVersion : string):Promise<Mod[]> => {
-    const result = await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/mods.json");
+    const result = await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/mods-" + minecraftVersion + ".json");
     if (!result.ok) throw new Error("Ошибка загрузки модов с гитхаба");
     const epMods: EPMod[] = await result.json();
     const modPromises = epMods.map(mod =>  modConvert(mod, epMods, minecraftVersion));
@@ -42,7 +42,7 @@ const fetchData = async (minecraftVersion : string):Promise<Mod[]> => {
 }
 
 async function modConvert(mod: EPMod, epMods: EPMod[], minecraftVersion: string): Promise<Mod> {
-    const link = mod.reliable_links[minecraftVersion];
+    const link = mod.download_link;
     let len = 0;
 
     if (link) {
@@ -69,7 +69,7 @@ async function modConvert(mod: EPMod, epMods: EPMod[], minecraftVersion: string)
         description: mod.description,
         size: Number(len / 1048576),
         icon_url: mod.icon_url,
-        site: mod.site[minecraftVersion],
+        site: mod.site_link,
         required: mod.required,
         library: mod.library,
         broken: mod.broken,
