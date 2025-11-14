@@ -1,14 +1,26 @@
 [
   {
+    "version": "1.21.10",
+    "status": 4
+  },
+  {
+    "version": "1.21.9",
+    "status": 4
+  },
+  {
+    "version": "1.21.8",
+    "status": 2
+  },
+  {
     "version": "1.21.6",
-    "experimental": true
+    "status": 5
   },
   {
     "version": "1.21.5",
-    "experimental": true
+    "status": 5
   },
   {
     "version": "1.21.4",
-    "experimental": false
+    "status": 3
   }
 ]
