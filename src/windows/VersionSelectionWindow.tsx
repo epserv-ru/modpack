@@ -1,6 +1,12 @@
 import {ChevronDown} from "flowbite-react-icons/outline";
 import {useEffect, useState} from "react";
-import {Bug, ShieldCheck} from "flowbite-react-icons/solid";
+import {
+  Archive,
+  BadgeCheck,
+  Bug,
+  CaretUp,
+  LockTime
+} from "flowbite-react-icons/solid";
 import MinecraftVersion from "../types/MinecraftVersion.tsx";
 import Logo from "../elements/Logo.tsx";
 import Navigation from "../elements/Navigation.tsx";
@@ -21,6 +27,13 @@ export default function VersionSelectionWindow(
     const [dropMenu, setDropMenu] = useState(false);
     const [minecraftVersions, setMinecraftVersions] = useState<MinecraftVersion[]>([]);
     const [loaded, setLoaded] = useState(false)
+    const VERSION_TYPES = {
+      EXPERIMENTAL: 1,
+      SUPPORTED_AND_RECOMMENDED: 2,
+      OUTDATED: 3,
+      COMING_SOON: 4,
+      SUPPORTED_AND_NOT_RECOMMENDED: 5,
+    } as const;
 
     useEffect(() => {
         async function getMinecraftVersions() {
@@ -87,40 +100,86 @@ export default function VersionSelectionWindow(
     }
 
     function StatusBadge({ version } : { version: MinecraftVersion }) {
-        return version.experimental ? (
-            <Tooltip content={<TooltipContent version={version} />} placement="left" className="shadow-md bg-[color:#2B3544]">
-                <Bug className="h-[15px] w-[15px] cursor-pointer text-yellow-300" />
-            </Tooltip>) : (
-            <Tooltip content={<TooltipContent version={version} />} placement="left" className="shadow-md bg-[color:#2B3544]">
-                <ShieldCheck className="h-[15px] w-[15px] text-green-400" />
-            </Tooltip>
+        const icon = () => {
+          switch (version.status) {
+            case VERSION_TYPES.EXPERIMENTAL :
+              return <Bug className="h-[15px] w-[15px] cursor-pointer text-yellow-300" />
+            case VERSION_TYPES.SUPPORTED_AND_RECOMMENDED :
+              return <BadgeCheck className="h-[15px] w-[15px] text-green-400" />
+            case VERSION_TYPES.OUTDATED :
+              return <Archive className="h-[15px] w-[15px] text-red-500" />
+            case VERSION_TYPES.COMING_SOON :
+              return <LockTime className="h-[15px] w-[15px] text-blue-400" />
+            case VERSION_TYPES.SUPPORTED_AND_NOT_RECOMMENDED :
+              return <CaretUp className="h-[15px] w-[15px] text-yellow-300" />
+          }
+        }
+
+        return (
+          <Tooltip content={<TooltipContent version={version} />} placement="left" className="shadow-md bg-[color:#2B3544]">
+            {icon()}
+          </Tooltip>
         );
     }
 
     function TooltipContent({ version } : { version: MinecraftVersion }) {
-        if (version.experimental) {
-            return(
-                <div className="flex flex-col w-[289px] p-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
-                    <span className="leading-none text-sm font-medium text-start text-white">
-                        Экспериментальная версия
-                    </span>
-                    <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
-                        Для версии {version.version} ещё не выпущены все обязательные моды, поэтому она может работать нестабильно — используйте на свой страх и риск
-                    </span>
-                </div>
-           )
-        } else {
-            return(
-                <div className="flex flex-col w-[242px] pt-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
-                    <span className="leading-none text-sm font-medium text-start text-white">
-                        Рекомендуемая версия
-                    </span>
-                    <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
-                        Для версии {version.version} доступны все обязательные моды, она активно поддерживается — рекомендуем использовать именно её
-                    </span>
-                </div>
-            )
-        }
+      switch (version.status) {
+        case VERSION_TYPES.EXPERIMENTAL :
+          return(
+            <div className="flex flex-col w-[289px] p-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
+              <span className="leading-none text-sm font-medium text-start text-white">
+                Экспериментальная версия
+              </span>
+            <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
+              Для версии {version.version} ещё не выпущены все обязательные моды, поэтому она может работать нестабильно — используйте на свой страх и риск
+            </span>
+          </div>
+        )
+        case VERSION_TYPES.SUPPORTED_AND_RECOMMENDED :
+          return(
+            <div className="flex flex-col w-[242px] pt-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
+              <span className="leading-none text-sm font-medium text-start text-white">
+                Рекомендуемая версия
+              </span>
+              <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
+                Для версии {version.version} доступны все обязательные моды, она активно поддерживается — рекомендуем использовать именно её
+              </span>
+            </div>
+          )
+        case VERSION_TYPES.OUTDATED :
+          return(
+            <div className="flex flex-col w-[242px] pt-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
+              <span className="leading-none text-sm font-medium text-start text-white">
+                Устаревшая версия
+              </span>
+              <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
+                Версия {version.version} устарела, не обновляется и более не поддерживается на сервере и зайти с нее нельзя — не используйте её
+              </span>
+            </div>
+          )
+        case VERSION_TYPES.COMING_SOON :
+          return(
+            <div className="flex flex-col w-[242px] pt-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
+              <span className="leading-none text-sm font-medium text-start text-white">
+                Ожидается
+              </span>
+              <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
+                Версия {version.version} в скором времени ожидается на сервере, пока что не поддерживается и зайти с нее нельзя — ждите обновлений
+              </span>
+            </div>
+          )
+        case VERSION_TYPES.SUPPORTED_AND_NOT_RECOMMENDED :
+          return(
+            <div className="flex flex-col w-[242px] pt-2.5 pb-2.5 pr-3 pl-3 gap-1.5">
+              <span className="leading-none text-sm font-medium text-start text-white">
+                Поддерживается, но есть новее
+              </span>
+              <span className="leading-tight text-xs font-normal text-start text-gray-400 whitespace-normal">
+                Версия {version.version} поддерживается, но считается устаревшей - рекомендуем перейти на более новую версию для лучшей совместимости
+              </span>
+            </div>
+          )
+      }
     }
 
     if (loaded) {
