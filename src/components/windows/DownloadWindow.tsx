@@ -1,14 +1,14 @@
-import Logo from "../elements/Logo.tsx";
-import Navigation from "../elements/Navigation.tsx";
-import ButtonDownload from "../buttons/ButtonDownload.tsx";
+import Logo from "../Logo.tsx";
+import Navigation from "../Navigation.tsx";
+import ButtonDownload from "@/components/buttons/ButtonDownload.tsx";
 import * as React from "react";
-import Mod from "../types/Mod.tsx";
+import Mod from "../../types/Mod.tsx";
 import { useEffect, useState } from "react";
 import { CheckIcon } from "flowbite-react/icons/check-icon";
-import { TextFormatter } from "../elements/TextFormatter.tsx";
+import { TextFormatter } from "../TextFormatter.tsx";
 
 export default function RenderDownload(
-    {activeStep, setActiveStep, checkedMods, minecraftVersion, folderPath, setFolderPath, native}:
+    {checkedMods, minecraftVersion, folderPath, setFolderPath, native}:
     {
       activeStep: number,
       checkedMods: Mod[],
@@ -28,7 +28,7 @@ export default function RenderDownload(
 
     useEffect(() => {
         if (native && !folderPath) window.electronAPI?.getDefaultDir().then(dir => setFolderPath(dir));
-    }, []);
+    }, [folderPath, native, setFolderPath]);
 
     const pick = async () => {
         if (!window.electronAPI) {
@@ -102,7 +102,7 @@ export default function RenderDownload(
             <div className="flex w-[720px] flex-col gap-6 rounded-lg bg-gray-800 p-8 shadow">
                 <Logo />
                 <hr className="border-transparent bg-gray-700" />
-                <Navigation activeStep={activeStep} setActiveStep={setActiveStep} download={download} />
+                <Navigation />
                 <span className="text-base font-normal text-gray-400">
                     {TextFormatter(checkedMods.length, {one: "Выбран ", few: "Выбрано ", many: "Выбрано "})}
                     {checkedMods.length}{" "}

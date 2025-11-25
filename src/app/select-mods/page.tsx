@@ -1,11 +1,11 @@
 'use client';
-import Logo from "../../elements/Logo.tsx";
-import Navigation from "../../elements/Navigation.tsx";
-import ModButton from "../../buttons/ModButton.tsx";
-import ButtonNext from "../../buttons/ButtonNext.tsx";
-import SkeletonModButton from "../../buttons/SkeletonModButton.tsx";
-import { TextFormatter } from "../../elements/TextFormatter.tsx";
-import { ModsProvider, useModsContext } from "@/app/ModsContext.tsx";
+import Logo from "@/components/Logo.tsx";
+import Navigation from "@/components/Navigation.tsx";
+import ModButton from "@/components/buttons/ModButton.tsx";
+import ButtonNext from "@/components/buttons/ButtonNext.tsx";
+import SkeletonModButton from "@/components/buttons/SkeletonModButton.tsx";
+import { TextFormatter } from "@/components/TextFormatter.tsx";
+import { ModsProvider, useModsContext } from "@/components/ModsContext.tsx";
 import { useEffect, useState } from "react";
 import { Check, Search } from "flowbite-react-icons/outline";
 

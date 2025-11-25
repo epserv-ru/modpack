@@ -1,6 +1,6 @@
 import './global.css'
-import { ClientOnly } from "./client.tsx";
+import AboutPage from '@/app/about/page'
 
 export default function Page() {
-  return <ClientOnly />
+  return <AboutPage />
 }

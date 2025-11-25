@@ -1,3 +1,4 @@
+'use client';
 import { ArrowRight } from "flowbite-react-icons/outline";
 import { useRouter } from "next/navigation";
 

@@ -1,8 +1,7 @@
 import { ChevronDown } from "flowbite-react-icons/outline";
 import MinecraftVersion from "../../types/MinecraftVersion.tsx";
 import { Archive, BadgeCheck, Bug, CaretUp, LockTime, } from "flowbite-react-icons/solid";
-import { Tooltip } from "../../elements/Tooltip.tsx";
-import SkeletonChooseVersionMenu from "./SkeletonChooseVersionMenu.tsx";
+import { Tooltip } from "../../components/Tooltip.tsx";
 import { useState } from "react";
 
 const VERSION_TYPES = {
@@ -15,7 +14,7 @@ const VERSION_TYPES = {
 
 export default function ChooseVersionMenu({ minecraftVersions } : { minecraftVersions: MinecraftVersion[] }) {
   const [dropMenu, setDropMenu] = useState(false);
-  if (minecraftVersions.length == 0) return (<SkeletonChooseVersionMenu/>);
+  const [version, setVersion] = useState<string>(minecraftVersions[0].version)
 
   return (
     <div className="relative flex flex-col gap-2">
@@ -24,7 +23,7 @@ export default function ChooseVersionMenu({ minecraftVersions } : { minecraftVer
       </div>
       <label htmlFor="dropdown-toggle" className="flex w-[174px] cursor-pointer items-center justify-between rounded-lg border border-gray-600 bg-gray-700 p-1 duration-200 hover:bg-gray-600 text-sm font-normal text-white">
         <input type="checkbox" id="dropdown-toggle" className="hidden" checked={dropMenu} onChange={() => setDropMenu(!dropMenu)}/>
-        <span className="p-2 text-sm leading-tight font-normal text-white">{window.sessionStorage.getItem("minecraftVersion")}</span>
+        <span className="p-2 text-sm leading-tight font-normal text-white">{version}</span>
         <ChevronDown className={`text-gray-400 transition-transform duration-200 ${dropMenu ? 'rotate-180' : ''}`}/>
       </label>
       <nav className={`transition-opacity duration-100 ease-out ${dropMenu ? `flex` : `pointer-events-none hidden`} absolute top-[83px] w-[174px] flex-col items-start rounded-lg bg-gray-700 shadow-md`}>
@@ -32,6 +31,7 @@ export default function ChooseVersionMenu({ minecraftVersions } : { minecraftVer
           {minecraftVersions.map(version => (
             <button key={version.version} className="flex cursor-pointer items-center flex-row duration-100 w-full rounded-md gap-2 p-1 hover:bg-gray-600 hover:border-gray-500 text-sm leading-none font-normal text-white" onClick={() => {
               window.sessionStorage.setItem("minecraftVersion", version.version)
+              setVersion(version.version)
               setDropMenu(!dropMenu);
             }}>
               <StatusBadge version={version}/>

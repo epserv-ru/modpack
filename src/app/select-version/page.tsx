@@ -1,10 +1,11 @@
 'use client'
 import ChooseVersionMenu from "./ChooseVersionMenu.tsx";
-import Logo from "../../elements/Logo.tsx";
-import ButtonNext from "../../buttons/ButtonNext.tsx";
-import MinecraftVersion from "../../types/MinecraftVersion.tsx";
+import Logo from "@/components/Logo.tsx";
+import ButtonNext from "@/components/buttons/ButtonNext.tsx";
+import MinecraftVersion from "@/types/MinecraftVersion.tsx";
 import { useEffect, useState } from "react";
-import Navigation from "@/elements/Navigation.tsx";
+import Navigation from "@/components/Navigation.tsx";
+import SkeletonChooseVersionMenu from "./SkeletonChooseVersionMenu.tsx";
 
 export default function Page() {
   const [loaded, setLoaded] = useState(false)
@@ -36,7 +37,10 @@ export default function Page() {
          Выберите версию Minecraft Java Edition, для которой нужно установить моды.
          Отдаем приоритет рекомендуемой версии — на ней модпак стабильнее и&nbsp;имеет больший выбор модов.
       </span>
-      <ChooseVersionMenu minecraftVersions={versions}/>
+      { versions.length == 0
+        ? <SkeletonChooseVersionMenu />
+        : <ChooseVersionMenu minecraftVersions={versions}/>
+      }
       <ButtonNext nextPage={"/select-mods"} loaded={loaded}/>
      </div>
     </main>

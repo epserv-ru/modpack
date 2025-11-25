@@ -11,12 +11,7 @@ interface InfoBarProps {
   currentLanguage: 'ru' | 'en';
 }
 
-export default function InfoBar({
-                                  stats,
-                                  onLanguageChange,
-                                  onDownloadApp,
-                                  currentLanguage,
-                                }: InfoBarProps) {
+export default function InfoBar({ stats, onLanguageChange, onDownloadApp, currentLanguage }: InfoBarProps) {
   return (
     <div className="border-b border-gray-700 bg-gray-800">
       <div className="container mx-auto px-4">

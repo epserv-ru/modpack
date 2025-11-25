@@ -1,11 +1,13 @@
-import { Links } from "@/app/util/Links.tsx";
+'use client';
+import { Links } from "@/util/Links.tsx";
+import {useCallback, useState} from "react";
 
 interface ModpackLink {
   name: string
   link: string
 }
 
-function GetUserOS(): ModpackLink {
+function getUserOS(): ModpackLink {
   const userAgent = window.navigator.userAgent.toLowerCase();
 
   if (userAgent.includes('win')) return { name : "Windows", link : Links.APP.WINDOWS };
@@ -15,12 +17,15 @@ function GetUserOS(): ModpackLink {
 }
 
 export default function ButtonDownloadApp() {
-  const os = GetUserOS();
+  const [os, setOS] = useState<ModpackLink | null >(null)
+  if (typeof window !== "undefined" && os === null) {
+    setOS(getUserOS())
+  }
 
-  const handleDownload = () => {
+  const handleDownload = useCallback((os: ModpackLink) => {
     try {
       const a = document.createElement('a');
-      a.href = os.link;
+      a.href = os!.link;
       a.style.display = 'none';
 
       document.body.appendChild(a);
@@ -31,16 +36,17 @@ export default function ButtonDownloadApp() {
     } catch (error) {
       console.error('Download error:', error);
 
-      window.open(os.link, '_blank');
+      window.open(os!.link, '_blank');
       return false;
     }
-  };
+  }, []);
+
   return (
     <button
       className="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 cursor-pointer transition-colors rounded-lg py-3 px-2"
-      onClick={() => {handleDownload()}}
+      onClick={() => {handleDownload(os!)}}
     >
-      <span className="font-medium text-white">Скачать для {os.name}</span>
+      <span className="font-medium text-white">Скачать для {os?.name ? os!.name : ""}</span>
     </button>
   );
 }

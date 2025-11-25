@@ -1,14 +1,13 @@
 import JSZip from "jszip";
 import Mod from "../types/Mod.tsx";
-import React from "react";
-import ServerIp from "../types/ServerIp.tsx";
+import {Dispatch, SetStateAction} from "react";
 
 export async function DownloadMods(
     checkedMods: Mod[],
-    setCompletedCount: React.Dispatch<React.SetStateAction<number>>,
-    setDownloadedBytes: React.Dispatch<React.SetStateAction<number>>,
-    setTotalBytes: React.Dispatch<React.SetStateAction<number>>,
-    setDownload: React.Dispatch<React.SetStateAction<boolean>>,
+    setCompletedCount: Dispatch<SetStateAction<number>>,
+    setDownloadedBytes: Dispatch<SetStateAction<number>>,
+    setTotalBytes: Dispatch<SetStateAction<number>>,
+    setDownload: Dispatch<SetStateAction<boolean>>,
     folderPath: string,
     installIps: boolean,
     minecraftVersion: string,
@@ -18,21 +17,13 @@ export async function DownloadMods(
     const zip = new JSZip();
 
     if (native) {
-        // @ts-ignore
-        await window.electronAPI.ensureFolder(`${folderPath}/mods`)
+      await window.electronAPI?.ensureFolder(`${folderPath}/mods`)
 
-       if (installIps) {
-           let ips: ServerIp[];
-           try {
-               const res = await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/servers.json")
-               ips = await res.json()
-           } catch (err) {
-               console.error(err)
-           } finally {
-
-               // @ts-ignore
-               await window.electronAPI.addServers(folderPath, ips)
-           }
+      if (installIps) {
+        await fetch("https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/servers.json")
+          .then(async res => await res.json())
+          .catch(console.error)
+          .then(ips => window.electronAPI?.addServers(folderPath, ips))
        }
     }
 
@@ -73,7 +64,8 @@ export async function DownloadMods(
             if (native) {
                 const arrayBuffer = await blob.arrayBuffer();
                 const fullPath = `${folderPath}/mods/${fileName}`
-                // @ts-ignore
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 await window.electronAPI.saveFile(fullPath, arrayBuffer)
             } else {
                 zip.file(fileName, blob);

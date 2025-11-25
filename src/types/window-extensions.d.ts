@@ -1,4 +1,4 @@
-import ServerIp from "../types/ServerIp.tsx";
+import ServerIp from "./ServerIp.tsx";
 
 declare global {
   interface Window {

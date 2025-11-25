@@ -1,6 +1,6 @@
 'use client';
 import React, { createContext, useContext } from "react";
-import { useMods, UseModsReturn } from "@/app/hooks/useMods.ts";
+import { useMods, UseModsReturn } from "@/hooks/useMods.ts";
 
 const ModsContext = createContext<UseModsReturn | undefined>(undefined);
 
@@ -14,6 +14,7 @@ export function ModsProvider({ children } : { children: React.ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useModsContext() {
   const context = useContext(ModsContext);
   if (context === undefined) {

@@ -5,10 +5,10 @@ import {
   Download,
   InfoCircle,
 } from "flowbite-react-icons/solid";
-import Mod from "../types/Mod.tsx";
+import Mod from "../../types/Mod.tsx";
 import * as React from "react";
-import {Tooltip} from "../elements/Tooltip.tsx";
-import ModsRecord from "../types/records/ModsRecord.tsx";
+import {Tooltip} from "../Tooltip.tsx";
+import ModsRecord from "../../types/records/ModsRecord.tsx";
 import Markdown from "react-markdown";
 import { useState } from "react";
 import { Check } from "flowbite-react-icons/outline";
