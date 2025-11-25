@@ -1,18 +1,18 @@
 import {ArrowRight} from "flowbite-react-icons/outline";
-import * as React from "react";
+import { useRouter } from "next/navigation";
 
-export default function ButtonNext(
-    {activeStep, setActiveStep, loaded} :
-    { activeStep : number, setActiveStep : React.Dispatch<React.SetStateAction<number>>, loaded : boolean }
-) {
+export default function ButtonNext({ nextPage, loaded } : { nextPage : string, loaded : boolean }) {
+  const router = useRouter()
     return (
         <button
             onClick={() => {
-                if (activeStep < 2) setActiveStep(activeStep + 1);
+              router.push(nextPage)
+              const activeStep = Number(window.sessionStorage.getItem("activeStep"))
+              const nextStep = String(activeStep + 1)
+              window.sessionStorage.setItem("activeStep", nextStep)
             }}
             disabled={!loaded}
-            className={`bg-primary-700 flex h-[41px] w-[151px] cursor-pointer items-center justify-center gap-2 rounded-lg pt-2.5 pr-2 pb-2.5 pl-2 ${ loaded ? `opacity-100 transition-all duration-300` : `opacity-50 transition-all duration-300` }`}
-        >
+            className={`flex w-[151px] items-center justify-center gap-2 rounded-lg transition-colors px-2.5 py-2 ${ loaded ? `bg-primary-700 hover:bg-primary-800 cursor-pointer opacity-100 transition-all duration-300` : `bg-primary-700 opacity-50 transition-all duration-300`}`}>
             <span className="text-sm font-medium text-white">Продолжить</span>
             <ArrowRight className="font-medium text-white" />
         </button>
