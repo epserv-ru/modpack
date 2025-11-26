@@ -1,5 +1,5 @@
 import {ChevronDoubleRight} from "flowbite-react-icons/outline";
-import { Fragment } from "react";
+import {Fragment} from "react";
 
 export default function Navigation() {
   const Steps = ["Выбор версии", "Выбор модов", "Загрузка сборки"];

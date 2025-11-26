@@ -157,23 +157,17 @@ function TooltipContent(
 }
 
 // Улучшенное модальное окно с технической информацией
-function EnhancedModPreviewModal({
-                                   mod,
-                                   isOpen,
-                                   onClose,
-                                   minecraftVersion,
-                                   isChecked,
-                                   isRequired,
-                                   onToggle
-                                 }: {
-  mod: Mod,
-  isOpen: boolean,
-  onClose: () => void,
-  minecraftVersion: string,
-  isChecked: boolean,
-  isRequired: boolean,
-  onToggle: () => void
-}) {
+function EnhancedModPreviewModal(
+  { mod, isOpen, onClose, minecraftVersion, isChecked, isRequired, onToggle}:
+  {
+    mod: Mod,
+    isOpen: boolean,
+    onClose: () => void,
+    minecraftVersion: string,
+    isChecked: boolean,
+    isRequired: boolean,
+    onToggle: () => void
+  }) {
   if (!isOpen) return null;
 
   const downloadUrl = mod.reliable_link || mod.site;

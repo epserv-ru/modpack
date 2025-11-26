@@ -1,4 +1,4 @@
 export default interface MinecraftVersion {
-    version: string;
-    status: number;
+  version: string;
+  status: number;
 }

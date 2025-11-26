@@ -3,29 +3,20 @@ import * as React from "react";
 import Mod from "../../types/Mod.tsx";
 import { DownloadMods } from "../DownloadMods.tsx";
 
-export default function ButtonDownload({
-  checkedMods,
-  download,
-  setCompletedCount,
-  setDownloadedBytes,
-  setTotalBytes,
-  setDownload,
-  folderPath,
-  installIps,
-  minecraftVersion,
-  native,
-}: {
-  checkedMods: Mod[];
-  download: boolean;
-  setCompletedCount: React.Dispatch<React.SetStateAction<number>>;
-  setDownloadedBytes: React.Dispatch<React.SetStateAction<number>>;
-  setTotalBytes: React.Dispatch<React.SetStateAction<number>>;
-  setDownload: React.Dispatch<React.SetStateAction<boolean>>;
-  folderPath: string;
-  installIps: boolean;
-  minecraftVersion: string;
-  native: boolean;
-}) {
+export default function ButtonDownload(
+  { checkedMods, download, setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload, folderPath, installIps, minecraftVersion, native }:
+  {
+    checkedMods: Mod[];
+    download: boolean;
+    setCompletedCount: React.Dispatch<React.SetStateAction<number>>;
+    setDownloadedBytes: React.Dispatch<React.SetStateAction<number>>;
+    setTotalBytes: React.Dispatch<React.SetStateAction<number>>;
+    setDownload: React.Dispatch<React.SetStateAction<boolean>>;
+    folderPath: string;
+    installIps: boolean;
+    minecraftVersion: string;
+    native: boolean;
+  }) {
   return (
     <button
       disabled={download}
