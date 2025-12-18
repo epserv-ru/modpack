@@ -25,7 +25,7 @@ export default function ButtonDownloadApp() {
   const handleDownload = useCallback((os: ModpackLink) => {
     try {
       const a = document.createElement('a');
-      a.href = os!.link;
+      a.href = os.link;
       a.style.display = 'none';
 
       document.body.appendChild(a);
@@ -36,7 +36,7 @@ export default function ButtonDownloadApp() {
     } catch (error) {
       console.error('Download error:', error);
 
-      window.open(os!.link, '_blank');
+      window.open(os.link, '_blank');
       return false;
     }
   }, []);

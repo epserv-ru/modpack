@@ -32,7 +32,7 @@ export function useMods(): UseModsReturn {
     }
 
     let deps: Mod[] | null = null;
-    if (mod.dependencies?.length) {
+    if (mod.dependencies.length) {
       const promises = mod.dependencies.map(id => {
         const dep = epMods.find(m => m.id === id)!;
         return modConvert(dep, epMods, minecraftVersion);
@@ -44,7 +44,7 @@ export function useMods(): UseModsReturn {
       id: mod.id,
       name: mod.name,
       description: mod.description,
-      size: Number(len / 1048576),
+      size: len / 1048576,
       icon_url: mod.icon_url,
       site: mod.site_link,
       required: mod.required,
@@ -57,11 +57,10 @@ export function useMods(): UseModsReturn {
   }, []);
 
   const fetchData = useCallback(async (minecraftVersion: string): Promise<Mod[]> => {
-    const result = await fetch(`https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/mods-${minecraftVersion}.json`);
-    if (!result.ok) throw new Error("Ошибка загрузки модов с гитхаба");
-    const epMods: EPMod[] = await result.json();
-    const modPromises = epMods.map(mod => modConvert(mod, epMods, minecraftVersion));
-    return await Promise.all(modPromises);
+    return await fetch(`https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/mods-${minecraftVersion}.json`)
+      .catch(() => { throw new Error("Ошибка загрузки модов с гитхаба") })
+      .then(async data => await data.json() as EPMod[])
+      .then(async data => await Promise.all(data.map(mod => modConvert(mod, data, minecraftVersion))))
   }, [modConvert]);
 
   const getModsData = useCallback(async () => {
@@ -76,7 +75,7 @@ export function useMods(): UseModsReturn {
     let modsData: Mod[];
 
     if (cachedMods && cachedTimestamp && Date.now() - parseInt(cachedTimestamp, 10) < cacheDuration) {
-      modsData = JSON.parse(cachedMods);
+      modsData = JSON.parse(cachedMods) as Mod[];
     } else {
       modsData = await fetchData(minecraftVersion);
       localStorage.setItem(cacheKey, JSON.stringify(modsData));
@@ -86,7 +85,7 @@ export function useMods(): UseModsReturn {
     setMods(prev => ({...prev, [minecraftVersion]: modsData}));
 
     const currentChecked = checkedMods[minecraftVersion];
-    if (!currentChecked || currentChecked.length === 0) {
+    if (currentChecked.length === 0) {
       setCheckedMods(prev => ({
         ...prev,
         [minecraftVersion]: modsData.filter(mod => mod.required && mod.available)

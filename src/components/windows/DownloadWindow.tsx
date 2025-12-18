@@ -27,7 +27,7 @@ export default function RenderDownload(
   const percent = totalBytes ? Math.round((downloadedBytes / totalBytes) * 100) : 0;
 
   useEffect(() => {
-    if (native && !folderPath) window.electronAPI?.getDefaultDir().then(dir => setFolderPath(dir));
+    if (native && !folderPath) void window.electronAPI?.getDefaultDir().then(dir => setFolderPath(dir));
   }, [folderPath, native, setFolderPath]);
 
   const pick = async () => {
@@ -72,13 +72,17 @@ export default function RenderDownload(
           <CheckIcon className={`absolute w-3 h-3 text-white transition-opacity duration-150 ${ installIps ? `opacity-100 ` : `opacity-0` }`} />
         </label>
         <span className="text-sm font-medium align-middle text-white">
-        Добавить в список серверов региональные адреса <a href="https://epserv.ru/" target="_blank" rel="noopener noreferrer" className="underline text-blue-700"
-                                                                      onClick={event => {
-                                                                        if (download) event.preventDefault()
-                                                                      }}>
-                        ElectroPlay
-                    </a>
-                </span>
+          Добавить в список серверов региональные адреса
+          <a
+            href="https://epserv.ru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-700"
+            onClick={e => { if (download) e.preventDefault()}}
+          >
+            ElectroPlay
+          </a>
+        </span>
       </div>
     )
   }
@@ -104,11 +108,11 @@ export default function RenderDownload(
         <hr className="border-transparent bg-gray-700" />
         <Navigation />
         <span className="text-base font-normal text-gray-400">
-                    {TextFormatter(checkedMods.length, {one: "Выбран ", few: "Выбрано ", many: "Выбрано "})}
+          {TextFormatter(checkedMods.length, {one: "Выбран ", few: "Выбрано ", many: "Выбрано "})}
           {checkedMods.length}{" "}
           {TextFormatter(checkedMods.length, {one: "мод ", few: "мода ", many: "модов "})}
           для Minecraft Java Edition {minecraftVersion}
-                </span>
+        </span>
         <LoadFolder />
         <IpsSet />
         <div className="flex flex-row gap-12 justify-between">

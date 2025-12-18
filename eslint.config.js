@@ -7,22 +7,20 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   { ignores: ["dist", ".next"] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [js.configs.recommended, ...tseslint.configs.strictTypeChecked, reactHooks.configs["recommended-latest"], reactRefresh.configs.next],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        projectService: true,
+      }
     },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-    },
+    plugins: {},
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "@typescript-eslint/no-non-null-assertion": "warn",
+      "@typescript-eslint/no-confusing-void-expression": "warn",
     },
   },
 );
