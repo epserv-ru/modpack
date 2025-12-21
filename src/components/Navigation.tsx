@@ -1,9 +1,19 @@
+'use client';
+
 import {ChevronDoubleRight} from "flowbite-react-icons/outline";
 import {Fragment} from "react";
+import {usePathname} from "next/navigation";
 
 export default function Navigation() {
+  const pathname = usePathname();
   const Steps = ["Выбор версии", "Выбор модов", "Загрузка сборки"];
-  const activeStep = 1
+
+  // Определяем активный шаг по пути
+  let activeStep = 0;
+  if (pathname === "/select-version") activeStep = 0;
+  else if (pathname === "/select-mods") activeStep = 1;
+  else if (pathname === "/download-mods") activeStep = 2;
+
   return (
     <nav className="flex h-[52px] w-[656px] items-center justify-around bg-transparent">
       {Steps.map((step, i) => (

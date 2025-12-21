@@ -1,12 +1,22 @@
+'use client';
+
 import { Download, Folder, Server, ShieldCheck } from "flowbite-react-icons/solid";
 import ButtonMore from "./ButtonMore.tsx";
 import ButtonBuild from "./ButtonBuild.tsx";
 import InfoCard from "./InfoCard.tsx";
+import TitleBar from "@/components/TitleBar";
+
+function useIsNative(): boolean {
+  return typeof window !== 'undefined' && !!window.electronAPI;
+}
 
 export default function Page() {
+  const isNative = useIsNative();
   return (
-    <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter]">
-      <div className="flex w-screen h-screen items-center justify-center bg-gray-900 font-inter select-none">
+    <>
+      <TitleBar />
+      <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter]">
+        <div className="flex w-screen h-screen items-center justify-center bg-gray-900 font-inter select-none">
         <div className="flex w-[720px] flex-col justify-around items-center gap-5 rounded-lg bg-gray-800 p-8 shadow-2xl">
           <p className="flex justify-center text-2xl font-semibold text-white">Что такое EPmodpack?</p>
             <div className="flex flex-col justify-center gap-6">
@@ -28,23 +38,26 @@ export default function Page() {
                 <InfoCard icon={<Download size={32} className="mx-auto text-purple-400" />} title={"Скачай архив"} description={"Распакуй в папку mods"}/>
               </div>
 
-              <div className="flex flex-col gap-3 p-4 rounded-lg border bg-blue-900 border-blue-700">
-                <p className="font-semibold flex items-center text-white">
-                  <Download className="mr-2" />
-                  У модпака есть приложение!
-                </p>
-                <p className="text-sm text-gray-300">Хочешь упростить установку? Скачай наше приложение:</p>
-                <ul className="flex flex-col text-sm gap-1 text-gray-300">
-                  <li>• Моды устанавливаются автоматически в&nbsp;выбранную папку</li>
-                  <li>• IP прокси ElectroPlay добавляются в&nbsp;список автоматически</li>
-                  <li>• Не&nbsp;нужно распаковывать архивы вручную</li>
-                </ul>
-                <ButtonMore />
-              </div>
+              {!isNative && (
+                <div className="flex flex-col gap-3 p-4 rounded-lg border bg-blue-900 border-blue-700">
+                  <p className="font-semibold flex items-center text-white">
+                    <Download className="mr-2" />
+                    У модпака есть приложение!
+                  </p>
+                  <p className="text-sm text-gray-300">Хочешь упростить установку? Скачай наше приложение:</p>
+                  <ul className="flex flex-col text-sm gap-1 text-gray-300">
+                    <li>• Моды устанавливаются автоматически в&nbsp;выбранную папку</li>
+                    <li>• IP прокси ElectroPlay добавляются в&nbsp;список автоматически</li>
+                    <li>• Не&nbsp;нужно распаковывать архивы вручную</li>
+                  </ul>
+                  <ButtonMore />
+                </div>
+              )}
               <ButtonBuild />
             </div>
           </div>
       </div>
     </main>
+    </>
   );
 }

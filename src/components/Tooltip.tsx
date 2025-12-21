@@ -5,10 +5,12 @@ interface TooltipProps {
   children: React.ReactNode;
   placement?: "top" | "right" | "bottom" | "left";
   className?: string;
+  showArrow?: boolean;
+  offset?: string;
 }
 
 export function Tooltip(
-  {content, children, placement = "top", className = ""}: TooltipProps) {
+  {content, children, placement = "top", className = "", showArrow = true}: TooltipProps) {
   const [visible, setVisible] = useState(false);
   const timeoutRef = useRef<number>(100);
 
@@ -48,13 +50,15 @@ export function Tooltip(
       {visible && (
         <div className={`z-50 absolute rounded whitespace-nowrap select-none ${tooltipPosition[placement]} ${className}`}>
           {content}
-          <span
-            className={`absolute border-solid border-transparent ${arrowPosition[placement]}`}
-            style={{
-              borderWidth: "6px",
-              borderColor: arrowBorderColor[placement],
-            }}
-          />
+          {showArrow && (
+            <span
+              className={`absolute border-solid border-transparent ${arrowPosition[placement]}`}
+              style={{
+                borderWidth: "6px",
+                borderColor: arrowBorderColor[placement],
+              }}
+            />
+          )}
         </div>
       )}
     </div>

@@ -1,48 +1,73 @@
 import { ArrowDownToBracket } from "flowbite-react-icons/outline";
 import * as React from "react";
-import Mod from "../../types/Mod.tsx";
-import { DownloadMods } from "../DownloadMods.tsx";
+import { DownloadButtonProps } from "@/types/download-state";
+import { DownloadMods } from "../DownloadMods";
 
-export default function ButtonDownload(
-  { checkedMods, download, setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload, folderPath, installIps, minecraftVersion, native }:
-  {
-    checkedMods: Mod[];
-    download: boolean;
-    setCompletedCount: React.Dispatch<React.SetStateAction<number>>;
-    setDownloadedBytes: React.Dispatch<React.SetStateAction<number>>;
-    setTotalBytes: React.Dispatch<React.SetStateAction<number>>;
-    setDownload: React.Dispatch<React.SetStateAction<boolean>>;
-    folderPath: string;
-    installIps: boolean;
-    minecraftVersion: string;
-    native: boolean;
-  }) {
+/**
+ * Кнопка загрузки модов
+ * @param props - Пропсы компонента
+ */
+export default function ButtonDownload(props: DownloadButtonProps) {
+  const {
+    checkedMods,
+    download,
+    isLoading,
+    setCompletedCount,
+    setDownloadedBytes,
+    setTotalBytes,
+    setDownload,
+    folderPath,
+    installIps,
+    minecraftVersion,
+    native
+  } = props;
+
+  const totalSize = React.useMemo(
+    () => checkedMods.reduce((sum, mod) => sum + mod.size, 0).toFixed(2),
+    [checkedMods]
+  );
+
+  const handleClick = React.useCallback(() => {
+    const state = {
+      checkedMods,
+      folderPath,
+      installIps,
+      minecraftVersion,
+      native
+    };
+
+    const setters = {
+      setCompletedCount,
+      setDownloadedBytes,
+      setTotalBytes,
+      setDownload
+    };
+
+    DownloadMods(state, setters);
+  }, [
+    checkedMods,
+    folderPath,
+    installIps,
+    minecraftVersion,
+    native,
+    setCompletedCount,
+    setDownloadedBytes,
+    setTotalBytes,
+    setDownload
+  ]);
+
   return (
     <button
-      disabled={download}
-      onClick={() => {
-        DownloadMods(
-          checkedMods,
-          setCompletedCount,
-          setDownloadedBytes,
-          setTotalBytes,
-          setDownload,
-          folderPath,
-          installIps,
-          minecraftVersion,
-          native,
-        );
-      }}
-      className={`flex h-[41px] cursor-pointer items-center justify-center gap-2 ${download ? `opacity-50 transition-all duration-200` : `opacity-100 transition-all duration-200`} rounded-lg bg-green-500 pt-2.5 pr-5 pb-2.5 pl-5`}
+      disabled={download || isLoading}
+      onClick={handleClick}
+      className={`flex h-10 items-center justify-center gap-2 rounded-lg bg-green-500 px-5 py-2.5 ${download || isLoading ? `opacity-50 transition-all duration-250` : `transition-all duration-250 hover:bg-green-600 cursor-pointer`}`}
     >
       <span className="text-sm font-medium text-white">
         {download
           ? "Скачивание модов..."
-          : `Скачать моды: ~ ${checkedMods.reduce((sum, mod) => sum + mod.size, 0).toFixed(2)} МБ ${native ? `` : `(.zip)`}`}
+          : `Скачать моды: ~ ${totalSize} МБ ${native ? `` : `(.zip)`}`}
       </span>
-      {download ? (
-        ``
-      ) : (
+      {download ? null : (
         <ArrowDownToBracket className="font-medium text-white" />
       )}
     </button>

@@ -4,11 +4,14 @@ import AppInstructionCard from "./AppInstructionCard.tsx";
 import ButtonClose from "./ButtonClose.tsx";
 import AdditionalInfoCard from "./AdditionalInfoCard.tsx";
 import DownloadAppCard from "./DownloadAppCard.tsx";
+import TitleBar from "@/components/TitleBar";
 
 export default function Page() {
   return (
-    <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter]">
-      <div className="flex flex-col rounded-lg max-w-4xl gap-4 bg-gray-800 p-8 shadow-2xl">
+    <>
+      <TitleBar />
+      <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter] pt-8">
+        <div className="flex flex-col rounded-lg max-w-4xl gap-4 bg-gray-800 p-8 shadow-2xl">
         <div className="flex flex-col justify-between gap-1">
          <div className="flex flex-row justify-between">
            <h2 className="text-2xl font-semibold text-white">EPmodpack App</h2>
@@ -29,5 +32,6 @@ export default function Page() {
         </div>
       </div>
     </main>
+    </>
   );
 }
