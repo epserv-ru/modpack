@@ -11,6 +11,7 @@ import { TextFormatter } from "@/components/TextFormatter";
 import type { DownloadBarProps, IpsSetProps, LoadFolderProps } from "@/types/download-mods";
 import { STORAGE_KEYS } from "@/constants/cache";
 import { useNavigation } from "@/components/NavigationContext";
+import { useIsNative } from "@/hooks/useIsNative";
 
 const CSS = {
   main: "flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter] select-none",
@@ -56,21 +57,20 @@ export default function Page() {
  * @returns Версия Minecraft или ""
  */
 function useMinecraftVersion(): string {
-  return typeof window !== 'undefined' ? window.sessionStorage.getItem(STORAGE_KEYS.MINECRAFT_VERSION)! : "";
-}
-
-/**
- * Проверяет, запущено приложение в нативном режиме (Electron)
- * @returns true если запущено в Electron
- */
-function useIsNative(): boolean {
-  return typeof window !== 'undefined' && !!window.electronAPI;
+  return typeof window !== 'undefined' ? window.sessionStorage.getItem(STORAGE_KEYS.MINECRAFT_VERSION)! : ""
 }
 
 /**
  * Компонент загрузки модов
  */
 function DownloadMods() {
+  /**
+   * Проверяет, запущено приложение в нативном режиме (Electron)
+   * @returns true если запущено в Electron
+   */
+  function useIsNative(): boolean {
+    return typeof window !== 'undefined' && !!window.electronAPI;
+  }
   const modsContext = useModsContext();
   const minecraftVersion = useMinecraftVersion();
   const isNative = useIsNative();

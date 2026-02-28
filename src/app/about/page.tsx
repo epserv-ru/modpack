@@ -5,10 +5,7 @@ import ButtonMore from "./ButtonMore.tsx";
 import ButtonBuild from "./ButtonBuild.tsx";
 import InfoCard from "./InfoCard.tsx";
 import TitleBar from "@/components/TitleBar";
-
-function useIsNative(): boolean {
-  return typeof window !== 'undefined' && !!window.electronAPI;
-}
+import { useIsNative } from "@/hooks/useIsNative";
 
 export default function Page() {
   const isNative = useIsNative();

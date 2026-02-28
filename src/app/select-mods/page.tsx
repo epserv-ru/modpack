@@ -22,6 +22,7 @@ import { useNavigation } from "@/components/NavigationContext";
 import { FilterType } from "@/components/select-mods/FilterDropdown";
 import SearchSection from "@/components/select-mods/SearchSection";
 import { useModFilters } from "@/hooks/useModFilters";
+import { useIsNative } from "@/hooks/useIsNative";
 
 const CSS = {
   main: "flex flex-col h-screen justify-between w-full bg-gray-900 font-[Inter]",
@@ -44,7 +45,7 @@ function SelectMods() {
   const isLoading = useIsDataLoaded(minecraftVersion);
   const [showTour, setShowTour] = useState(false);
   const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
-  const isNative = typeof window !== 'undefined' && window.electronAPI;
+  const isNative = useIsNative();
   const { setCanGoBack } = useNavigation();
 
   useEffect(() => {
