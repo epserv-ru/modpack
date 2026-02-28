@@ -9,8 +9,7 @@
     "start": "serve dist",
     "lint": "eslint .",
     "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "postinstall": "flowbite-react patch"
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
