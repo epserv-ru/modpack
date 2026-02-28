@@ -11,7 +11,6 @@ import { TextFormatter } from "@/components/TextFormatter";
 import type { DownloadBarProps, IpsSetProps, LoadFolderProps } from "@/types/download-mods";
 import { STORAGE_KEYS } from "@/constants/cache";
 import { useNavigation } from "@/components/NavigationContext";
-import { useIsNative } from "@/hooks/useIsNative";
 
 const CSS = {
   main: "flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter] select-none",
