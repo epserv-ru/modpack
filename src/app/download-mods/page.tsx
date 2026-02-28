@@ -53,10 +53,10 @@ export default function Page() {
 
 /**
  * Получает версию Minecraft из sessionStorage
- * @returns Версия Minecraft или null
+ * @returns Версия Minecraft или ""
  */
-function useMinecraftVersion(): string | null {
-  return typeof window !== 'undefined' ? window.sessionStorage.getItem(STORAGE_KEYS.MINECRAFT_VERSION) : null;
+function useMinecraftVersion(): string {
+  return typeof window !== 'undefined' ? window.sessionStorage.getItem(STORAGE_KEYS.MINECRAFT_VERSION)! : "";
 }
 
 /**
@@ -187,7 +187,7 @@ function DownloadMods() {
  * @param minecraftVersion - Версия Minecraft
  * @param totalCount - Количество выбранных модов
  */
-function InfoText({ minecraftVersion, totalCount }: { minecraftVersion: string; totalCount: number }) {
+function InfoText({ minecraftVersion, totalCount }: { minecraftVersion?: string; totalCount: number }) {
   return (
     <span className={CSS.infoText}>
       {TextFormatter(totalCount, { one: "Выбран ", few: "Выбрано ", many: "Выбрано " })}
