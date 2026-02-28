@@ -9,7 +9,7 @@ import { isValidUrl } from "@/utils/urlValidation";
 const CSS = {
   iconContainer: "flex w-16 h-8 items-center justify-center",
   checkbox: "peer hidden",
-  modLabel: "flex h-[128px] w-[1152px] cursor-pointer flex-row gap-8 rounded-lg border border-gray-700 hover:border-gray-600 hover:bg-gray-700 bg-gray-800 p-4 shadow transition-all duration-100 ease-out",
+  modLabel: "flex h-32 w-288 cursor-pointer flex-row gap-8 rounded-lg border border-gray-700 hover:border-gray-600 hover:bg-gray-700 bg-gray-800 p-4 shadow transition-all duration-100 ease-out",
   labelBroken: "opacity-50 bg-yellow-300 hover:bg-yellow-300 border-yellow-200 hover:yellow-200",
   labelDisabled: "opacity-50 bg-red-900 hover:bg-red-900 border-red-800 hover:border-red-800",
   labelChecked: "peer-checked:border-green-700 peer-checked:bg-green-900 hover:bg-green-900 hover:border-green-700",
@@ -19,10 +19,12 @@ const CSS = {
   titleSection: "flex flex-row items-center gap-2",
   modTitle: "text-xl leading-tight font-semibold text-white",
   modSize: "text-base leading-none font-normal text-gray-400",
-  badge: "px-2 py-1 text-white text-xs rounded-full",
+
+  badge: "px-3 py-1 text-white text-sm rounded-full",
   badgeRequired: "bg-blue-500",
   badgeRecommended: "bg-green-500",
   badgeLibrary: "bg-purple-500",
+
   previewButton: "transition-colors text-gray-400 hover:text-blue-400 cursor-pointer",
   description: "text-base leading-none font-normal text-gray-400",
   modalOverlay: "fixed inset-0 bg-black/75 backdrop-blur-[2px] flex items-center justify-center z-40",
@@ -162,12 +164,10 @@ function ModButtonComponent({
   const [showPreview, setShowPreview] = useState(false);
   const showPreviewRef = useRef(showPreview);
 
-  // Обновляем ref при изменении showPreview
   useEffect(() => {
     showPreviewRef.current = showPreview;
   }, [showPreview]);
 
-  // Закрываем модальное окно при запуске тура
   useEffect(() => {
     const handleStartTour = () => {
       if (showPreviewRef.current) {
@@ -176,7 +176,7 @@ function ModButtonComponent({
     };
     window.addEventListener('startTour', handleStartTour);
     return () => window.removeEventListener('startTour', handleStartTour);
-  }, []); // Пустой массив зависимостей - слушатель создаётся один раз
+  }, []);
 
   const modsSet = useMemo(() => new Set(checkedMods.map(m => m.id)), [checkedMods]);
   const isChecked = modsSet.has(mod.id);
@@ -200,9 +200,11 @@ function ModButtonComponent({
             <h1 className={CSS.modTitle}>
               {mod.name}
             </h1>
-            <h1 className={CSS.modSize}>
-              {mod.size.toFixed(2)} МБ
-            </h1>
+              { mod.size != 0 && (
+                <h1 className={CSS.modSize}>
+                  {mod.size.toFixed(2)} МБ
+                </h1>
+                ) }
             {mod.required && (
               <span className={`${CSS.badge} ${CSS.badgeRequired}`}>
                 Обязательный

@@ -15,7 +15,7 @@ export default function Page() {
       <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter]">
         <div className="flex w-screen h-screen items-center justify-center bg-gray-900 font-inter select-none">
         <div className="flex w-[720px] flex-col justify-around items-center gap-5 rounded-lg bg-gray-800 p-8 shadow-2xl">
-          <p className="flex justify-center text-2xl font-semibold text-white">Что такое EPmodpack?</p>
+          <p className="flex justify-center text-2xl font-semibold text-white">Что такое EP Modpack?</p>
             <div className="flex flex-col justify-center gap-6">
               <div className="flex items-start p-4 bg-gray-700 rounded-lg border border-gray-600">
                 <ShieldCheck className="text-green-400 mt-0.5" size={20} />

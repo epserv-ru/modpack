@@ -1,26 +1,9 @@
 'use client';
-import {useCallback, useState} from "react";
-import { APP_LINKS } from "@/constants/api.ts";
-
-interface ModpackLink {
-  name: string
-  link: string
-}
-
-function getUserOS(): ModpackLink {
-  const userAgent = window.navigator.userAgent.toLowerCase();
-
-  if (userAgent.includes('win')) return { name : "Windows", link : APP_LINKS.WINDOWS };
-  if (userAgent.includes('mac')) return { name: "MacOS", link: APP_LINKS.MACOS };
-  if (userAgent.includes('linux')) return { name: "Linux", link: APP_LINKS.LINUX };
-  return { name: "Windows", link: APP_LINKS.WINDOWS };
-}
+import {useCallback} from "react";
+import {useUserOS, type ModpackLink} from "@/hooks/useUserOS.ts";
 
 export default function ButtonDownloadApp() {
-  const [os, setOS] = useState<ModpackLink | null >(null)
-  if (typeof window !== "undefined" && os === null) {
-    setOS(getUserOS())
-  }
+  const os = useUserOS();
 
   const handleDownload = useCallback((os: ModpackLink) => {
     try {

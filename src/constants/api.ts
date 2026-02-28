@@ -20,3 +20,10 @@ export const APP_LINKS = {
   MACOS:
     "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.1/EP.Modpack-2.1.0-arm64-macOS-ARM64.dmg",
 } as const;
+
+/** Размеры файлов приложения для разных систем (в МБ) */
+export const APP_SIZES = {
+  WINDOWS: 78,
+  LINUX: 112,
+  MACOS: 106,
+} as const;
