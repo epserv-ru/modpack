@@ -183,7 +183,6 @@ function TourButton({ isTourActive }: { isTourActive: boolean }) {
       }
       placement="bottom"
       showArrow={false}
-      disabled={isTourActive}
     >
       {buttonContent}
     </Tooltip>
