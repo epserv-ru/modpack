@@ -11,11 +11,11 @@ export const API_ENDPOINTS = {
 export const APP_LINKS = {
   /** Ссылки на скачивание приложения для разных систем */
   WINDOWS:
-    "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.1/EP.Modpack.2.1.0-Windows-X64.exe",
+    "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.2/EP.Modpack-2.1.0-win-x64.exe",
   LINUX:
-    "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.1/EP.Modpack-2.1.0-Linux-X64.AppImage",
+    "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.2/EP.Modpack-2.1.0-linux-x86_64.AppImage",
   MACOS:
-    "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.1/EP.Modpack-2.1.0-arm64-macOS-ARM64.dmg",
+    "https://github.com/epserv-ru/modpack-app/releases/download/v2.1.2/EP.Modpack-2.1.0-mac-arm64.dmg",
 } as const;
 
 /** Размеры файлов приложения для разных систем (в МБ) */
