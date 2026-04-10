@@ -50,7 +50,7 @@ function DownloadMods() {
     [isLoading, minecraftVersion, modsContext.toggledMods]
   );
 
-  const totalCount = useMemo(() => toggledMods.length, [toggledMods]);
+  const totalCount = useMemo(() => toggledMods.filter(mod => !mod.isLibrary).length, [toggledMods]);
   const percent = useMemo(
     () => totalBytes ? Math.round((downloadedBytes / totalBytes) * 100) : 0,
     [downloadedBytes, totalBytes]

@@ -31,7 +31,7 @@ export default function FilterDropdown({activeFilter, setActiveFilter, checkedCo
   const selectedFilter = filters.find(f => f.value === activeFilter) || filters[0];
 
   const dropDownMenu = (
-    <nav className={`absolute w-full flex-col top-12 gap-1 p-2 items-start rounded-lg ${dropMenu ? `flex` : `pointer-events-none hidden`} bg-gray-700 shadow-md`}>
+    <nav className={`absolute w-full flex-col z-10 top-12 gap-1 p-2 items-start rounded-lg ${dropMenu ? `flex` : `pointer-events-none hidden`} bg-gray-700 shadow-md`}>
       {filters.map(filter => (
         <button
           key={filter.value}

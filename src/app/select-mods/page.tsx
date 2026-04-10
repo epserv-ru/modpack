@@ -241,7 +241,9 @@ function Body({modsContainerRef} : {modsContainerRef: RefObject<HTMLDivElement |
       if (!mod.isLibrary && mod.isAvailable) {
         resultSet.add(mod.id);
         mod.getAllDependencies().forEach(dep => {
-          resultSet.add(dep.id);
+          if (dep.isAvailable) {
+            resultSet.add(dep.id);
+          }
         });
       }
     });
@@ -253,14 +255,34 @@ function Body({modsContainerRef} : {modsContainerRef: RefObject<HTMLDivElement |
     modsContext.setToggledMods(prev => ({...prev, [minecraftVersion]: newToggled}));
   };
 
-  const resetSelection = () => {
-    const modsToReset = filteredMods.filter(mod => !mod.isRequired);
-    const resetSet = new Set(modsToReset.map(m => m.id));
-    const newToggled = toggledModsOnActualVersion.filter(mod => !resetSet.has(mod.id));
+  function isDependencyNeeded(depId: string, mods: Mod[]): boolean {
+    return mods.some(mod => mod.getAllDependencies().some(dep => dep.id === depId));
+  }
 
-    modsContext.setToggledMods(prev => ({...prev, [minecraftVersion]: newToggled}));
+  const removeModWithDependencies = (map: Map<string, Mod>, modToRemove: Mod): void => {
+    map.delete(modToRemove.id);
+
+    modToRemove.getAllDependencies().forEach(dep => {
+      const remainingMods = Array.from(map.values());
+      if (!isDependencyNeeded(dep.id, remainingMods)) {
+        map.delete(dep.id);
+      }
+    });
   };
 
+  const resetSelection = () => {
+    const map = new Map<string, Mod>(toggledModsOnActualVersion.map(m => [m.id, m]));
+    const modsToReset = filteredMods.filter(mod => !mod.isRequired);
+
+    modsToReset.forEach(mod => {
+      removeModWithDependencies(map, mod);
+    });
+
+    modsContext.setToggledMods(prev => ({
+      ...prev,
+      [minecraftVersion]: Array.from(map.values())
+    }));
+  };
   const modList = (
     <div id="mods-list" className="flex flex-col gap-4 pb-8 items-center w-full">
       {filteredMods.length === 0 ? (
@@ -390,15 +412,17 @@ function Footer() {
 }
 
 function ModsStats({ mods }: { mods: Mod[] }) {
+  const selectedMods = mods.filter(mod => !mod.isLibrary);
   const totalSize = mods.reduce((sum, mod) => sum + mod.size, 0).toFixed(2);
+  const selectedCount = selectedMods.length;
 
   return (
     <div className="flex flex-row gap-2">
       <Check className="text-green-400" />
       <h1 className="text-base font-normal text-gray-200">
-        {mods.length}{" "}
-        {TextFormatter(mods.length, {one: "мод ", few: "мода ", many: "модов "})}
-        {TextFormatter(mods.length, {one: "выбран", few: "выбрано", many: "выбрано"})}:{" "}
+        {selectedCount}{" "}
+        {TextFormatter(selectedCount, { one: "мод ", few: "мода ", many: "модов " })}
+        {TextFormatter(selectedCount, { one: "выбран", few: "выбрано", many: "выбрано" })}:{" "}
         {totalSize} МБ
       </h1>
     </div>
