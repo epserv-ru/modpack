@@ -948,30 +948,6 @@ download = "https://cdn.modrinth.com/data/VSNURh3q/versions/QdLiMUjx/c2me-fabric
 
 
 [[mods]]
-id = "QdG47OkI"
-name = "Model Gap Fix"
-description = """Простой клиентский мод, который исправляет ошибки MC-73186, которые влияют как на модели блоков,
-так и на модели предметов. Мод устраняет масштабирование текстур, заставляя каждую грань модели использовать 100%
-своей текстуры, в отличие от того, что было раньше."""
-
-dependencies = []
-
-[mods.meta]
-priority = "recommended"
-status = "unavailable"
-hidden = false
-
-[mods.categorization]
-primary_category = "optimization"
-tags = ["client", "utility"]
-
-[mods.links]
-icon = "https://cdn.modrinth.com/data/QdG47OkI/5a8203e120985d11616614e11ad7b888997000d8.png"
-site = "https://modrinth.com/mod/modelfix"
-download = ""
-
-
-[[mods]]
 id = "CllP7wW0"
 name = "Smooth Scrolling"
 description = """Добавляет плавную прокрутку интерфейсов и меню, например чата, хотбара, списка серверов и тд.
