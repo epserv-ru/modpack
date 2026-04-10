@@ -15,7 +15,7 @@ export default function DownloadAppCard() {
       <p className="text-gray-300 mb-4 text-sm">Доступно для&nbsp;Windows, MacOS и&nbsp;Linux</p>
       <ButtonDownloadApp/>
       <div className="flex justify-between text-xs text-gray-400 mt-3">
-        <span>Версия 2.1.1</span>
+        <span>Версия 2.1.2</span>
         <span>~{fileSize}&nbsp;MB</span>
       </div>
     </div>
