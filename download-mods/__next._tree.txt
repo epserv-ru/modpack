@@ -1,3 +1,3 @@
 :HL["/_next/static/chunks/9159d08470d38aae.css","style"]
 :HC["/",""]
-0:{"buildId":"IWRBC2HIkhjVCpsJsbHW9","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"download-mods","paramType":null,"paramKey":"download-mods","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"04z8QhwEPxMntJ7Wdueqv","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"download-mods","paramType":null,"paramKey":"download-mods","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
