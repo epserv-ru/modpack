@@ -3,7 +3,7 @@
 #
 # [[mods]]
 # id = "id мода с Modrinth"
-# name = ""
+# name = ""Fix for the lack of auto-scroll when clicking the tour button
 # description = """description"""
 #
 # [mods.meta]
@@ -363,7 +363,7 @@ description = """Базовая библиотека и набор инстру�
 dependencies = []
 
 [mods.meta]
-priority = "required"
+priority = "optional"
 status = "stable"
 hidden = false
 
@@ -387,7 +387,7 @@ description = """Предоставляет удобный и гибкий ин�
 dependencies = []
 
 [mods.meta]
-priority = "required"
+priority = "optional"
 status = "stable"
 hidden = false
 
@@ -1123,7 +1123,7 @@ description = """Добавляет поддержку языка програм
 dependencies = []
 
 [mods.meta]
-priority = "required"
+priority = "optional"
 status = "stable"
 hidden = false
 
@@ -1218,7 +1218,7 @@ description = """Предоставляет систему для использ
 dependencies = []
 
 [mods.meta]
-priority = "required"
+priority = "optional"
 status = "stable"
 hidden = false
 
@@ -1335,7 +1335,7 @@ description = """Библиотека с автосозданием GUI, син�
 dependencies = []
 
 [mods.meta]
-priority = "required"
+priority = "optional"
 status = "stable"
 hidden = false
 
