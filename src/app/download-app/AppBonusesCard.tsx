@@ -1,4 +1,4 @@
-import { Download, Folder, Server } from "flowbite-react-icons/solid";
+import { Download, Folder } from "flowbite-react-icons/solid";
 import AbstractInfoCard from "../about/AbstractInfoCard.tsx";
 
 export function TextCard({ icon, title, description } : AbstractInfoCard) {
@@ -19,15 +19,11 @@ export default function AppBonusesCard() {
       <h3 className="text-xl font-semibold mb-4 text-white">Зачем нужно приложение?</h3>
       <div className="flex flex-col gap-4">
         <TextCard
-          icon={<Folder className="text-purple-400 flex-shrink-0" size={20} />}
+          icon={<Folder className="text-purple-400 shrink-0" size={20} />}
           title={"Прямая установка"}
           description={"Моды устанавливаются сразу в\u00A0папку игры\u00A0— не\u00A0нужно распаковывать архив"}/>
         <TextCard
-          icon={<Server className="text-purple-400 flex-shrink-0" size={20} />}
-          title={"Авто-добавление серверов"}
-          description={"Все IP серверов ElectroPlay автоматически добавляются в\u00A0список"}/>
-        <TextCard
-          icon={<Download className="text-purple-400 flex-shrink-0" size={20} />}
+          icon={<Download className="text-purple-400 shrink-0" size={20} />}
           title={"Тот же функционал"}
           description={"Все возможности сайта + дополнительные удобства для\u00A0установки"}/>
       </div>

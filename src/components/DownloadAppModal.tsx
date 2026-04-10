@@ -5,6 +5,7 @@ import AppBonusesCard from "@/app/download-app/AppBonusesCard";
 import AppInstructionCard from "@/app/download-app/AppInstructionCard";
 import AdditionalInfoCard from "@/app/download-app/AdditionalInfoCard";
 import DownloadAppCard from "@/app/download-app/DownloadAppCard";
+import React from "react";
 
 const CSS = {
   modalOverlay: "fixed inset-0 bg-black/75 backdrop-blur-[2px] flex items-center justify-center z-40",

@@ -1,11 +1,10 @@
 'use client';
 
 import { ChevronDown } from "flowbite-react-icons/outline";
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState } from "react";
 
 export enum FilterType {
   ALL,
-  LIBRARY,
   REQUIRED,
   OPTIONAL,
   RECOMMENDED,
@@ -18,72 +17,47 @@ interface FilterDropdownProps {
   checkedCount: number;
 }
 
-export default function FilterDropdown({
-  activeFilter,
-  setActiveFilter,
-  checkedCount,
-}: FilterDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+export default function FilterDropdown({activeFilter, setActiveFilter, checkedCount}: FilterDropdownProps) {
+  const [dropMenu, setDropMenu] = useState(false);
 
   const filters = useMemo(() => [
     { value: FilterType.ALL, label: 'Все моды' },
-    { value: FilterType.SELECTED, label: `Выбранные (${checkedCount})` },
-    { value: FilterType.LIBRARY, label: 'Библиотеки' },
+    { value: FilterType.SELECTED, label: checkedCount > 0 ? `Выбранные (${checkedCount})` : `Выбранные` },
     { value: FilterType.REQUIRED, label: 'Обязательные' },
     { value: FilterType.RECOMMENDED, label: 'Рекомендуемые' },
-    { value: FilterType.OPTIONAL, label: 'Необязательные' },
+    { value: FilterType.OPTIONAL, label: 'Опциональные' },
   ], [checkedCount]);
 
   const selectedFilter = filters.find(f => f.value === activeFilter) || filters[0];
 
-  const handleSelect = (value: FilterType) => {
-    setActiveFilter(value);
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
+  const dropDownMenu = (
+    <nav className={`absolute w-full flex-col top-12 gap-1 p-2 items-start rounded-lg ${dropMenu ? `flex` : `pointer-events-none hidden`} bg-gray-700 shadow-md`}>
+      {filters.map(filter => (
+        <button
+          key={filter.value}
+          className={`flex p-3 w-full rounded-lg leading-none font-normal text-gray-300 ${activeFilter === filter.value ? 'bg-gray-600 text-white' : 'hover:bg-gray-600 hover:text-white'} transition-all duration-200 ease-in-out cursor-pointer`}
+          onClick={() => {
+            setActiveFilter(filter.value);
+            setDropMenu(!dropMenu);
+          }}
+        >
+          {filter.label}
+        </button>
+      ))}
+    </nav>
+  )
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        onClick={() => { setIsOpen(!isOpen) }}
-        className="flex items-center justify-between cursor-pointer rounded-lg border border-gray-600 bg-gray-700 p-2 duration-200 hover:bg-gray-600 text-white"
+    <>
+      <div className="flex items-center justify-between rounded-lg p-1 border bg-gray-700 border-gray-600 hover:bg-gray-600 text-white cursor-pointer"
+           onClick={() => setDropMenu(!dropMenu)}
       >
         <span className="pl-2 leading-tight font-semibold text-white">Фильтровать по:</span>
-        <span className="px-2 leading-tight font-semibold text-gray-300">{selectedFilter.label}</span>
-        <ChevronDown className={`text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}/>
-      </button>
-
-      {isOpen && (
-        <nav className="absolute mt-2 flex flex-col items-start rounded-lg bg-gray-700 w-full">
-          <div className="flex flex-col gap-1 p-2 w-full">
-            {filters.map((filter) => (
-              <button
-                key={filter.value}
-                onClick={() => { handleSelect(filter.value) }}
-                className={`flex cursor-pointer items-center duration-200 w-full p-3 rounded-lg leading-none font-normal text-gray-300 transition-colors ${activeFilter === filter.value ? 'bg-gray-600 text-white' : 'hover:bg-gray-600 hover:text-white'}`}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
-        </nav>
-      )}
-    </div>
+        <span className="pl-2 leading-tight font-semibold text-gray-300">{selectedFilter.label}</span>
+        <ChevronDown className={`text-gray-400 m-1 transition-all duration-200 ease-in-out ${dropMenu ? "rotate-180" : ""}`}/>
+      </div>
+      {dropDownMenu}
+    </>
   );
 }
+

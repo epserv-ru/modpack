@@ -1,15 +1,14 @@
-import ServerIp from "./ServerIp.tsx";
+export {};
 
 declare global {
   interface Window {
     electronAPI?: {
+      minimizeWindow: () => void;
+      maximizeWindow: () => void;
+      closeWindow: () => void;
       chooseDirectory: () => Promise<string | null>;
       ensureFolder: (folderPath: string) => Promise<boolean>;
       saveFile: (filePath: string, buffer: ArrayBuffer) => Promise<boolean>;
-      addServers: (
-        dir: string,
-        newServers: ServerIp[],
-      ) => Promise<{ success: boolean; error?: string }>;
       getDefaultDir: () => Promise<string>;
     };
   }

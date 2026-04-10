@@ -19,7 +19,7 @@ export default function Page() {
 
   if (shouldShow === null) {
     return (
-      <main className="flex h-screen w-screen items-center justify-center bg-gray-900 font-[Inter]" />
+      <main className="flex h-screen w-screen items-center justify-center bg-gray-900" />
     );
   }
 

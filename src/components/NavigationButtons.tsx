@@ -10,17 +10,15 @@ export default function NavigationButtons() {
   const { canGoBack } = useNavigation();
 
   const backButton = (
-    <button
-      onClick={() => { router.back() }}
+    <button className={`rounded p-1 text-gray-400 transition-all ${canGoBack ? "cursor-pointer hover:bg-gray-700 hover:text-white" : "opacity-50"}`}
+      onClick={() => {router.back()}}
       disabled={!canGoBack}
-      className={`rounded p-1 text-gray-400 transition-all ${canGoBack ? "cursor-pointer hover:bg-gray-700 hover:text-white" : "opacity-50"}`}
-    >
-      <ArrowLeft size={20} />
+    ><ArrowLeft size={20} />
     </button>
   );
 
   return (
-    <div className="titlebar-no-drag flex items-center gap-1">
+    <div className="titlebar-no-drag">
       {canGoBack ? (
         <Tooltip
           content={
@@ -34,7 +32,7 @@ export default function NavigationButtons() {
           {backButton}
         </Tooltip>
       ) : (
-        <span>{backButton}</span>
+        backButton
       )}
     </div>
   );

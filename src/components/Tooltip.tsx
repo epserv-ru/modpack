@@ -48,7 +48,7 @@ export function Tooltip(
     <div className="relative inline-block" onMouseEnter={show} onMouseLeave={hide} onFocus={show}>
       {children}
       {visible && (
-        <div className={`z-50 absolute rounded whitespace-nowrap select-none ${tooltipPosition[placement]} ${className}`}>
+        <div className={`z-10 absolute rounded whitespace-nowrap select-none ${tooltipPosition[placement]} ${className}`}>
           {content}
           {showArrow && (
             <span

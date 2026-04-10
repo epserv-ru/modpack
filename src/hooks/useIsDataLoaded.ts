@@ -1,19 +1,4 @@
-import { useMemo } from "react";
-import { useModsContext } from "@/components/ModsContext";
 import { STORAGE_KEYS } from "@/constants/cache";
-
-/**
- * Хук для проверки загруженности данных модов
- * @param version - Версия Minecraft для проверки
- * @returns true если данные ещё не загружены
- */
-export function useIsDataLoaded(version: string | null): boolean {
-  const modsContext = useModsContext();
-
-  return useMemo(() => {
-    return !version || !modsContext.loaded[version];
-  }, [version, modsContext.loaded]);
-}
 
 /**
  * Хук для получения версии Minecraft из sessionStorage
@@ -23,4 +8,21 @@ export function useMinecraftVersion(): string | null {
   return typeof window !== 'undefined'
     ? window.sessionStorage.getItem(STORAGE_KEYS.MINECRAFT_VERSION)
     : null;
+}
+
+/**
+ * Хук для записи версии Minecraft в sessionStorage
+ */
+export function setMinecraftVersion(version: string) {
+  window.sessionStorage.setItem(STORAGE_KEYS.MINECRAFT_VERSION, version)
+}
+
+export function useSeenTour(): string | null {
+  return typeof window !== 'undefined'
+    ? window.sessionStorage.getItem(STORAGE_KEYS.SELECT_MODS_TOUR_SEEN)
+    : null;
+}
+
+export function setHasSeenTour(seen: string): void {
+  window.sessionStorage.setItem(STORAGE_KEYS.SELECT_MODS_TOUR_SEEN, seen)
 }

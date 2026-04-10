@@ -7,33 +7,22 @@ import SkeletonModButton from "@/components/buttons/SkeletonModButton";
 import { TextFormatter } from "@/components/TextFormatter";
 import { ModsProvider, useModsContext } from "@/components/ModsContext";
 import { useEffect, useState } from "react";
-import { useIsDataLoaded, useMinecraftVersion } from "@/hooks/useIsDataLoaded";
+import {setHasSeenTour, useMinecraftVersion, useSeenTour} from "@/hooks/useIsDataLoaded";
 import { Download, Check } from "flowbite-react-icons/outline";
 import { QuestionCircle } from "flowbite-react-icons/solid";
 import Mod from "@/types/Mod";
-import ModButton from "@/components/buttons/ModButton";
 import Tour, { TourStep } from "@/components/Tour";
 import WindowControls from "@/components/WindowControls";
 import NavigationButtons from "@/components/NavigationButtons";
 import { Tooltip } from "@/components/Tooltip";
-import { STORAGE_KEYS } from "@/constants/cache";
 import { DownloadAppModal } from "@/components/DownloadAppModal";
 import { useNavigation } from "@/components/NavigationContext";
 import { FilterType } from "@/components/select-mods/FilterDropdown";
+import { Category } from "@/types/EPMod";
 import SearchSection from "@/components/select-mods/SearchSection";
 import { useModFilters } from "@/hooks/useModFilters";
 import { useIsNative } from "@/hooks/useIsNative";
-
-const CSS = {
-  main: "flex flex-col h-screen justify-between w-full bg-gray-900 font-[Inter]",
-  header: "flex titlebar-drag-region h-12 bg-gray-800 shadow justify-between items-center px-2 select-none z-50",
-  headerBrowser: "flex bg-gray-800 shadow justify-between py-3 px-8",
-  headerButtons: "flex justify-between gap-8 items-center",
-  bodyContainer: "flex justify-center w-full h-full scrollbar scrollbar-thumb-gray-500 scrollbar-track-rounded-lg scrollbar-track-gray-800 overflow-y-scroll bg-transparent",
-  bodyInner: "flex flex-col gap-8 rounded-lg py-8 w-[1154px] items-start",
-  footer: "flex w-full justify-center bg-gray-700",
-  footerInner: "inline-flex w-7xl items-center justify-end gap-8 py-3 px-8",
-};
+import ModButton from "@/components/buttons/ModButton.tsx";
 
 export default function Page() {
   return <ModsProvider><SelectMods/></ModsProvider>;
@@ -41,15 +30,16 @@ export default function Page() {
 
 function SelectMods() {
   const modsContext = useModsContext();
-  const minecraftVersion = useMinecraftVersion();
-  const isLoading = useIsDataLoaded(minecraftVersion);
+  const minecraftVersion = useMinecraftVersion()!;
+  const hasSeenTour = useSeenTour();
+  const isLoading = !modsContext.loaded[minecraftVersion];
   const [showTour, setShowTour] = useState(false);
   const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
   const isNative = useIsNative();
   const { setCanGoBack } = useNavigation();
 
   useEffect(() => {
-    if (minecraftVersion && !modsContext.loaded[minecraftVersion]) modsContext.getModsData();
+    if (isLoading) modsContext.getModsData();
   }, [minecraftVersion, modsContext]);
 
   useEffect(() => {
@@ -57,21 +47,14 @@ function SelectMods() {
   }, [setCanGoBack]);
 
   useEffect(() => {
-    const hasSeenTour = localStorage.getItem(STORAGE_KEYS.SELECT_MODS_TOUR_SEEN);
-    if (!hasSeenTour) {
-      const timer = setTimeout(() => { setShowTour(true); }, 1000);
-      return () => { clearTimeout(timer); };
-    }
+    if (hasSeenTour) return
+      const timer = setTimeout(() => setShowTour(true), 1000);
+      return clearTimeout(timer);
   }, []);
 
   const handleTourComplete = () => {
     setShowTour(false);
-    localStorage.setItem(STORAGE_KEYS.SELECT_MODS_TOUR_SEEN, 'true');
-  };
-
-  const handleTourSkip = () => {
-    setShowTour(false);
-    localStorage.setItem(STORAGE_KEYS.SELECT_MODS_TOUR_SEEN, 'true');
+    setHasSeenTour("true")
   };
 
   useEffect(() => {
@@ -84,93 +67,87 @@ function SelectMods() {
     {
       target: '#mods-page',
       title: 'Добро пожаловать!',
-      content: 'Здесь вы можете выбрать моды для вашей сборки.',
+      description: 'Здесь вы можете выбрать моды для вашей сборки.',
       position: 'right'
     },
     {
       target: '#mods-search',
       title: 'Поиск модов',
-      content: 'Используйте строку поиска для быстрого нахождения нужных модов по названию или описанию.',
+      description: 'Используйте строку поиска для быстрого нахождения нужных модов по названию или описанию. Вы также можете фильтровать моды по тегам, используя символ # перед тегом (например: #adventure, #decoration).',
       position: 'bottom'
     },
     {
       target: '#mods-filter',
-      title: 'Фильтры',
-      content: 'Фильтруйте моды по категориям: библиотеки, обязательные, рекомендуемые и другие. Это поможет вам найти именно то, что нужно.',
+      title: 'Фильтры по приоритету',
+      description: 'Фильтруйте моды по приоритету: обязательные, рекомендуемые и опциональные. Это поможет вам найти именно то, что нужно.',
+      position: 'bottom'
+    },
+    {
+      target: '#mods-categories',
+      title: 'Фильтры по категориям',
+      description: 'Выбирайте моды по категориям: оптимизация, визуал, утилиты, геймплей и аудио. Можно выбрать несколько категорий одновременно, тогда отобразятся все моды с выбранными категориями.',
       position: 'bottom'
     },
     {
       target: '#mods-select-all',
       title: 'Выбрать все',
-      content: 'Нажмите "Выбрать все", чтобы добавить все моды из текущего фильтра в вашу сборку за один клик.',
+      description: 'Нажмите "Выбрать все", чтобы добавить все моды из текущего отфильтрованного списка в вашу сборку за один клик.',
       position: 'bottom'
     },
     {
       target: '#mods-list',
       title: 'Список модов',
-      content: 'Нажмите на любой мод, чтобы добавить или убрать его из сборки. Библиотеки добавляются автоматически. Обязательные моды нельзя отключить.',
+      description: 'Нажмите на любой мод, чтобы добавить или убрать его из сборки. Обязательные моды выбраны по умолчанию, но доступны дял отключения вручную, отключайте на свой страх и риск. Библиотеки добавляются автоматически.',
+      position: 'top'
+    },
+    {
+      target: '#mods-first-mod',
+      title: 'Кнопка мода',
+      description: 'Нажмите на иконку info в правом верхнем углу для подробной информации. Стрелочка ниже разворачивает описание.',
       position: 'top'
     },
     {
       target: '#mods-footer',
       title: 'Ваша сборка',
-      content: 'Здесь вы видите количество выбранных модов и их общий размер. Когда будете готовы, нажмите кнопку "Продолжить" для скачивания.',
+      description: 'Здесь вы видите количество выбранных модов и их общий размер. Когда будете готовы, нажмите кнопку "Продолжить" для скачивания.',
       position: 'top'
     },
   ];
 
   return (
-    <main className={CSS.main}>
-      <Header isNative={isNative} onOpenDownloadApp={() => setShowDownloadAppModal(true)} isTourActive={showTour}/>
-      {isLoading ? <SkeletonBody/> : <Body/>}
-      {isLoading ? <SkeletonFooter/> : <Footer/>}
+    <main className="flex flex-col h-screen justify-between w-full bg-gray-900 font-[Inter]">
+      {isNative ? <ElectronHeader isTourActive={showTour} /> : <BrowserHeader onOpenDownloadApp={() => { setShowDownloadAppModal(true) }} isTourActive={showTour} />}
+      {isLoading ? <SkeletonBody /> : <Body />}
+      {isLoading ? <SkeletonFooter /> : <Footer />}
       {showTour && !isLoading && (
-        <Tour steps={tourSteps} onComplete={handleTourComplete} onSkip={handleTourSkip} />
+        <Tour steps={tourSteps} onComplete={handleTourComplete} />
       )}
-      <DownloadAppModal isOpen={showDownloadAppModal} onClose={() => setShowDownloadAppModal(false)} />
+      <DownloadAppModal isOpen={showDownloadAppModal} onClose={() => { setShowDownloadAppModal(false) }} />
     </main>
   );
 }
 
-function Header({ isNative, onOpenDownloadApp, isTourActive } : { isNative: boolean; onOpenDownloadApp: () => void; isTourActive: boolean }) {
-  return isNative ? <ElectronHeader isTourActive={isTourActive} /> : <BrowserHeader onOpenDownloadApp={onOpenDownloadApp} />;
-}
-
 function TourButton({ isTourActive }: { isTourActive: boolean }) {
   const startTour = () => {
-    const scrollContainer = document.querySelector('[class*="scrollbar"]');
+    if (window.scrollY > 0) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    if (scrollContainer && scrollContainer.scrollTop > 0) {
-      const startPosition = scrollContainer.scrollTop;
-      const duration = 400;
-      const startTime = performance.now();
-
-      const animateScroll = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        scrollContainer.scrollTop = startPosition * (1 - easeOut);
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        } else {
+      const checkScroll = () => {
+        if (window.scrollY === 0) {
           window.dispatchEvent(new CustomEvent('startTour'));
+        } else {
+          requestAnimationFrame(checkScroll);
         }
       };
-
-      requestAnimationFrame(animateScroll);
+      requestAnimationFrame(checkScroll);
     } else {
       window.dispatchEvent(new CustomEvent('startTour'));
     }
   };
 
   const buttonContent = (
-    <button onClick={startTour} disabled={isTourActive} className="p-1">
-      <QuestionCircle
-        size={24}
-        className={`transition-all duration-200 ${isTourActive ? 'text-gray-600' : 'text-gray-400 hover:text-blue-400 cursor-pointer'}`}
-      />
+    <button className="p-1" onClick={startTour} disabled={isTourActive}>
+      <QuestionCircle size={24} className={`transition-all duration-200 ease-in-out ${isTourActive ? 'text-gray-600' : 'text-gray-400 hover:text-blue-400 cursor-pointer'}`}/>
     </button>
   );
 
@@ -191,7 +168,7 @@ function TourButton({ isTourActive }: { isTourActive: boolean }) {
 
 function ElectronHeader({ isTourActive }: { isTourActive: boolean }) {
   return (
-    <header className={CSS.header}>
+    <header className="flex h-12 px-2 z-50 justify-between items-center titlebar-drag-region bg-gray-800 shadow select-none">
       <NavigationButtons />
 
       <div className="flex items-center gap-8">
@@ -207,58 +184,123 @@ function ElectronHeader({ isTourActive }: { isTourActive: boolean }) {
   );
 }
 
-function BrowserHeader({ onOpenDownloadApp }: { onOpenDownloadApp: () => void }) {
-  const startTour = () => {
-    const scrollContainer = document.querySelector('[class*="scrollbar"]');
-
-    if (scrollContainer && scrollContainer.scrollTop > 0) {
-      const startPosition = scrollContainer.scrollTop;
-      const duration = 400; // мс
-      const startTime = performance.now();
-
-      const animateScroll = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Ease-out для плавности в конце
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        scrollContainer.scrollTop = startPosition * (1 - easeOut);
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        } else {
-          window.dispatchEvent(new CustomEvent('startTour'));
-        }
-      };
-
-      requestAnimationFrame(animateScroll);
-    } else {
-      window.dispatchEvent(new CustomEvent('startTour'));
-    }
-  };
-
+function BrowserHeader({ onOpenDownloadApp, isTourActive }: { onOpenDownloadApp: () => void, isTourActive: boolean }) {
   return (
-    <header className={CSS.headerBrowser}>
+    <header className="flex w-full px-8 py-3 justify-between shadow bg-gray-800 border-b border-gray-700">
       <Logo />
       <Navigation />
-      <div className={CSS.headerButtons}>
-        <button id="button-download-app" onClick={onOpenDownloadApp}
-          className="flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 transition-all cursor-pointer duration-200 bg-primary-700 hover:bg-primary-800"
+      <div className="flex justify-between gap-8 items-center">
+        <button className="flex px-4 py-2.5 justify-center gap-2 items-center rounded-lg transition-all duration-200 ease-in-out bg-primary-700 hover:bg-primary-800 cursor-pointer"
+                id="button-download-app"
+                onClick={onOpenDownloadApp}
         >
           <span className="text-sm font-medium text-white">Скачать приложение</span>
           <Download size={20} className="text-white" />
         </button>
-        <Tooltip content={
-          <div className="bg-gray-700 border rounded-lg border-gray-600 justify-center">
-            <span className="text-white text-sm font-semibold m-4">Помощь</span>
-          </div>
-        } placement="bottom" showArrow={false}>
-          <button onClick={startTour}>
-            <QuestionCircle size={30} className="transition-all duration-200 text-gray-400 hover:text-blue-400 cursor-pointer" />
-          </button>
-          </Tooltip>
+        <TourButton isTourActive={isTourActive} />
       </div>
     </header>
+  );
+}
+
+function Body() {
+  const modsContext = useModsContext();
+  const minecraftVersion = useMinecraftVersion()!;
+
+  const modsOnActualVersion: Mod[] = modsContext.mods[minecraftVersion];
+  const toggledModsOnActualVersion: Mod[] = modsContext.toggledMods[minecraftVersion];
+  const toggledModsOnActualVersionWithoutLibraries: Mod[] = toggledModsOnActualVersion.filter(mod => !mod.isLibrary)
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.ALL);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
+  const filteredMods = useModFilters(modsOnActualVersion, searchQuery, activeFilter, toggledModsOnActualVersion, selectedCategories);
+
+  const toggleCategory = (category: Category) => {
+    setSelectedCategories(prev => {
+      if (prev.includes(category)) {
+        return prev.filter(c => c !== category);
+      } else {
+        return [...prev, category];
+      }
+    });
+  };
+
+  const selectAllMods = () => {
+    const modsMap = new Map(modsOnActualVersion.map(m => [m.id, m]));
+    const resultSet = new Set(toggledModsOnActualVersion.map(m => m.id));
+
+    filteredMods.forEach(mod => {
+      if (!mod.isLibrary && mod.isAvailable) {
+        resultSet.add(mod.id);
+        mod.getAllDependencies().forEach(dep => {
+          resultSet.add(dep.id);
+        });
+      }
+    });
+
+    const newToggled = Array.from(resultSet)
+      .map(id => modsMap.get(id))
+      .filter((mod): mod is Mod => !!mod);
+
+    modsContext.setToggledMods(prev => ({...prev, [minecraftVersion]: newToggled}));
+  };
+
+  const resetSelection = () => {
+    const modsToReset = filteredMods.filter(mod => !mod.isRequired);
+    const resetSet = new Set(modsToReset.map(m => m.id));
+    const newToggled = toggledModsOnActualVersion.filter(mod => !resetSet.has(mod.id));
+
+    modsContext.setToggledMods(prev => ({...prev, [minecraftVersion]: newToggled}));
+  };
+
+  const modList = (
+    <div id="mods-list" className="flex flex-col gap-4 pb-8 items-center w-full">
+      {filteredMods.length === 0 ? (
+        <div className="text-center py-8 text-gray-400">
+          Моды по вашему запросу не найдены
+        </div>
+      ) : (
+        filteredMods.map((mod, index) => (
+          <div key={index} {...(index === 0 && { id: "mods-first-mod" })}>
+            <ModButton
+              mod={mod}
+              minecraftVersion={minecraftVersion}
+              toggledMods={toggledModsOnActualVersion}
+              setToggledMods={(updater) => {
+                modsContext.setToggledMods(prev => ({
+                  ...prev,
+                  [minecraftVersion]: typeof updater === 'function'
+                    ? updater(prev[minecraftVersion])
+                    : updater
+                }));
+              }}
+            />
+          </div>
+        ))
+      )}
+    </div>
+  )
+
+  return (
+    <div className="flex w-full h-full justify-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-rounded-lg scrollbar-track-gray-800 overflow-y-scroll bg-transparent">
+      <div id="mods-page" className="flex flex-col w-6xl gap-4 py-8 items-start">
+        <BodyDescription />
+        <SearchSection
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          toggledCount={toggledModsOnActualVersionWithoutLibraries.length}
+          filteredCount={filteredMods.length}
+          onSelectAll={selectAllMods}
+          onReset={resetSelection}
+          selectedCategories={selectedCategories}
+          toggleCategory={toggleCategory}
+        />
+        {modList}
+      </div>
+    </div>
   );
 }
 
@@ -281,137 +323,10 @@ function BodyDescription() {
   );
 }
 
-function Body() {
-  const modsContext = useModsContext();
-  const minecraftVersion = useMinecraftVersion();
-
-  if (!minecraftVersion || !modsContext.mods[minecraftVersion]) {
-    return null;
-  }
-
-  const modsOnActualVersion: Mod[] = modsContext.mods[minecraftVersion];
-  const checkedModsOnActualVersion: Mod[] = modsContext.checkedMods[minecraftVersion] ?? [];
-
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.ALL);
-
-  const filteredMods = useModFilters(modsOnActualVersion, searchQuery, activeFilter, checkedModsOnActualVersion);
-
-  const selectAllMods = () => {
-    const modsToSelect = activeFilter === FilterType.LIBRARY
-      ? filteredMods.filter(mod => mod.available)
-      : filteredMods.filter(mod => !mod.library && mod.available && !mod.required);
-
-    const checkedSet = new Set(checkedModsOnActualVersion.map(m => m.id));
-    const modsMap = new Map(modsOnActualVersion.map(m => [m.id, m]));
-
-    const newChecked = [...checkedModsOnActualVersion];
-
-    modsToSelect.forEach(mod => {
-      if (!checkedSet.has(mod.id)) {
-        newChecked.push(mod);
-        checkedSet.add(mod.id);
-        if (mod.dependencies) {
-          mod.dependencies.forEach(dep => {
-            if (!checkedSet.has(dep.id)) {
-              const dependencyMod = modsMap.get(dep.id);
-              if (dependencyMod) {
-                newChecked.push(dependencyMod);
-                checkedSet.add(dep.id);
-              }
-            }
-          });
-        }
-      }
-    });
-
-    modsContext.setCheckedMods(prev => ({
-      ...prev,
-      [minecraftVersion]: newChecked
-    }));
-  };
-
-  const resetSelection = () => {
-    const modsToReset = filteredMods.filter(mod => !mod.required);
-
-    const resetSet = new Set(modsToReset.map(m => m.id));
-
-    const newChecked = checkedModsOnActualVersion.filter(mod => !resetSet.has(mod.id));
-
-    modsContext.setCheckedMods(prev => ({
-      ...prev,
-      [minecraftVersion]: newChecked
-    }));
-  };
-
-  return (
-    <div className={CSS.bodyContainer}>
-      <div id="mods-page" className={CSS.bodyInner}>
-        <BodyDescription />
-        <SearchSection
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-          checkedCount={checkedModsOnActualVersion.length}
-          filteredCount={filteredMods.length}
-          onSelectAll={selectAllMods}
-          onReset={resetSelection}
-        />
-        <ModsList
-          filteredMods={filteredMods}
-          minecraftVersion={minecraftVersion}
-          checkedMods={checkedModsOnActualVersion}
-          setCheckedMods={(updater) => {
-            modsContext.setCheckedMods(prev => ({
-              ...prev,
-              [minecraftVersion]: typeof updater === 'function'
-                ? updater(prev[minecraftVersion])
-                : updater
-            }));
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function ModsList({
-  filteredMods,
-  minecraftVersion,
-  checkedMods,
-  setCheckedMods,
-}: {
-  filteredMods: Mod[];
-  minecraftVersion: string;
-  checkedMods: Mod[];
-  setCheckedMods: (updater: Mod[] | ((prev: Mod[]) => Mod[])) => void;
-}) {
-  return (
-    <div id="mods-list" className="flex flex-col gap-4 pb-8 items-center w-full">
-      {filteredMods.length === 0 ? (
-        <div className="text-center py-8 text-gray-400">
-          Моды по вашему запросу не найдены
-        </div>
-      ) : (
-        filteredMods.map((mod) => (
-          <ModButton
-            key={mod.id}
-            mod={mod}
-            minecraftVersion={minecraftVersion}
-            checkedMods={checkedMods}
-            setCheckedMods={setCheckedMods}
-          />
-        ))
-      )}
-    </div>
-  );
-}
-
 function SkeletonBody() {
   return (
-    <div className={CSS.bodyContainer}>
-      <div className={CSS.bodyInner}>
+    <div className="flex w-full h-full justify-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-rounded-lg scrollbar-track-gray-800 overflow-y-scroll bg-transparent">
+      <div className="flex flex-col w-6xl gap-4 py-8 items-start">
         <BodyDescription />
         <SkeletonSearchSection />
         <SkeletonModsList />
@@ -422,13 +337,22 @@ function SkeletonBody() {
 
 function SkeletonSearchSection() {
   return (
-    <div className="flex flex-row gap-4 items-center">
-      <div className="w-80 h-10.5 rounded-lg bg-gray-700 animate-pulse" />
-      <div className="w-69 h-10.5 rounded-lg bg-gray-700 animate-pulse" />
-      <div className="w-33 h-10.5 rounded-lg bg-gray-600 animate-pulse" />
-      <div className="w-27 h-10.5 rounded-lg bg-gray-600 animate-pulse" />
-      <div className="w-24 h-5 bg-gray-600 rounded-lg animate-pulse" />
-    </div>
+    <>
+      <div className="flex flex-row gap-4 items-center">
+        <div className="w-107 h-10.5 rounded-lg bg-gray-700 border border-gray-600 animate-pulse" />
+        <div className="w-67 h-10.5 rounded-lg bg-gray-700 border border-gray-600 animate-pulse" />
+        <div className="w-33 h-10.5 rounded-lg bg-gray-600 animate-pulse" />
+        <div className="w-27 h-10.5 rounded-lg bg-gray-600 animate-pulse" />
+        <div className="w-24 h-5 bg-gray-600 rounded-lg animate-pulse" />
+      </div>
+      <div className="flex flex-row gap-2">
+        <div className="w-32.5 h-8 rounded-lg bg-gray-700 animate-pulse" />
+        <div className="w-[79px] h-8 rounded-lg bg-gray-700 animate-pulse" />
+        <div className="w-[91px] h-8 rounded-lg bg-gray-700 animate-pulse" />
+        <div className="w-[101px] h-8 rounded-lg bg-gray-700 animate-pulse" />
+        <div className="w-[71px] h-8 rounded-lg bg-gray-700 animate-pulse" />
+      </div>
+    </>
   );
 }
 
@@ -444,21 +368,17 @@ function SkeletonModsList() {
 
 function Footer() {
   const modsContext = useModsContext();
-  const minecraftVersion = useMinecraftVersion();
+  const minecraftVersion = useMinecraftVersion()!;
 
-  if (!minecraftVersion || !modsContext.loaded[minecraftVersion]) {
-    return null;
-  }
-
-  const checkedModsOnThisVersion: Mod[] = modsContext.checkedMods[minecraftVersion] ?? [];
+  const toggledModsOnThisVersion: Mod[] = modsContext.toggledMods[minecraftVersion] ?? [];
 
   return (
-    <div id="mods-footer" className={CSS.footer}>
-      <div className={CSS.footerInner}>
-        <ModsStats mods={checkedModsOnThisVersion} />
+    <footer id="mods-footer" className="flex w-full justify-center bg-gray-700 border-t border-gray-600">
+      <div className="inline-flex w-7xl px-8 py-3 gap-8 items-center justify-end">
+        <ModsStats mods={toggledModsOnThisVersion} />
         <ButtonNext nextPage={"/download-mods"} loaded={true} disabled={false}/>
       </div>
-    </div>
+    </footer>
   );
 }
 
@@ -480,8 +400,8 @@ function ModsStats({ mods }: { mods: Mod[] }) {
 
 function SkeletonFooter() {
   return (
-    <div className={CSS.footer}>
-      <div className={CSS.footerInner}>
+    <div className="flex w-full justify-center bg-gray-700 border-t border-gray-600">
+      <div className="inline-flex w-7xl px-8 py-3 gap-8 items-center justify-end">
         <SkeletonModsStats />
         <ButtonNext nextPage={"/download-mods"} loaded={false} disabled={true}/>
       </div>

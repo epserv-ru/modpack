@@ -14,7 +14,6 @@ export function ModsProvider({ children } : { children: React.ReactNode }) {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useModsContext() {
   const context = useContext(ModsContext);
   if (context === undefined) {

@@ -26,7 +26,7 @@ export default function ButtonNext({ nextPage, onClick, loaded, disabled }: Butt
     <button
       onClick={handleClick}
       disabled={disabled}
-      className={`flex w-[151px] items-center justify-center gap-2 rounded-lg px-2.5 py-2 transition-all duration-300 bg-primary-700 ${ loaded ? `hover:bg-primary-800 cursor-pointer opacity-100` : `opacity-50`}`}>
+      className={`flex w-[151px] items-center justify-center gap-2 rounded-lg px-2.5 py-2 transition-all duration-200 ease-in-out bg-primary-700 ${ loaded ? `hover:bg-primary-800 cursor-pointer opacity-100` : `opacity-50`}`}>
       <span className="text-sm font-medium text-white">Продолжить</span>
       <ArrowRight className="text-white" />
     </button>

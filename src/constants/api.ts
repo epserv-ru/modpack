@@ -2,13 +2,10 @@
 export const API_ENDPOINTS = {
   /** URL списка модов для конкретной версии */
   getModsJson: (version: string) =>
-    `https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/mods-${version}.json`,
+    `https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/${version}.toml`,
   /** URL списка версий Minecraft */
   MINECRAFT_VERSIONS:
-    "https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/minecraft_versions.json",
-  /** URL списка серверов для IPS */
-  SERVERS_JSON:
-    "https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/servers.json",
+    "https://raw.githubusercontent.com/epserv-ru/modpack/refs/heads/meta/minecraft_versions.toml",
 } as const;
 
 export const APP_LINKS = {

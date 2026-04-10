@@ -1,4 +1,4 @@
-'use client';
+'use memo';
 
 import NavigationButtons from "./NavigationButtons";
 import WindowControls from "./WindowControls";
@@ -10,11 +10,9 @@ export default function TitleBar() {
   if (!isNative) return null;
 
   return (
-    <div className="flex titlebar-drag-region h-12 bg-gray-800 absolute w-full items-center justify-between px-2 shadow select-none">
+    <div className="flex h-12 absolute w-full items-center justify-between px-2 titlebar-drag-region bg-gray-800 shadow select-none">
       <NavigationButtons />
-      <div className="titlebar-no-drag flex items-center h-full">
-        <WindowControls />
-      </div>
+      <WindowControls />
     </div>
   );
 }

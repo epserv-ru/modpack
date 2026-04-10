@@ -1,53 +1,35 @@
 import JSZip from "jszip";
 import { DownloadState, DownloadSetters } from "@/types/download-state";
-import { API_ENDPOINTS } from "@/constants/api";
 
 /**
  * Скачивает моды и сохраняет их
  * @param state - Состояние загрузки
  * @param setters - Сеттеры для обновления состояния
  */
-export async function DownloadMods(
-  state: DownloadState,
-  setters: DownloadSetters
-) {
-  const { checkedMods, folderPath, installIps, minecraftVersion, native } = state;
-  const { setCompletedCount, setDownloadedBytes, setTotalBytes, setDownload } = setters;
+export async function ModsDownload(state: DownloadState, setters: DownloadSetters) {
+  const { toggledMods, folderPath, minecraftVersion, isNative } = state;
+  const { setCompletedCount, setDownloadedBytes, setTotalBytes, setIsDownload } = setters;
 
   setDownloadedBytes(0);
   setTotalBytes(0);
   setCompletedCount(0);
-  setDownload(true);
+  setIsDownload(true);
 
   const zip = new JSZip();
 
-  if (native) {
-    await window.electronAPI?.ensureFolder(`${folderPath}/mods`);
-
-    if (installIps) {
-      await fetch(API_ENDPOINTS.SERVERS_JSON)
-        .then(res => res.json())
-        .catch(console.error)
-        .then(ips => window.electronAPI?.addServers(folderPath, ips));
-    }
-  }
+  if (isNative) await window.electronAPI?.ensureFolder(`${folderPath}/mods`);
 
   let total = 0;
-  const validMods = checkedMods.filter(mod => mod.reliable_link);
-  validMods.forEach(mod => total += mod.size * 1024 * 1024)
+  toggledMods.forEach(mod => total += mod.size * 1024 * 1024)
   setTotalBytes(total);
 
   let downloadedBytes = 0;
 
   await Promise.all(
-    validMods.map(async (mod) => {
-      if (!mod.reliable_link) {
-        setCompletedCount((prev) => prev + 1);
-        return;
-      }
+    toggledMods.map(async mod => {
       try {
-        const res = await fetch(mod.reliable_link, { cache: 'no-store' });
-        if (!res.ok) throw new Error(`Ошибка при скачивании ${mod.reliable_link}`);
+        const res = await fetch(mod.links.download, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`Ошибка при скачивании ${mod.name}`);
 
         const reader = res.body?.getReader();
         const chunks: Uint8Array[] = [];
@@ -64,7 +46,7 @@ export async function DownloadMods(
 
         const blob = new Blob(chunks);
         const fileName = mod.name.toLowerCase().replace(/\s+/g, "-") + "-" + minecraftVersion + ".jar";
-        if (native) {
+        if (isNative) {
           const arrayBuffer = await blob.arrayBuffer();
           const fullPath = `${folderPath}/mods/${fileName}`;
           await window.electronAPI?.saveFile(fullPath, arrayBuffer);
@@ -79,7 +61,7 @@ export async function DownloadMods(
     })
   );
 
-  if (!native) {
+  if (!isNative) {
     const content = await zip.generateAsync({ type: "blob" });
     const objectUrl = URL.createObjectURL(content);
     const a = document.createElement("a");
@@ -91,5 +73,5 @@ export async function DownloadMods(
     setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
   }
 
-  setDownload(false);
+  setIsDownload(false);
 }

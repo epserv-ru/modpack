@@ -18,12 +18,12 @@
     "jszip": "^3.10.1",
     "lucide": "^0.575.0",
     "lucide-react": "^0.575.0",
-    "next": "^16.1.6",
+    "next": "16.1.7",
     "postcss": "^8.5.6",
-    "prismarine-nbt": "^2.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "smol-toml": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

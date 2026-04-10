@@ -7,7 +7,7 @@ import ButtonClose from "@/components/buttons/ButtonClose.tsx";
 export interface TourStep {
   target: string;
   title: string;
-  content: string;
+  description: string;
   position?: 'top' | 'bottom' | 'left' | 'right' | 'center';
   maxHighlightHeight?: number;
 }
@@ -15,7 +15,6 @@ export interface TourStep {
 interface TourProps {
   steps: TourStep[];
   onComplete: () => void;
-  onSkip: () => void;
 }
 
 interface TooltipPosition {
@@ -33,7 +32,7 @@ interface ElementPosition {
   height: number;
 }
 
-export default function Tour({ steps, onComplete, onSkip }: TourProps) {
+export default function Tour({ steps, onComplete }: TourProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [position, setPosition] = useState<ElementPosition>({ top: 0, left: 0, right: 0, bottom: 0, width: 0, height: 0 });
   const [isVisible, setIsVisible] = useState(false);
@@ -57,13 +56,16 @@ export default function Tour({ steps, onComplete, onSkip }: TourProps) {
       const targetElement = document.querySelector(step.target);
       if (targetElement) {
         const rect = targetElement.getBoundingClientRect();
+        const clampedTop = Math.max(rect.top, 0);
+        const clampedBottom = Math.min(rect.bottom, window.innerHeight);
+
         setPosition({
-          top: rect.top,
+          top: clampedTop,
           left: rect.left,
           right: rect.right,
-          bottom: rect.bottom,
+          bottom: clampedBottom,
           width: rect.width,
-          height: rect.height,
+          height: Math.max(clampedBottom - clampedTop, 0),
         });
         setIsVisible(true);
       }
@@ -166,7 +168,6 @@ export default function Tour({ steps, onComplete, onSkip }: TourProps) {
 
   if (!isVisible) return null;
 
-  // Находим границы header и footer для overlay
   const isNative = !!document.querySelector('[class*="titlebar-drag-region"]');
   const header = document.querySelector('[class*="titlebar-drag-region"], header[class*="flex"]');
   const footer = document.querySelector('[id*="footer"], footer[class*="flex"]');
@@ -177,13 +178,9 @@ export default function Tour({ steps, onComplete, onSkip }: TourProps) {
   return (
     <>
       <Border headerBottom={headerBottom} footerTop={footerTop} />
-      <div
-        ref={overlayRef}
-        className="fixed z-50 w-90 bg-gray-800 rounded-xl shadow-2xl border border-gray-700 p-5 transition-all duration-200 ease-out"
-        style={tooltipPos}
-      >
-        <ButtonClose onClick={onSkip} />
-        <Content />
+      <div ref={overlayRef} style={tooltipPos} className="flex flex-col fixed z-50 w-90 p-5 gap-4 rounded-xl shadow-2xl bg-gray-800 border border-gray-700 transition-all duration-200 ease-in-out">
+        <ButtonClose onClick={onComplete} />
+        <Title />
         <ProgressBar />
         <NavigationButtons />
       </div>
@@ -237,25 +234,23 @@ export default function Tour({ steps, onComplete, onSkip }: TourProps) {
     );
   }
 
-  function Content() {
+  function Title() {
     return (
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold">
-            {currentStep + 1}
-          </div>
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <span className="flex w-8 h-8 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold">{currentStep + 1}</span>
           <h3 className="text-lg font-semibold text-white">{step.title}</h3>
         </div>
-        <p className="text-gray-300 text-sm leading-relaxed">{step.content}</p>
+        <p className="text-gray-300 text-sm leading-relaxed">{step.description}</p>
       </div>
     );
   }
 
   function ProgressBar() {
     return (
-      <div className="w-full bg-gray-700 rounded-full h-1.5 mb-4">
+      <div className="w-full h-1.5 rounded-full bg-gray-700">
         <div
-          className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
+          className="h-full rounded-full bg-blue-600 transition-all duration-300"
           style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
         />
       </div>
@@ -265,28 +260,22 @@ export default function Tour({ steps, onComplete, onSkip }: TourProps) {
   function NavigationButtons() {
     return (
       <div className="flex items-center justify-between gap-3">
-        <button
+        <button className={`flex items-center px-4 py-2 gap-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out
+          ${currentStep === 0 ? 'text-gray-500' : 'text-gray-300 hover:bg-gray-700 cursor-pointer'}
+        `}
           onClick={handlePrev}
           disabled={currentStep === 0}
-          className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ${
-            currentStep === 0 ? 'text-gray-500' : 'text-gray-300 hover:bg-gray-700 cursor-pointer'
-          }`}
         >
           <ArrowLeft />
           Назад
         </button>
 
-        <span className="text-gray-400 text-sm font-medium">
-          {currentStep + 1} из {steps.length}
-        </span>
+        <span className="text-gray-400 text-sm font-medium">{currentStep + 1} из {steps.length}</span>
 
-        <button
+        <button className="flex items-center px-4 py-2 gap-2 rounded-lg bg-primary-700 hover:bg-primary-800 transition-all duration-200 ease-in-out cursor-pointer"
           onClick={handleNext}
-          className="flex items-center gap-2 rounded-lg px-4 py-2 bg-primary-700 hover:bg-primary-800 transition-all duration-300 cursor-pointer"
         >
-          <span className="text-sm font-medium text-white">
-            {currentStep === steps.length - 1 ? 'Завершить' : 'Далее'}
-          </span>
+          <span className="text-sm font-medium text-white">{currentStep === steps.length - 1 ? 'Завершить' : 'Далее'}</span>
           <ArrowRight className="text-white" />
         </button>
       </div>
