@@ -60,15 +60,19 @@ export default class Mod implements ModData {
   dependencies!: Mod[];
 
   private constructor(data: ModData) {
-    Object.assign(this, data);
+    Object.assign(this, {
+      ...data,
+      dependencies: (data.dependencies ?? []).map(dep => Mod.from(dep)),
+    });
   }
 
-  static from(data: ModData): Mod {
+  static from(data: ModData | Mod): Mod {
+    if (data instanceof Mod) return data;
     return new Mod(data);
   }
 
-  static fromArray(dataArray: ModData[]): Mod[] {
-    return dataArray.map(data => Mod.from(data));
+  static fromArray(dataArray: (ModData | Mod)[]): Mod[] {
+    return dataArray.map(Mod.from);
   }
 
   get isRequired(): boolean {
