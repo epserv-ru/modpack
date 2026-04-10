@@ -6,7 +6,7 @@ import ButtonNext from "@/components/buttons/ButtonNext";
 import SkeletonModButton from "@/components/buttons/SkeletonModButton";
 import { TextFormatter } from "@/components/TextFormatter";
 import { ModsProvider, useModsContext } from "@/components/ModsContext";
-import { useEffect, useState } from "react";
+import {RefObject, useEffect, useRef, useState} from "react";
 import {setHasSeenTour, useMinecraftVersion, useSeenTour} from "@/hooks/useIsDataLoaded";
 import { Download, Check } from "flowbite-react-icons/outline";
 import { QuestionCircle } from "flowbite-react-icons/solid";
@@ -31,6 +31,7 @@ export default function Page() {
 function SelectMods() {
   const modsContext = useModsContext();
   const minecraftVersion = useMinecraftVersion()!;
+  const modsContainerRef = useRef<HTMLDivElement>(null);
   const hasSeenTour = useSeenTour();
   const isLoading = !modsContext.loaded[minecraftVersion];
   const [showTour, setShowTour] = useState(false);
@@ -116,8 +117,8 @@ function SelectMods() {
 
   return (
     <main className="flex flex-col h-screen justify-between w-full bg-gray-900 font-[Inter]">
-      {isNative ? <ElectronHeader isTourActive={showTour} /> : <BrowserHeader onOpenDownloadApp={() => { setShowDownloadAppModal(true) }} isTourActive={showTour} />}
-      {isLoading ? <SkeletonBody /> : <Body />}
+      {isNative ? <ElectronHeader isTourActive={showTour} modsContainerRef={modsContainerRef} /> : <BrowserHeader modsContainerRef={modsContainerRef} onOpenDownloadApp={() => { setShowDownloadAppModal(true) }} isTourActive={showTour} />}
+      {isLoading ? <SkeletonBody /> : <Body modsContainerRef={modsContainerRef} />}
       {isLoading ? <SkeletonFooter /> : <Footer />}
       {showTour && !isLoading && (
         <Tour steps={tourSteps} onComplete={handleTourComplete} />
@@ -127,18 +128,25 @@ function SelectMods() {
   );
 }
 
-function TourButton({ isTourActive }: { isTourActive: boolean }) {
+function TourButton({ isTourActive, modsContainerRef }: { isTourActive: boolean, modsContainerRef: RefObject<HTMLDivElement | null> }) {
   const startTour = () => {
-    if (window.scrollY > 0) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    const container = modsContainerRef.current;
 
+    if (!container) {
+      window.dispatchEvent(new CustomEvent('startTour'));
+      return;
+    }
+
+    if (container.scrollTop > 0) {
+      container.scrollTo({ top: 0, behavior: 'smooth' });
       const checkScroll = () => {
-        if (window.scrollY === 0) {
+        if (container.scrollTop <= 0) {
           window.dispatchEvent(new CustomEvent('startTour'));
         } else {
           requestAnimationFrame(checkScroll);
         }
       };
+
       requestAnimationFrame(checkScroll);
     } else {
       window.dispatchEvent(new CustomEvent('startTour'));
@@ -166,7 +174,7 @@ function TourButton({ isTourActive }: { isTourActive: boolean }) {
   );
 }
 
-function ElectronHeader({ isTourActive }: { isTourActive: boolean }) {
+function ElectronHeader({ isTourActive, modsContainerRef }: { isTourActive: boolean, modsContainerRef: RefObject<HTMLDivElement | null> }) {
   return (
     <header className="flex h-12 px-2 z-50 justify-between items-center titlebar-drag-region bg-gray-800 shadow select-none">
       <NavigationButtons />
@@ -177,14 +185,14 @@ function ElectronHeader({ isTourActive }: { isTourActive: boolean }) {
       </div>
 
       <div className="titlebar-no-drag flex items-center gap-2">
-        <TourButton isTourActive={isTourActive} />
+        <TourButton isTourActive={isTourActive} modsContainerRef={modsContainerRef} />
         <WindowControls />
       </div>
     </header>
   );
 }
 
-function BrowserHeader({ onOpenDownloadApp, isTourActive }: { onOpenDownloadApp: () => void, isTourActive: boolean }) {
+function BrowserHeader({ onOpenDownloadApp, isTourActive, modsContainerRef }: { onOpenDownloadApp: () => void, isTourActive: boolean, modsContainerRef: RefObject<HTMLDivElement | null> }) {
   return (
     <header className="flex w-full px-8 py-3 justify-between shadow bg-gray-800 border-b border-gray-700">
       <Logo />
@@ -197,16 +205,15 @@ function BrowserHeader({ onOpenDownloadApp, isTourActive }: { onOpenDownloadApp:
           <span className="text-sm font-medium text-white">Скачать приложение</span>
           <Download size={20} className="text-white" />
         </button>
-        <TourButton isTourActive={isTourActive} />
+        <TourButton isTourActive={isTourActive} modsContainerRef={modsContainerRef} />
       </div>
     </header>
   );
 }
 
-function Body() {
+function Body({modsContainerRef} : {modsContainerRef: RefObject<HTMLDivElement | null>}) {
   const modsContext = useModsContext();
   const minecraftVersion = useMinecraftVersion()!;
-
   const modsOnActualVersion: Mod[] = modsContext.mods[minecraftVersion];
   const toggledModsOnActualVersion: Mod[] = modsContext.toggledMods[minecraftVersion];
   const toggledModsOnActualVersionWithoutLibraries: Mod[] = toggledModsOnActualVersion.filter(mod => !mod.isLibrary)
@@ -283,7 +290,7 @@ function Body() {
   )
 
   return (
-    <div className="flex w-full h-full justify-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-rounded-lg scrollbar-track-gray-800 overflow-y-scroll bg-transparent">
+    <div ref={modsContainerRef} className="flex w-full h-full justify-center scrollbar scrollbar-thumb-gray-500 scrollbar-track-rounded-lg scrollbar-track-gray-800 overflow-y-scroll bg-transparent">
       <div id="mods-page" className="flex flex-col w-6xl gap-4 py-8 items-start">
         <BodyDescription />
         <SearchSection
