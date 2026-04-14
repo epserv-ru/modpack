@@ -3,7 +3,7 @@
 #
 # [[mods]]
 # id = "id мода с Modrinth"
-# name = ""Fix for the lack of auto-scroll when clicking the tour button
+# name = ""
 # description = """description"""
 #
 # [mods.meta]
@@ -45,7 +45,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/mOgUt4GM/5a20ed1450a0e1e79a1fe04e61bb4e5878bf1d20.png"
 site = "https://modrinth.com/mod/modmenu"
-download = "https://cdn.modrinth.com/data/mOgUt4GM/versions/JWQVh32x/modmenu-17.0.0-beta.2.jar"
+download = "https://cdn.modrinth.com/data/mOgUt4GM/versions/Tyk71iSw/modmenu-17.0.0.jar"
 
 
 [[mods]]
@@ -69,7 +69,7 @@ tags = ["mobs", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/4I1XuqiY/6e5bbd0d06b1741bfdab6c0cfab6de8fdaf0064c_96.webp"
 site = "https://modrinth.com/mod/entity-model-features"
-download = "https://cdn.modrinth.com/data/4I1XuqiY/versions/uvlfzqyo/entity_model_features_1.21.11-fabric-3.0.12.jar"
+download = "https://cdn.modrinth.com/data/4I1XuqiY/versions/bXWByT4I/entity_model_features_1.21.11-fabric-3.0.17.jar"
 
 
 [[mods]]
@@ -92,7 +92,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/BVzZfTc1/af683d206d50b05258d865b0d6e4aa2f2cee12f2_96.webp"
 site = "https://modrinth.com/mod/entitytexturefeatures"
-download = "https://cdn.modrinth.com/data/BVzZfTc1/versions/3uFr0jys/entity_texture_features_1.21.11-fabric-7.0.9.jar"
+download = "https://cdn.modrinth.com/data/BVzZfTc1/versions/FEm4thcA/entity_texture_features_1.21.11-fabric-7.0.13.jar"
 
 
 [[mods]]
@@ -115,7 +115,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/AANobbMI/295862f4724dc3f78df3447ad6072b2dcd3ef0c9_96.webp"
 site = "https://modrinth.com/mod/sodium"
-download = "https://cdn.modrinth.com/data/AANobbMI/versions/ZPWbiWXz/sodium-fabric-0.8.6%2Bmc1.21.11.jar"
+download = "https://cdn.modrinth.com/data/AANobbMI/versions/UddlN6L4/sodium-fabric-0.8.7%2Bmc1.21.11.jar"
 
 
 [[mods]]
@@ -210,7 +210,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/gvQqBUqZ/bcc8686c13af0143adf4285d741256af824f70b7_96.webp"
 site = "https://modrinth.com/mod/lithium"
-download = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/qvNsoO3l/lithium-fabric-0.21.3%2Bmc1.21.11.jar"
+download = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Ow7wA0kG/lithium-fabric-0.21.4%2Bmc1.21.11.jar"
 
 
 [[mods]]
@@ -258,7 +258,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/YL57xq9U/18d0e7f076d3d6ed5bedd472b853909aac5da202_96.webp"
 site = "https://modrinth.com/mod/iris"
-download = "https://cdn.modrinth.com/data/YL57xq9U/versions/TSXvi2yD/iris-fabric-1.10.6%2Bmc1.21.11.jar"
+download = "https://cdn.modrinth.com/data/YL57xq9U/versions/fDpuVzVr/iris-fabric-1.10.7%2Bmc1.21.11.jar"
 
 
 [[mods]]
@@ -399,6 +399,7 @@ tags = ["client", "server"]
 icon = "https://cdn.modrinth.com/data/9s6osm5g/ed8a2316cbb6f4fc5f510e8e13a59a85cbbbff4d_96.webp"
 site = "https://modrinth.com/mod/cloth-config"
 download = "https://cdn.modrinth.com/data/9s6osm5g/versions/xuX40TN5/cloth-config-21.11.153-fabric.jar"
+
 
 [[mods]]
 id = "1eAoo2KR"
@@ -565,7 +566,7 @@ tags = ["client", "adventure", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/zV5r3pPn/ff7010d4ec0275609866c8b0f603b25e25949c08_96.webp"
 site = "https://modrinth.com/mod/3dskinlayers"
-download = "https://cdn.modrinth.com/data/zV5r3pPn/versions/JS9deRtw/skinlayers3d-fabric-1.10.2-mc1.21.11.jar"
+download = "https://cdn.modrinth.com/data/zV5r3pPn/versions/ntxaPFv3/skinlayers3d-fabric-1.11.1-mc1.21.11.jar"
 
 
 [[mods]]
@@ -588,7 +589,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/uLbm7CG6/9cae8ec18cac3b1cc6ef1efa239f381d669264e6.png"
 site = "https://modrinth.com/mod/language-reload"
-download = "https://cdn.modrinth.com/data/uLbm7CG6/versions/rDLJu2uE/language-reload-1.7.5%2B1.21.11.jar"
+download = "https://cdn.modrinth.com/data/uLbm7CG6/versions/YhcaQg5e/language-reload-1.7.6%2B1.21.11.jar"
 
 
 [[mods]]
@@ -612,7 +613,7 @@ tags = ["client", "storage"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/2M01OLQq/bb490716cf2590cf84100a495931c3d4743bce43_96.webp"
 site = "https://modrinth.com/mod/shulkerboxtooltip"
-download = "https://cdn.modrinth.com/data/2M01OLQq/versions/2lPKqJBJ/shulkerboxtooltip-fabric-5.2.15%2B1.21.11.jar"
+download = "https://cdn.modrinth.com/data/2M01OLQq/versions/rZovgkWT/shulkerboxtooltip-fabric-5.2.16%2B1.21.11.jar"
 
 
 [[mods]]
@@ -683,7 +684,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/bEpr0Arc/25b5529d7a3b030ac136a6ce879d8ed2a1aa4a8d.png"
 site = "https://modrinth.com/mod/litematica"
-download = "https://cdn.modrinth.com/data/bEpr0Arc/versions/7LGBHMu9/litematica-fabric-1.21.11-0.26.0.jar"
+download = "https://cdn.modrinth.com/data/bEpr0Arc/versions/ZF7nARQU/litematica-fabric-1.21.11-0.26.3.jar"
 
 
 [[mods]]
@@ -754,7 +755,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/n6PXGAoM/c5a85914f01be35575abe61c2d19d48e08581034_96.webp"
 site = "https://modrinth.com/mod/better-stats"
-download = "https://cdn.modrinth.com/data/n6PXGAoM/versions/4zp5svX3/betterstats-5.0.0-beta.5%2Bfabric-1.21.11.jar"
+download = "https://cdn.modrinth.com/data/n6PXGAoM/versions/99mBkJp1/betterstats-5.1.0%2Bfabric-1.21.11.jar"
 
 
 [[mods]]
@@ -848,7 +849,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/nvQzSEkH/b04217bc2b7dc524c4d12f81ff42cc1cefb9b0fc_96.webp"
 site = "https://modrinth.com/mod/jade"
-download = "https://cdn.modrinth.com/data/nvQzSEkH/versions/552ldiCx/Jade-1.21.11-Fabric-21.1.2.jar"
+download = "https://cdn.modrinth.com/data/nvQzSEkH/versions/swJhAyak/Jade-1.21.11-Fabric-21.1.6.jar"
 
 
 [[mods]]
@@ -896,7 +897,7 @@ tags = ["client", "adventure", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/MPCX6s5C/b97fd5f7a893165052408b747286d6eb38d57abb_96.webp"
 site = "https://modrinth.com/mod/not-enough-animations"
-download = "https://cdn.modrinth.com/data/MPCX6s5C/versions/QGjgHo9H/notenoughanimations-fabric-1.11.3-mc1.21.11.jar"
+download = "https://cdn.modrinth.com/data/MPCX6s5C/versions/2QvMbjbL/notenoughanimations-fabric-1.12.1-mc1.21.11.jar"
 
 
 [[mods]]
@@ -944,7 +945,7 @@ tags = ["server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/VSNURh3q/3c2ce471054466712a44c8758a03e03bb868f93b_96.webp"
 site = "https://modrinth.com/mod/c2me-fabric"
-download = "https://cdn.modrinth.com/data/VSNURh3q/versions/QdLiMUjx/c2me-fabric-mc1.21.11-0.3.7%2Balpha.0.7.jar"
+download = "https://cdn.modrinth.com/data/VSNURh3q/versions/vsiqVtu6/c2me-fabric-mc1.21.11-0.3.7%2Balpha.0.9.jar"
 
 
 [[mods]]
@@ -968,7 +969,7 @@ tags = ["client", "cursed", "decoration", "social"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/CllP7wW0/6d787d5cd5fface4fe9a5f6ce0770576bca09132.png"
 site = "https://modrinth.com/mod/smooth-scroll"
-download = "https://cdn.modrinth.com/data/CllP7wW0/versions/xgSJoJ5f/smoothscroll-2.6.4.jar"
+download = "https://cdn.modrinth.com/data/CllP7wW0/versions/FBqx2Ic3/smoothscroll-2.6.5.jar"
 
 
 [[mods]]
@@ -1015,7 +1016,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/GcWjdA9I/a530ae55df5e0c405f5cf1b3e4fd6163a398bdc3.png"
 site = "https://modrinth.com/mod/malilib"
-download = "https://cdn.modrinth.com/data/GcWjdA9I/versions/4KeJMj6s/malilib-fabric-1.21.11-0.27.6.jar"
+download = "https://cdn.modrinth.com/data/GcWjdA9I/versions/APEEwSfs/malilib-fabric-1.21.11-0.27.8.jar"
 
 
 [[mods]]
@@ -1038,7 +1039,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Eldc1g37/36f2c7c76a7fc63e827bc20657853b7f1d9e4060.png"
 site = "https://modrinth.com/mod/tcdcommons"
-download = "https://cdn.modrinth.com/data/Eldc1g37/versions/9ck6BCCe/tcdcommons-5.0.0-beta.5%2Bfabric-1.21.11.jar"
+download = "https://cdn.modrinth.com/data/Eldc1g37/versions/X850L9UC/tcdcommons-5.1.0%2Bfabric-1.21.11.jar"
 
 
 [[mods]]
@@ -1086,7 +1087,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/NNAgCjsB/7873452d6cede4daed12da3d7d8c193ab88b4fd6_96.webp"
 site = "https://modrinth.com/mod/entityculling"
-download = "https://cdn.modrinth.com/data/NNAgCjsB/versions/Dx3xsUER/entityculling-fabric-1.9.5-mc1.21.11.jar"
+download = "https://cdn.modrinth.com/data/NNAgCjsB/versions/WORDhU8n/entityculling-fabric-1.10.1-mc1.21.11.jar"
 
 
 [[mods]]
@@ -1110,7 +1111,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Ha28R6CL/72c3d74aeb665e45aea93a945a01474cbce3b7da_96.webp"
 site = "https://modrinth.com/mod/fabric-language-kotlin"
-download = "https://cdn.modrinth.com/data/Ha28R6CL/versions/ViT4gucI/fabric-language-kotlin-1.13.9%2Bkotlin.2.3.10.jar"
+download = "https://cdn.modrinth.com/data/Ha28R6CL/versions/21TRTKmh/fabric-language-kotlin-1.13.10%2Bkotlin.2.3.20.jar"
 
 
 [[mods]]
@@ -1235,7 +1236,7 @@ download = ""
 [[mods]]
 id = "Agw7MFEL"
 name = "Head in the Clouds"
-description = """Убирает эффекты дождя если игрок находится выше облаков."""
+description = "Убирает эффекты дождя если игрок находится выше облаков."
 
 dependencies = []
 
@@ -1275,7 +1276,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/nrikgvxm/e637304d1bec07c39e833d810aa4bdbb9703bf95_96.webp"
 site = "https://modrinth.com/mod/particle-rain"
-download = "https://cdn.modrinth.com/data/nrikgvxm/versions/8kdLx5yJ/particlerain-4.0.0-beta.5%2B1.21.11-fabric.jar"
+download = "https://cdn.modrinth.com/data/nrikgvxm/versions/HDPId4fr/particlerain-4.0.0-beta.9%2B1.21.11-fabric.jar"
 
 
 [[mods]]
@@ -1351,7 +1352,7 @@ download = "https://cdn.modrinth.com/data/EgBj3Bnf/versions/Z2N2FfqH/timm-1.1.1-
 [[mods]]
 id = "ZP7xHXtw"
 name = "Remove Reloading Screen"
-description = """Удаляет экран перезагрузки ресурсов, делая процесс смены пакетов ресурсов мгновенным и бесшовным."""
+description = "Удаляет экран перезагрузки ресурсов, делая процесс смены пакетов ресурсов мгновенным и бесшовным."
 
 dependencies = ["ohNO6lps"]
 
@@ -1396,7 +1397,7 @@ download = "https://cdn.modrinth.com/data/lhGA9TYQ/versions/uNdfrcQ8/architectur
 [[mods]]
 id = "K0AkAin6"
 name = "Client Sort"
-description = """Добавляет простую, легальную на сервере, сортировку инвентаря."""
+description = "Добавляет простую, легальную на сервере, сортировку инвентаря."
 
 dependencies = []
 
@@ -1418,7 +1419,7 @@ download = "https://cdn.modrinth.com/data/K0AkAin6/versions/YNOFvUDb/clientsort-
 [[mods]]
 id = "8qkXwOnk"
 name = "More Chat History"
-description = """Увеличивает максимальную длину истории чата с ванильных 100 сообщений до 2¹⁴ сообщений."""
+description = "Увеличивает максимальную длину истории чата с ванильных 100 сообщений до 2¹⁴ сообщений."
 
 dependencies = []
 
@@ -1440,7 +1441,7 @@ download = "https://cdn.modrinth.com/data/8qkXwOnk/versions/3siYJiWG/morechathis
 [[mods]]
 id = "T8MMXTpr"
 name = "Drip Sounds"
-description = """Добавляет звуки при падении капель и другие связанные с этим изменения."""
+description = "Добавляет звуки при падении капель и другие связанные с этим изменения."
 
 dependencies = []
 
@@ -1480,3 +1481,4 @@ tags = ["client"]
 icon = "https://cdn.modrinth.com/data/JKmqIR4V/76dde09c796e391fdc60bc67203d09e945463beb.png"
 site = "https://modrinth.com/mod/sign-fix"
 download = "https://cdn.modrinth.com/data/JKmqIR4V/versions/OeAPT3jW/sign-fix-1.0.0.jar"
+
