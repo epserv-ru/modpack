@@ -825,7 +825,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/fxxUqruK/2a4159b1ff6ecba43bf895d6abee6f724a0e03c0_96.webp"
 site = "https://modrinth.com/mod/voxy"
-download = "https://cdn.modrinth.com/data/fxxUqruK/versions/agZsxLao/voxy-0.2.6-alpha.jar"
+download = "https://cdn.modrinth.com/data/fxxUqruK/versions/k5PZxsfL/voxy-0.2.13-alpha.jar"
 
 
 [[mods]]
