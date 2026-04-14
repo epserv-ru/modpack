@@ -8,13 +8,21 @@
 # ==============================================================================
 
 [[versions]]
+version = "26.1.2"
+status  = "experimental"
+
+
+[[versions]]
 version = "1.21.11"
-status = "supportedAndRecommended"
+status  = "supportedAndRecommended"
+
 
 [[versions]]
 version = "1.21.10"
-status = "supportedButNotRecommended"
+status  = "supportedButNotRecommended"
+
 
 [[versions]]
 version = "1.21.9"
-status = "supportedButNotRecommended"
+status  = "supportedButNotRecommended"
+
