@@ -31,7 +31,7 @@ description = """Добавляет удобное меню для просмо�
  версии модификаций и получить доступ к их настройкам прямо из игры, что значительно упрощает работу
  с большим количеством модов."""
 
-dependencies = []
+dependencies = ["P7dR8mSH", "eXts2L7r"]
 
 [mods.meta]
 priority = "required"
@@ -45,7 +45,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/mOgUt4GM/5a20ed1450a0e1e79a1fe04e61bb4e5878bf1d20.png"
 site = "https://modrinth.com/mod/modmenu"
-download = "https://cdn.modrinth.com/data/mOgUt4GM/versions/jvjwXH6l/modmenu-18.0.0-alpha.8.jar"
+download = "https://cdn.modrinth.com/data/mOgUt4GM/versions/3rsoV1bk/modmenu-18.0.0.jar"
 
 
 [[mods]]
@@ -55,11 +55,11 @@ description = """Расширяет возможности кастомизац�
  текстуры и дополнительные визуальные эффекты для мобов и других игровых объектов. Работает в паре
  с модом Entity Texture Features."""
 
-dependencies = []
+dependencies = ["BVzZfTc1"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -69,7 +69,7 @@ tags = ["mobs", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/4I1XuqiY/6e5bbd0d06b1741bfdab6c0cfab6de8fdaf0064c_96.webp"
 site = "https://modrinth.com/mod/entity-model-features"
-download = ""
+download = "https://cdn.modrinth.com/data/4I1XuqiY/versions/3AWXQABp/entity_model_features-3.2.4-26.1-fabric.jar"
 
 
 [[mods]]
@@ -82,7 +82,7 @@ dependencies = []
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -92,7 +92,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/BVzZfTc1/af683d206d50b05258d865b0d6e4aa2f2cee12f2_96.webp"
 site = "https://modrinth.com/mod/entitytexturefeatures"
-download = ""
+download = "https://cdn.modrinth.com/data/BVzZfTc1/versions/pzW03Rc5/entity_texture_features_26.1-fabric-7.1.jar"
 
 
 [[mods]]
@@ -115,7 +115,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/AANobbMI/295862f4724dc3f78df3447ad6072b2dcd3ef0c9_96.webp"
 site = "https://modrinth.com/mod/sodium"
-download = "https://cdn.modrinth.com/data/AANobbMI/versions/uGvVQBnw/sodium-fabric-0.8.9%2Bmc26.1.1.jar"
+download = "https://cdn.modrinth.com/data/AANobbMI/versions/vf7UgZpC/sodium-fabric-0.9.1%2Bmc26.1.2.jar"
 
 
 [[mods]]
@@ -125,7 +125,7 @@ description = """Дополнение к моду Sodium, которое рас�
 Этот мод добавляет дополнительные настройки и функции, направленные на повышение производительности и качества
 визуализации, включая улучшенную поддержку теней, освещения и эффектов."""
 
-dependencies = []
+dependencies = ["AANobbMI"]
 
 [mods.meta]
 priority = "required"
@@ -139,7 +139,7 @@ tags = ["client", "cursed", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/PtjYWJkn/0df4fb22a11e1dcb5e83cb0aadd275b571aca7a9_96.webp"
 site = "https://modrinth.com/mod/sodium-extra"
-download = "https://cdn.modrinth.com/data/PtjYWJkn/versions/1bz3AMCV/sodium-extra-fabric-0.8.7%2Bmc26.1.1.jar"
+download = "https://cdn.modrinth.com/data/PtjYWJkn/versions/q7UnsNa0/sodium-extra-fabric-0.9.3%2Bmc26.1.2.jar"
 
 
 [[mods]]
@@ -148,7 +148,7 @@ name = "Reese's Sodium Options"
 description = """Предоставляет альтернативный интерфейс для настроек, реализованных в Sodium. Добавляет строку поиска
 настроек, кнопку для доступа в меню с шейдерами если установлен мод Iris Shaders и тд."""
 
-dependencies = []
+dependencies = ["AANobbMI"]
 
 [mods.meta]
 priority = "required"
@@ -162,7 +162,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Bh37bMuy/icon.png"
 site = "https://modrinth.com/mod/reeses-sodium-options"
-download = "https://cdn.modrinth.com/data/Bh37bMuy/versions/p88Tf9YM/reeses-sodium-options-fabric-2.0.5%2Bmc26.1.1.jar"
+download = "https://cdn.modrinth.com/data/Bh37bMuy/versions/laVM31w1/reeses-sodium-options-fabric-2.2.3%2Bmc26.1.2.jar"
 
 
 [[mods]]
@@ -176,7 +176,7 @@ dependencies = []
 
 [mods.meta]
 priority = "required"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -186,7 +186,7 @@ tags = ["client", "server", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/uXXizFIs/222a126f26f8f9ae1eb339f3b767677f18bff31f_96.webp"
 site = "https://modrinth.com/mod/ferrite-core"
-download = ""
+download = "https://cdn.modrinth.com/data/uXXizFIs/versions/d5ddUdiB/ferritecore-9.0.0-fabric.jar"
 
 
 [[mods]]
@@ -210,7 +210,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/gvQqBUqZ/bcc8686c13af0143adf4285d741256af824f70b7_96.webp"
 site = "https://modrinth.com/mod/lithium"
-download = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/v2xoRvRP/lithium-fabric-0.24.1%2Bmc26.1.2.jar"
+download = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Oqq8TOAV/lithium-fabric-0.24.7%2Bmc26.1.2.jar"
 
 
 [[mods]]
@@ -220,11 +220,11 @@ description = """Улучшает производительность за сч
 невидимых объектов (culling), благодаря чему игра не тратит ресурсы на отрисовку тех частей мира,
 которые не видны игроку."""
 
-dependencies = []
+dependencies = ["9s6osm5g"]
 
 [mods.meta]
 priority = "required"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -234,7 +234,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/51shyZVL/c51b07193b56e952269ef50101d12aecba2b4747_96.webp"
 site = "https://modrinth.com/mod/moreculling"
-download = ""
+download = "https://cdn.modrinth.com/data/51shyZVL/versions/PX8FzP3c/moreculling-fabric-26.1.2-1.7.3.jar"
 
 
 [[mods]]
@@ -244,7 +244,7 @@ description = """Служит платформой для интеграции �
 Он совместим с современными оптимизаторами, такими как Sodium, и позволяет использовать разнообразные шейдерные
 пакеты для создания реалистичного освещения, теней, отражений и других эффектов."""
 
-dependencies = []
+dependencies = ["AANobbMI"]
 
 [mods.meta]
 priority = "optional"
@@ -258,7 +258,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/YL57xq9U/18d0e7f076d3d6ed5bedd472b853909aac5da202_96.webp"
 site = "https://modrinth.com/mod/iris"
-download = "https://cdn.modrinth.com/data/YL57xq9U/versions/MwcLS51S/iris-fabric-1.10.9%2Bmc26.1.1.jar"
+download = "https://cdn.modrinth.com/data/YL57xq9U/versions/5H9TsVy4/iris-fabric-1.11.3%2Bmc26.1.2.jar"
 
 
 [[mods]]
@@ -267,7 +267,7 @@ name = "No Chat Reports"
 description = """Отключает функцию отправки отчетов о чатах. Он предотвращает автоматическую передачу содержимого
 чата на серверы разработчиков, обеспечивая дополнительную приватность и безопасность для игроков."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -290,7 +290,7 @@ name = "Plasmo Voice"
 description = """Добавляет встроенную голосовую связь между игроками. Он позволяет общаться в реальном времени
 без необходимости использовать сторонние программы, обеспечивая удобный и качественный звук прямо в игре."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -304,7 +304,7 @@ tags = ["client", "server", "adventure", "social"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/1bZhdhsH/72c1641d4af92d93546958a2c87e0b5fd1c3f650_96.webp"
 site = "https://modrinth.com/plugin/plasmo-voice"
-download = "https://cdn.modrinth.com/data/1bZhdhsH/versions/dzv0C6km/plasmovoice-fabric-26.1-2.1.9%2B9b97125-SNAPSHOT.jar"
+download = "https://cdn.modrinth.com/data/1bZhdhsH/versions/VShrR3w9/plasmovoice-fabric-26.1-2.1.16.jar"
 
 
 [[mods]]
@@ -313,7 +313,7 @@ name = "Zoomify"
 description = """Добавляет возможность плавного масштабирования камеры, позволяя игрокам приближать и отдалять
 изображение без резких скачков. Это улучшает обзор и детализацию, облегчая исследование мира и прицеливание."""
 
-dependencies = []
+dependencies = ["1eAoo2KR", "Ha28R6CL", "P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -327,7 +327,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/w7ThoJFB/e2de67a0bfb9e8aa2347982ab3ec5463f26cca31_96.webp"
 site = "https://modrinth.com/mod/zoomify"
-download = "https://cdn.modrinth.com/data/w7ThoJFB/versions/3zi0VJPK/zoomify-2.16.0%2B26.1.jar"
+download = "https://cdn.modrinth.com/data/w7ThoJFB/versions/tpQ8eZAo/zoomify-2.16.1%2B26.1.jar"
 
 
 [[mods]]
@@ -340,7 +340,7 @@ dependencies = []
 
 [mods.meta]
 priority = "required"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -350,7 +350,7 @@ tags = ["client", "server", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/fQEb0iXm/3ea60899d060a9286e03b87bfa9e71d0cbe2dde7_96.webp"
 site = "https://modrinth.com/mod/krypton"
-download = ""
+download = "https://cdn.modrinth.com/data/fQEb0iXm/versions/kYAGItyj/krypton-0.3.0.jar"
 
 
 [[mods]]
@@ -374,7 +374,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/P7dR8mSH/icon.png"
 site = "https://modrinth.com/mod/fabric-api"
-download = "https://cdn.modrinth.com/data/P7dR8mSH/versions/fm7UYECV/fabric-api-0.145.4%2B26.1.2.jar"
+download = "https://cdn.modrinth.com/data/P7dR8mSH/versions/uLkEd5dr/fabric-api-0.155.2%2B26.1.2.jar"
 
 
 [[mods]]
@@ -388,7 +388,7 @@ dependencies = []
 
 [mods.meta]
 priority = "optional"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -398,7 +398,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/9s6osm5g/ed8a2316cbb6f4fc5f510e8e13a59a85cbbbff4d_96.webp"
 site = "https://modrinth.com/mod/cloth-config"
-download = ""
+download = "https://cdn.modrinth.com/data/9s6osm5g/versions/GFM8zh9J/cloth-config-26.1.154.jar"
 
 
 [[mods]]
@@ -408,7 +408,7 @@ description = """Предназначена для упрощения созда
 GUI-интерфейсы на основе аннотированных классов конфигурации, избавляя разработчиков от необходимости вручную
 писать код для настройки параметров."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
@@ -422,7 +422,7 @@ tags = ["client", "server", "management", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/1eAoo2KR/08c0cd32515e260f4bb20bbc0696510041523f9a_96.webp"
 site = "https://modrinth.com/mod/yacl"
-download = "https://cdn.modrinth.com/data/1eAoo2KR/versions/h2FGeDHG/yet_another_config_lib_v3-3.9.2%2B26.1-fabric.jar"
+download = "https://cdn.modrinth.com/data/1eAoo2KR/versions/svTkvBec/yet_another_config_lib_v3-3.9.6%2B26.1-fabric.jar"
 
 
 [[mods]]
@@ -446,7 +446,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/M08ruV16/icon.png"
 site = "https://modrinth.com/mod/bobby"
-download = "https://cdn.modrinth.com/data/M08ruV16/versions/8gsFUovP/bobby-5.2.12%2Bmc26.1.jar"
+download = "https://cdn.modrinth.com/data/M08ruV16/versions/njaTBYvt/bobby-5.2.13%2Bmc26.1.jar"
 
 
 [[mods]]
@@ -456,11 +456,11 @@ description = """Добавляет на экран мини-карту с мн�
 мобов (отключено на EP), точки смерти, и позволяет создавать собственные метки (waypoints). Поддерживает разные
 режимы карты (поверхность, пещеры) (режим отображения пещер отключен на EP)."""
 
-dependencies = ["ohNO6lps"]
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -470,7 +470,7 @@ tags = ["client", "adventure", "transportation", "gameplay"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/1bokaNcj/354080f65407e49f486fcf9c4580e82c45ae63b8_96.webp"
 site = "https://modrinth.com/mod/xaeros-minimap"
-download = ""
+download = "https://cdn.modrinth.com/data/1bokaNcj/versions/fklv23QW/xaerominimap-fabric-26.1.2-26.4.2.jar"
 
 
 [[mods]]
@@ -480,11 +480,11 @@ description = """Добавляет полноэкранную карту мир
 Мод автоматически сохраняет исследованные участки мира, позволяет просматривать их в любое время, устанавливать
  метки (waypoints)."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -494,7 +494,7 @@ tags = ["client", "adventure", "transportation", "gameplay"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/NcUtCpym/354080f65407e49f486fcf9c4580e82c45ae63b8_96.webp"
 site = "https://modrinth.com/mod/xaeros-world-map"
-download = ""
+download = "https://cdn.modrinth.com/data/NcUtCpym/versions/BzCXHIwa/xaeroworldmap-fabric-26.1.2-1.45.0.jar"
 
 
 [[mods]]
@@ -504,7 +504,7 @@ description = """Добавляет динамическое освещение 
 фонари или светящиеся предметы, излучают свет даже при нахождении в руке игрока, инвентаре или будучи
 выброшенными на землю."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -518,7 +518,7 @@ tags = ["client", "adventure", "decoration", "gameplay"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/yBW8D80W/d4f5c3ff8df7caf024178b04eca6d69f95979cfe_96.webp"
 site = "https://modrinth.com/mod/lambdynamiclights"
-download = "https://cdn.modrinth.com/data/yBW8D80W/versions/XrvvtEB5/lambdynamiclights-4.10.1%2B26.1.1.jar"
+download = "https://cdn.modrinth.com/data/yBW8D80W/versions/pnv86kjJ/lambdynamiclights-4.11.1%2B26.1.2.jar"
 
 
 [[mods]]
@@ -528,7 +528,7 @@ description = """Расширяет информацию о питании в и
 голода и насыщения от еды, а также добавляет визуальные индикаторы при наведении на еду в инвентаре и при
 удержании еды в руке."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -542,7 +542,7 @@ tags = ["client", "server", "food", "gameplay"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/EsAfCjCV/icon.png"
 site = "https://modrinth.com/mod/appleskin"
-download = "https://cdn.modrinth.com/data/EsAfCjCV/versions/HwaLJe3v/appleskin-fabric-mc26.1-3.0.9.jar"
+download = "https://cdn.modrinth.com/data/EsAfCjCV/versions/zLlqqiTA/appleskin-fabric-mc26.1.2-3.0.10.jar"
 
 
 [[mods]]
@@ -552,7 +552,7 @@ description = """Преобразует пиксельный второй сло
 слою скина. Мод автоматически переключается на стандартное 2D-отображение, когда другие игроки находятся на
 расстоянии более 12 блоков, чтобы сохранить производительность."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -566,7 +566,7 @@ tags = ["client", "adventure", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/zV5r3pPn/ff7010d4ec0275609866c8b0f603b25e25949c08_96.webp"
 site = "https://modrinth.com/mod/3dskinlayers"
-download = "https://cdn.modrinth.com/data/zV5r3pPn/versions/8kxiY3G1/skinlayers3d-fabric-1.11.1-mc26.1.jar"
+download = "https://cdn.modrinth.com/data/zV5r3pPn/versions/yGhuC8Hx/skinlayers3d-fabric-1.11.2-mc26.1.jar"
 
 
 [[mods]]
@@ -575,7 +575,7 @@ name = "Language Reload"
 description = """Предназначен для улучшения работы с языковыми настройками, ускоряя процесс переключения языков,
 добавляя строку поиска языка и другие возможности."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
@@ -589,7 +589,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/uLbm7CG6/9cae8ec18cac3b1cc6ef1efa239f381d669264e6.png"
 site = "https://modrinth.com/mod/language-reload"
-download = "https://cdn.modrinth.com/data/uLbm7CG6/versions/pBt7L8Nq/language-reload-1.7.6%2B26.1.jar"
+download = "https://cdn.modrinth.com/data/uLbm7CG6/versions/G7cLFIIG/language-reload-1.7.7%2B26.1.2.jar"
 
 
 [[mods]]
@@ -599,7 +599,7 @@ description = """Позволяет просматривать содержим�
 инвентаре и удержании клавиши Shift отображается компактный предварительный просмотр его содержимого. Для полного
 просмотра с отображением всех предметов в соответствующих слотах удерживайте Alt + Shift."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -613,7 +613,7 @@ tags = ["client", "storage"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/2M01OLQq/bb490716cf2590cf84100a495931c3d4743bce43_96.webp"
 site = "https://modrinth.com/mod/shulkerboxtooltip"
-download = "https://cdn.modrinth.com/data/2M01OLQq/versions/ZkGgdpPY/shulkerboxtooltip-fabric-5.2.18%2B26.1.jar"
+download = "https://cdn.modrinth.com/data/2M01OLQq/versions/l7gept3U/shulkerboxtooltip-fabric-5.4.0%2B26.1.1.jar"
 
 
 [[mods]]
@@ -623,11 +623,11 @@ description = """Предназначен для улучшения интерф
 интерфейс для просмотра достижений, особенно полезный при высоких настройках масштаба интерфейса. Является
 продолжением оригинального мода AdvancementInfo."""
 
-dependencies = []
+dependencies = ["9s6osm5g"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -637,7 +637,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/tLuRLqpa/1b5575753dd926e1bbdf2cc2ee2a5a8b4501cb56.png"
 site = "https://modrinth.com/mod/advancements-reloaded"
-download = ""
+download = "https://cdn.modrinth.com/data/tLuRLqpa/versions/padTP1d1/advancements_reloaded-0.14.0-fabric-26.2.jar"
 
 
 [[mods]]
@@ -660,7 +660,7 @@ tags = ["client", "decoration", "social"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Wb5oqrBJ/icon.png"
 site = "https://modrinth.com/mod/chat-heads"
-download = "https://cdn.modrinth.com/data/Wb5oqrBJ/versions/J5xd8lnJ/chat_heads-1.2.2-fabric-26.1.jar"
+download = "https://cdn.modrinth.com/data/Wb5oqrBJ/versions/lyZOZ4qX/chat_heads-1.2.8-fabric-26.1.jar"
 
 
 [[mods]]
@@ -684,7 +684,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/bEpr0Arc/25b5529d7a3b030ac136a6ce879d8ed2a1aa4a8d.png"
 site = "https://modrinth.com/mod/litematica"
-download = "https://cdn.modrinth.com/data/bEpr0Arc/versions/bIi0RmrQ/litematica-fabric-26.1.1-0.27.1.jar"
+download = "https://cdn.modrinth.com/data/bEpr0Arc/versions/8Wl8yI2Z/litematica-fabric-26.1.2-0.27.12.jar"
 
 
 [[mods]]
@@ -693,7 +693,7 @@ name = "ClickThrough Plus"
 description = """Позволяет кликам мыши проходить сквозь определённые объекты, такие как таблички, рамки, картины и тд.
 позволяя, например, открывать сундуки сквозь них. Мод является портом оригинального ClickThrough на версии 1.21+."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -707,7 +707,30 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/fJi8nm80/5ea9aeeb89e08524310ae9e6b71f793e2ba63e0f_96.webp"
 site = "https://modrinth.com/mod/clickthrough+"
-download = "https://cdn.modrinth.com/data/fJi8nm80/versions/nDlifhbb/clickthrough-plus-3.6.4%2B26.1.1-fabric.jar"
+download = "https://cdn.modrinth.com/data/fJi8nm80/versions/JMmN2bhs/clickthrough-plus-3.6.5%2B26.1.2-fabric.jar"
+
+
+[[mods]]
+id = "tNmWwdI2"
+name = "McQoy"
+description = """Автоматически создаёт графические экраны настроек для модов, использующих Kaleido Config.
+Позволяет изменять конфигурацию ClickThrough Plus и других совместимых модов прямо в игре через Mod Menu."""
+
+dependencies = ["1eAoo2KR", "mOgUt4GM"]
+
+[mods.meta]
+priority = "optional"
+status = "stable"
+hidden = false
+
+[mods.categorization]
+primary_category = "utility"
+tags = ["client", "management", "utility"]
+
+[mods.links]
+icon = "https://cdn.modrinth.com/data/tNmWwdI2/076b62f9d3682d8a228a12223a31e7fa09e01b8e.png"
+site = "https://modrinth.com/mod/mcqoy"
+download = "https://cdn.modrinth.com/data/tNmWwdI2/versions/Jvu612ei/mcqoy-0.4.1%2Bfabric-26.1.jar"
 
 
 [[mods]]
@@ -717,11 +740,11 @@ description = """Ускоряет процесс выхода из игры, з�
 завершение работы, отключая ненужные процессы и ускоряя сохранение данных, что особенно полезно для игроков,
 которым важно быстро завершить сессию без долгих задержек."""
 
-dependencies = []
+dependencies = ["9s6osm5g", "P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -731,7 +754,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/x1hIzbuY/930154d1ed3e855079c5f6ee63faeb9bcbe87cfd_96.webp"
 site = "https://modrinth.com/mod/fastquit"
-download = ""
+download = "https://cdn.modrinth.com/data/x1hIzbuY/versions/ly8rADfr/fastquit-3.1.4%2Bmc26.1.x.jar"
 
 
 [[mods]]
@@ -741,7 +764,7 @@ description = """Улучшает стандартный экран статис
 Он добавляет расширенные категории, фильтры и сортировку данных, позволяя игрокам легко отслеживать свои достижения,
 прогресс и игровые показатели."""
 
-dependencies = ["Eldc1g37", "lhGA9TYQ"]
+dependencies = ["Eldc1g37"]
 
 [mods.meta]
 priority = "optional"
@@ -755,7 +778,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/n6PXGAoM/c5a85914f01be35575abe61c2d19d48e08581034_96.webp"
 site = "https://modrinth.com/mod/better-stats"
-download = "https://cdn.modrinth.com/data/n6PXGAoM/versions/epFotig5/betterstats-5.2.1%2Bfn-26.1.jar"
+download = "https://cdn.modrinth.com/data/n6PXGAoM/versions/LqOH9k7B/betterstats-5.5.6%2Bfn-26.1.jar"
 
 
 [[mods]]
@@ -769,7 +792,7 @@ dependencies = []
 
 [mods.meta]
 priority = "optional"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -779,7 +802,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/BWloQ9jK/488efc88a62495c841ef2dfc462cd1ae5025db94_96.webp"
 site = "https://modrinth.com/mod/stendhal"
-download = ""
+download = "https://cdn.modrinth.com/data/BWloQ9jK/versions/FNWNtIX0/stendhal-1.4.6-26.1.2.jar"
 
 
 [[mods]]
@@ -789,7 +812,7 @@ description = """Позволяет ресурс-пакам с форматам�
 пользовательские слои блоков) работать без установки OptiFine. Мод включает встроенные ресурс-паки для улучшения
 отображения стекла и других блоков."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
@@ -807,12 +830,12 @@ download = "https://cdn.modrinth.com/data/1IjD5062/versions/l1mM6Ov7/continuity-
 
 
 [[mods]]
-id = "Bnv5m4SE"
+id = "fxxUqruK"
 name = "Voxy"
 description = """Добавляет LOD метод рендера удаленных чанков, увеличивая дальность видимости малыми затратами
 ресурсов. Работает на системах с поддержкой OpenGL 4.6 и выше."""
 
-dependencies = []
+dependencies = ["AANobbMI", "P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
@@ -826,7 +849,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/fxxUqruK/2a4159b1ff6ecba43bf895d6abee6f724a0e03c0_96.webp"
 site = "https://modrinth.com/mod/voxy"
-download = "https://cdn.modrinth.com/data/fxxUqruK/versions/agZsxLao/voxy-0.2.6-alpha.jar"
+download = "https://cdn.modrinth.com/data/fxxUqruK/versions/Zt3LPI0b/voxy-0.2.18-beta-26.1.2.jar"
 
 
 [[mods]]
@@ -835,11 +858,11 @@ name = "Jade"
 description = """Является современной альтернативой Hwyla/Waila. Он отображает подробную информацию о блоках и
 предметах при наведении курсора, улучшая взаимодействие с игровым миром."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -849,7 +872,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/nvQzSEkH/b04217bc2b7dc524c4d12f81ff42cc1cefb9b0fc_96.webp"
 site = "https://modrinth.com/mod/jade"
-download = ""
+download = "https://cdn.modrinth.com/data/nvQzSEkH/versions/fW2xykin/Jade-mc26.1-Fabric-26.1.9.jar"
 
 
 [[mods]]
@@ -859,7 +882,7 @@ description = """Добавляет реалистичную анимацию о
 динамичного мира, улучшая визуальное восприятие окружающей природы. Листья плавно падают и разлетаются под воздействием
 ветра без значительной нагрузки на производительность."""
 
-dependencies = []
+dependencies = ["9s6osm5g", "P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
@@ -873,7 +896,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/WhbRG4iK/58f5b66cb54787d9c25228d667f61144371c3867_96.webp"
 site = "https://modrinth.com/mod/fallingleaves"
-download = "https://cdn.modrinth.com/data/WhbRG4iK/versions/utvU33Po/fallingleaves-2.0.5%2B26.1.jar"
+download = "https://cdn.modrinth.com/data/WhbRG4iK/versions/JYRSvzQW/fallingleaves-2.0.7%2B26.1.jar"
 
 
 [[mods]]
@@ -883,11 +906,11 @@ description = """Добавляет дополнительные анимаци�
 имеющихся. Были заменены анимации поедания, питья, добавляет анимации от третьего лица для просмотра карт, лазанию
 по лестнице и еще много других анимаций."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -897,7 +920,7 @@ tags = ["client", "adventure", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/MPCX6s5C/b97fd5f7a893165052408b747286d6eb38d57abb_96.webp"
 site = "https://modrinth.com/mod/not-enough-animations"
-download = ""
+download = "https://cdn.modrinth.com/data/MPCX6s5C/versions/f7Jte8km/notenoughanimations-fabric-1.12.4-mc26.1.jar"
 
 
 [[mods]]
@@ -907,11 +930,11 @@ description = """Добавляет эффект размытия фона в и
 меню и оверлеях. Он делает интерфейс более мягким, создавая приятную атмосферу без значительной нагрузки на
 производительность. Blur+ помогает выделить важные элементы, снижая отвлекающие детали на заднем плане."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -921,7 +944,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/NK39zBp2/1bb976c95042f20f26e27e6c4eb9e359e45d5002.webp"
 site = "https://modrinth.com/mod/blur-plus"
-download = ""
+download = "https://cdn.modrinth.com/data/NK39zBp2/versions/xAtVI5Sc/blur-fabric-6.3.0%2B26.1.jar"
 
 
 [[mods]]
@@ -945,7 +968,7 @@ tags = ["server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/VSNURh3q/3c2ce471054466712a44c8758a03e03bb868f93b_96.webp"
 site = "https://modrinth.com/mod/c2me-fabric"
-download = "https://cdn.modrinth.com/data/VSNURh3q/versions/yrNQQ1AQ/c2me-fabric-mc26.1.2-0.3.7%2Balpha.0.65.jar"
+download = "https://cdn.modrinth.com/data/VSNURh3q/versions/riLBXg84/c2me-fabric-mc26.1.2-0.4.0-alpha.0.54.jar"
 
 
 [[mods]]
@@ -969,7 +992,7 @@ tags = ["client", "cursed", "decoration", "social"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/CllP7wW0/6d787d5cd5fface4fe9a5f6ce0770576bca09132.png"
 site = "https://modrinth.com/mod/smooth-scroll"
-download = "https://cdn.modrinth.com/data/CllP7wW0/versions/lzSkS1ll/smoothscroll-2.7.3.jar"
+download = "https://cdn.modrinth.com/data/CllP7wW0/versions/dLYYgSFy/smoothscroll-2.8.1.jar"
 
 
 [[mods]]
@@ -978,7 +1001,7 @@ name = "Forge Config API Port"
 description = """Представляет порт оригинального Forge Config API на другие модлоадеры. Она обеспечивает разработчиков
 удобным и знакомым интерфейсом для создания и управления конфигурационными файлами модов."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
@@ -992,7 +1015,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/ohNO6lps/cb3b942cc18a66a0f35f802e004713f134e46cc2_96.webp"
 site = "https://modrinth.com/mod/forge-config-api-port"
-download = "https://cdn.modrinth.com/data/ohNO6lps/versions/RXbL43Lt/ForgeConfigAPIPort-v26.1.3-mc26.1.x-Fabric.jar"
+download = "https://cdn.modrinth.com/data/ohNO6lps/versions/jUe0ucoE/ForgeConfigAPIPort-v26.1.5-mc26.1.x-Fabric.jar"
 
 
 [[mods]]
@@ -1016,7 +1039,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/GcWjdA9I/a530ae55df5e0c405f5cf1b3e4fd6163a398bdc3.png"
 site = "https://modrinth.com/mod/malilib"
-download = "https://cdn.modrinth.com/data/GcWjdA9I/versions/alF0apkB/malilib-fabric-26.1.1-0.28.2.jar"
+download = "https://cdn.modrinth.com/data/GcWjdA9I/versions/4qVbVLIv/malilib-fabric-26.1.2-0.28.11.jar"
 
 
 [[mods]]
@@ -1039,7 +1062,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Eldc1g37/36f2c7c76a7fc63e827bc20657853b7f1d9e4060.png"
 site = "https://modrinth.com/mod/tcdcommons"
-download = "https://cdn.modrinth.com/data/Eldc1g37/versions/ZqK3fcVL/tcdcommons-5.2.1%2Bfn-26.1.jar"
+download = "https://cdn.modrinth.com/data/Eldc1g37/versions/uSpV2sxA/tcdcommons-5.5.6%2Bfn-26.1.jar"
 
 
 [[mods]]
@@ -1063,7 +1086,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/ETlrkaYF/6c1711b4b788b5f25cc1e99ed8805aea94d9e167_96.webp"
 site = "https://modrinth.com/mod/cubes-without-borders"
-download = "https://cdn.modrinth.com/data/ETlrkaYF/versions/exUPiUZA/cwb-4.0.1%2B26.1.jar"
+download = "https://cdn.modrinth.com/data/ETlrkaYF/versions/izb7HEM9/cwb-4.1.0%2B26.1.jar"
 
 
 [[mods]]
@@ -1073,7 +1096,7 @@ description = """Оптимизирует производительность, 
 Вместо стандартного метода проверки видимости, мод использует трассировку лучей, что позволяет значительно уменьшить
 количество отрисовываемых объектов и повысить FPS."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "required"
@@ -1087,7 +1110,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/NNAgCjsB/7873452d6cede4daed12da3d7d8c193ab88b4fd6_96.webp"
 site = "https://modrinth.com/mod/entityculling"
-download = "https://cdn.modrinth.com/data/NNAgCjsB/versions/NaRJu6ah/entityculling-fabric-1.10.1-mc26.1.jar"
+download = "https://cdn.modrinth.com/data/NNAgCjsB/versions/zAi8nQHj/entityculling-fabric-1.10.5-mc26.1.jar"
 
 
 [[mods]]
@@ -1111,7 +1134,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Ha28R6CL/72c3d74aeb665e45aea93a945a01474cbce3b7da_96.webp"
 site = "https://modrinth.com/mod/fabric-language-kotlin"
-download = "https://cdn.modrinth.com/data/Ha28R6CL/versions/21TRTKmh/fabric-language-kotlin-1.13.10%2Bkotlin.2.3.20.jar"
+download = "https://cdn.modrinth.com/data/Ha28R6CL/versions/bdhiINYC/fabric-language-kotlin-1.13.13%2Bkotlin.2.4.10.jar"
 
 
 [[mods]]
@@ -1135,7 +1158,7 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/5ZwdcRci/e57b6b451425692ac17ad322d5e14bea686a383a_96.webp"
 site = "https://modrinth.com/mod/immediatelyfast"
-download = "https://cdn.modrinth.com/data/5ZwdcRci/versions/lRuSLf0Y/ImmediatelyFast-Fabric-1.15.2%2B26.1.2.jar"
+download = "https://cdn.modrinth.com/data/5ZwdcRci/versions/xOA9hbpf/ImmediatelyFast-Fabric-1.15.3%2B26.1.jar"
 
 
 [[mods]]
@@ -1159,7 +1182,7 @@ tags = ["client", "server", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/c7m1mi73/388af00d61fa57e7e10612bcc099bf6ee0794e5e.png"
 site = "https://modrinth.com/mod/packet-fixer"
-download = "https://cdn.modrinth.com/data/c7m1mi73/versions/M8PqPQr4/packetfixer-fabric-3.3.4-26.1.2.jar"
+download = "https://cdn.modrinth.com/data/c7m1mi73/versions/OtkWHKqd/packetfixer-fabric-3.3.5-26.1.2.jar"
 
 
 [[mods]]
@@ -1183,7 +1206,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Ps1zyz6x/27133942a1a58af1bb11b087957ea4cc14414dd3_96.webp"
 site = "https://modrinth.com/mod/scalablelux"
-download = "https://cdn.modrinth.com/data/Ps1zyz6x/versions/gYbHVCz8/ScalableLux-0.2.0%2Bfabric.2b63825-all.jar"
+download = "https://cdn.modrinth.com/data/Ps1zyz6x/versions/ToW8oIIq/ScalableLux-fabric-0.3.0-alpha.0.2-all.jar"
 
 
 [[mods]]
@@ -1210,17 +1233,16 @@ download = "https://cdn.modrinth.com/data/eXts2L7r/versions/b3IPAHgB/placeholder
 
 
 [[mods]]
-id = "uKjKoMsj"
-name = "ImmersiveThunder"
-description = """Значительно улучшает атмосферу игры, добавляя реалистичные эффекты грозы и молний. Он включает
-динамическое освещение, звуки и визуальные эффекты, создающие более погружающую и напряжённую атмосферу во
-время непогоды."""
+id = "8qptmVok"
+name = "ImmersiveThunder: Reforged"
+description = """Заменяет стандартный гром более реалистичными звуками, громкость и задержка которых зависят от
+расстояния до удара молнии. Является поддерживаемым неофициальным продолжением оригинального ImmersiveThunder."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -1228,9 +1250,9 @@ primary_category = "audio"
 tags = ["client", "adventure", "game mechanics", "technology"]
 
 [mods.links]
-icon = "https://cdn.modrinth.com/data/uKjKoMsj/ed15718fcd49a1c4cf697f95616c47fcb244f596_96.webp"
-site = "https://modrinth.com/mod/immersivethunder"
-download = ""
+icon = "https://cdn.modrinth.com/data/8qptmVok/3e49d7f4f459ade4bff519fa77f8b363a2582e20_96.webp"
+site = "https://modrinth.com/mod/immersivethunder-reforged"
+download = "https://cdn.modrinth.com/data/8qptmVok/versions/RF5QLFsy/ImmersiveThunder-Reforged-fabric-26.1.x-1.3.5.jar"
 
 
 [[mods]]
@@ -1242,7 +1264,7 @@ dependencies = []
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -1252,7 +1274,7 @@ tags = ["client", "server", "game mechanics"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/Agw7MFEL/6f21758c387e888628908f8a5f09c9cf9c463390_96.webp"
 site = "https://modrinth.com/mod/head-in-the-clouds"
-download = ""
+download = "https://cdn.modrinth.com/data/Agw7MFEL/versions/cE9huI2p/HeadInTheClouds-2.3.0%2B26.1.jar"
 
 
 [[mods]]
@@ -1260,13 +1282,13 @@ id = "nrikgvxm"
 name = "Particle Rain"
 description = """Полностью перерабатывает визуализацию погоды. Теперь осадки - это частицы, которые подвержены силе
 ветра, их цвет меняется в зависимости от биома, капли дождя стекают по стеклу и многое другое. Рекомендуем использовать
-вместе с модом ImmersiveThunder."""
+вместе с модом ImmersiveThunder: Reforged."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -1276,7 +1298,7 @@ tags = ["client", "decoration"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/nrikgvxm/e637304d1bec07c39e833d810aa4bdbb9703bf95_96.webp"
 site = "https://modrinth.com/mod/particle-rain"
-download = ""
+download = "https://cdn.modrinth.com/data/nrikgvxm/versions/s4RPlVYL/particlerain-4.0.0-beta.10%2B26.1-fabric.jar"
 
 
 [[mods]]
@@ -1286,11 +1308,11 @@ description = """Значительно повышает производите�
 игроку. Он уменьшает количество рендерящихся частиц, оптимизирует их обработку и позволяет полностью отключать или
 снижать появление определённых типов частиц через конфигурацию."""
 
-dependencies = []
+dependencies = ["Ha28R6CL", "P7dR8mSH", "hYykXjDp"]
 
 [mods.meta]
 priority = "required"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -1300,7 +1322,7 @@ tags = ["client", "game mechanics", "optimization"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/RSeLon5O/147110a6a4457b2f287f68fc626771f0f8ef2cde_96.webp"
 site = "https://modrinth.com/mod/particle-core"
-download = ""
+download = "https://cdn.modrinth.com/data/RSeLon5O/versions/EkGqhJyz/particle_core-0.3.2%2B26.1.jar"
 
 
 [[mods]]
@@ -1309,7 +1331,7 @@ name = "Fzzy Config"
 description = """Библиотека с автосозданием GUI, синхронизацией между клиентом и сервером, валидацией значений и
 поддержкой ModMenu. Простая интеграция и полная поддержка Fabric."""
 
-dependencies = []
+dependencies = ["Ha28R6CL", "P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
@@ -1354,7 +1376,7 @@ id = "ZP7xHXtw"
 name = "Remove Reloading Screen"
 description = "Удаляет экран перезагрузки ресурсов, делая процесс смены пакетов ресурсов мгновенным и бесшовным."
 
-dependencies = ["ohNO6lps"]
+dependencies = []
 
 [mods.meta]
 priority = "optional"
@@ -1368,7 +1390,7 @@ tags = ["client", "utility"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/ZP7xHXtw/7a416b09817a79adfa6a3ef9368990135e276821_96.webp"
 site = "https://modrinth.com/mod/rrls"
-download = "https://cdn.modrinth.com/data/ZP7xHXtw/versions/lFoNMnef/rrls-5.2.4%2Bmc.26.1.jar"
+download = "https://cdn.modrinth.com/data/ZP7xHXtw/versions/J8aRjeWe/rrls-5.2.6%2Bmc.26.1.jar"
 
 
 [[mods]]
@@ -1377,11 +1399,11 @@ name = "Arhitectury API"
 description = """Библиотека для абстрагирования вызовов Fabric API и Forge API, поскольку оба загрузчика имеют разные
  реализации того, что может восприниматься как одно и то же."""
 
-dependencies = []
+dependencies = ["P7dR8mSH"]
 
 [mods.meta]
 priority = "optional"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -1391,7 +1413,7 @@ tags = ["client", "server"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/lhGA9TYQ/05fe3a61c28faaccaec3533b92e1b321edde7bf6_96.webp"
 site = "https://modrinth.com/mod/architectury-api"
-download = ""
+download = "https://cdn.modrinth.com/data/lhGA9TYQ/versions/hNxqF6r7/architectury-fabric-20.0.12.jar"
 
 
 [[mods]]
@@ -1399,7 +1421,7 @@ id = "K0AkAin6"
 name = "Client Sort"
 description = "Добавляет простую, легальную на сервере, сортировку инвентаря."
 
-dependencies = []
+dependencies = ["9s6osm5g", "mOgUt4GM"]
 
 [mods.meta]
 priority = "recommended"
@@ -1413,7 +1435,7 @@ tags = ["client", "storage"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/K0AkAin6/7cf06458738334bd5d8cd77d086529d453f56ef6_96.webp"
 site = "https://modrinth.com/mod/clientsort"
-download = "https://cdn.modrinth.com/data/K0AkAin6/versions/km2lmT0H/clientsort-fabric-3.1.1%2B26.1.1.jar"
+download = "https://cdn.modrinth.com/data/K0AkAin6/versions/Yd1cw8iF/clientsort-fabric-3.102.6-beta.2%2B26.1.2.jar"
 
 
 [[mods]]
@@ -1470,7 +1492,7 @@ dependencies = []
 
 [mods.meta]
 priority = "recommended"
-status = "unavailable"
+status = "stable"
 hidden = false
 
 [mods.categorization]
@@ -1480,5 +1502,4 @@ tags = ["client"]
 [mods.links]
 icon = "https://cdn.modrinth.com/data/JKmqIR4V/76dde09c796e391fdc60bc67203d09e945463beb.png"
 site = "https://modrinth.com/mod/sign-fix"
-download = ""
-
+download = "https://cdn.modrinth.com/data/JKmqIR4V/versions/yAukcfSz/sign-fix-1.1.0.jar"
